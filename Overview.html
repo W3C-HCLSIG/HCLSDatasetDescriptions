@@ -122,18 +122,48 @@ pre {
       <h2 id="contents">Table of Contents</h2>
       
       <ul class="toc">
-	<li class="tocline1"><a href="#introduction">1 Introduction</a> </li>
-          <li class="tocline2"><a href="#docscope">1.1 Document Scope and Target Audience</a></li>
-	  <li class="tocline2"><a href="#docConventions">1.2 Document Conventions</a></li>
-	<li class="tocline1"><a href="#morestuff">2 More Stuff</a></li>
+          <li class="tocline1"><a href="#introduction">1 Introduction</a> </li>
+          <li class="tocline1"><a href="#scope">2 Scope</a> </li>
+          <li class="tocline1"><a href="#conventions">3 Conventions</a> </li>
+          <li class="tocline1"><a href="#functionalrequirements">4 Functional Requirements</a> </li>
+              <li class="tocline2"><a href="#s4_1">4.1 Dataset Identification, Description, Licensing, and Provenance</a></li>
+              <li class="tocline2"><a href="#s4_2">4.2 Dataset Discovery (via Catalog)</a></li>
+              <li class="tocline2"><a href="#s4_3">4.3 Exchange of Dataset Descriptions</a></li>
+              <li class="tocline2"><a href="#s4_4">4.4 Dataset Linking</a></li>
+              <li class="tocline2"><a href="#s4_5">4.5 Content Summary</a></li>
+              <li class="tocline2"><a href="#s4_6">4.6 Monitoring of Dataset Changes</a></li>
+          <li class="tocline1"><a href="#datasetdescriptionlevels">5 Dataset Description Levels</a> </li>
+          <li class="tocline1"><a href="#metadataguidancenotes">6 Metadata Guidance Notes</a> </li>
+              <li class="tocline2"><a href="#s6_1">6.1 Literals</a></li>
+              <li class="tocline2"><a href="#s6_2">6.2 Core Metadata</a></li>
+              <li class="tocline2"><a href="#s6_3">6.3 Identifiers</a></li>
+              <li class="tocline2"><a href="#s6_4">6.4 Provenance and Change</a></li>
+              <li class="tocline2"><a href="#s6_5">6.5 Availability and Distributions</a></li>
+              <li class="tocline2"><a href="#s6_6">6.6 Statistics</a></li>
+          <li class="tocline1"><a href="#toolingsupport">7 Tooling Support</a> </li>
+              <li class="tocline2"><a href="#s7_1">7.1 Dataset Description Generation Tool</a></li>
+              <li class="tocline2"><a href="#s7_2">7.2 Validation Tool</a></li>
+          <li class="tocline1"><a href="#usecases">8 Use Cases</a> </li>
+              <li class="tocline2"><a href="#s8_1">8.1 Marshfield Use Case</a></li>
+              <li class="tocline2"><a href="#s8_2">8.2 Metaome Transcriptomics Use Case</a></li>
+              <li class="tocline2"><a href="#s8_3">8.3 Radiotherapy Research Use Case</a></li>
+              <li class="tocline2"><a href="#s8_4">8.4 Computational Network Biology</a></li>
+              <li class="tocline2"><a href="#s8_5">8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</a></li>
+              <li class="tocline2"><a href="#s8_6">8.6 Sampling Large RDF Graphs</a></li>
+              <li class="tocline2"><a href="#s8_7">8.7 Query Formulation Using Data Metrics</a></li>
+              <li class="tocline2"><a href="#s8_8">8.8 Data Providers</a></li>
+              <li class="tocline2"><a href="#s8_9">8.9 Data Catalogs</a></li>
+          <li class="tocline1"><a href="#references">9 References</a> </li>
       </ul>
     </div>
 
+    <!--
     <h3 id="appendices">Appendices</h3>
     <ul class="toc">
       <li class="tocline2"><a href="#rdfbundles">A RDF Sources</a></li>
       <li class="tocline2"><a href="#chlog">Change Log</a></li>
     </ul>
+    -->
     <hr />
 
 
@@ -184,33 +214,33 @@ pre {
 
     <p>In this section we describe a set of essential functionality that the dataset descriptions must provide.</p>
 
-    <h3>4.1 Dataset Identification, Description, Licensing, and Provenance</h3>
+    <h3 id="s4_1">4.1 Dataset Identification, Description, Licensing, and Provenance</h3>
 
     <p>High quality data descriptions are necessary to understand the nature and provenance of data including what the data is, the format the data is represented with, where the data can be retrieved from, what license is associated with the dataset, how it was generated, when it was generated, and who generated it. Importantly, such dataset descriptions should provide globally unique identifiers for specific versions and formats of datasets so that they may be used and referenced by others in downstream analyses.</p>
 
-    <h3>4.2 Dataset Discovery (via Catalog)</h3>
+    <h3 id="s4_2">4.2 Dataset Discovery (via Catalog)</h3>
 
     <p>Data consumers need an easy mechanism to find datasets of interest. Data catalogs, identifier indices, and data standard registries such as BioSharing [BioSharing], identifiers.org Registry [Identifiers.org], datahub.io [Datahub], NIF [NIF] are all important infrastructure that make it easier for users to find relevant data and even discuss their quality or utility. The availability of rich metadata will enable users to perform faceted searches of data items by placing restrictions the values of specific metadata fields.</p>
 
-    <h3>4.3 Exchange of Dataset Descriptions</h3>
+    <h3 id="s4_3">4.3 Exchange of Dataset Descriptions</h3>
 
     <p>Dataset descriptions should be in a standardized format that enables facile exchange between data providers. This would allow data catalogs to synchronize and specialize their offerings.</p>
 
-    <h3>4.4 Dataset Linking</h3>
+    <h3 id="s4_4">4.4 Dataset Linking</h3>
 
     <p>The integration of data typically involves establishing a similarity between resources described in different datasets. Since datasets naturally evolve with time, it is important that information regarding the nature of the linking can be adequately captured e.g. the version and format of files and software used to generate the links.</p>
 
     <p>A dataset may incorporate, or link to, data in other datasets, e.g. in the creation of a data mashup. Rather than repeating the dataset description of the source datasets, the derived dataset would link to the dataset description of the specific instance that they loaded.</p>
 
-    <h3>4.5 Content Summary</h3>
+    <h3 id="s4_5">4.5 Content Summary</h3>
 
     <p>A breakdown of the entities and their relationships in a dataset is useful for communicating the structure and content of the dataset. This information can be used to enable dataset navigation, facilitate query construction and compare different versions of a dataset.</p>
 
-    <h3>4.6 Monitoring of Dataset Changes</h3>
+    <h3 id="s4_6">4.6 Monitoring of Dataset Changes</h3>
 
     <p>The reproducibility of scientific investigations is often tied to the availability of the original data. However, as original dataset grow or change with time, it becomes important to understand what changes have occurred and how these may affect dependent analyses. A dataset description should provide the means by which to compare different dataset versions.</p>
 
-    <h2 id="datasetdescriptionlevels">5. Dataset Description Levels</h2>
+    <h2 id="datasetdescriptionlevels">5 Dataset Description Levels</h2>
 
     <p>In this section, we describe the W3C HCLS recommendation for rich descriptions of datasets. There are three levels each covering a different type of resource describing the data:</p>
 
@@ -847,9 +877,9 @@ pre {
     </p>
 
 
-    <h2 id="metadataguidancenotes">6. Metadata Guidance Notes</h2>
+    <h2 id="metadataguidancenotes">6 Metadata Guidance Notes</h2>
 
-    <h3>6.1 Literals</h3>
+    <h3 id="s6_1">6.1 Literals</h3>
 
     <h4>6.1.1 Dates</h4>
 
@@ -863,7 +893,7 @@ pre {
 
     <p>For several predicates there is the choice of providing the value as an IRI or a string. We recommend that IRIs are used wherever possible.</p>
 
-    <h3>6.2 Core Metadata</h3>
+    <h3 id="s6_2">6.2 Core Metadata</h3>
 
     <h4>6.2.1 Dataset Identification and Declaration of Type</h4>
 
@@ -1021,7 +1051,7 @@ pre {
     void:subset :chembl_rdf_molecule_dataset, :chembl_rdf_target_dataset .
     </pre>
 
-    <h3>6.3 Identifiers</h3>
+    <h3 id="s6_3">6.3 Identifiers</h3>
 
     <h4>6.3.1 Preferred and Alternative Prefixes</h4>
 
@@ -1096,7 +1126,7 @@ pre {
     void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; .
     </pre>
 
-    <h3>6.4 Provenance and Change</h3>
+    <h3 id="s6_4">6.4 Provenance and Change</h3>
 
     <h4>6.4.1 Versioning</h4>
 
@@ -1176,7 +1206,7 @@ chembl.compound:chembl25
     pav:previousVersion :chembl17 .
     </pre>
 
-    <h3>6.5 Availability and Distributions</h3>
+    <h3 id="s6_5">6.5 Availability and Distributions</h3>
 
     <h4>6.5.1 Distributions and Formats</h4>
 
@@ -1248,7 +1278,7 @@ chembl.compound:chembl25
     dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt&gt; .
     </pre>
 
-    <h3>6.6 Statistics</h3>
+    <h3 id="s6_6">6.6 Statistics</h3>
 
     <p>Dataset statistics offer one means by which to understand the contents of the dataset and their relation to other datasets. Below we provide recommendations for the capture of dataset statistics for RDF formatted files using the VoID vocabulary. These statistics can be computed on an RDF dataset using SPARQL queries [VOID-SPARQL]. The results of the SPARQL queries can be added to the description of the RDF-formatted dataset.</p>
 
@@ -1488,11 +1518,11 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     ] .
     </pre>
 
-    <h2>7 Tooling Support</h2>
+    <h2 id="toolingsupport">7 Tooling Support</h2>
 
     <p>To support the provision of dataset descriptions conforming with this specification, two tools have been provided.</p>
 
-    <h3>7.1 Dataset Description Generation Tool</h3>
+    <h3 id="s7_1">7.1 Dataset Description Generation Tool</h3>
 
     <p>This tool helps with the creation of initial drafts of dataset descriptions. The dataset generator is available from http://voideditor.cs.man.ac.uk/.</p>
 
@@ -1500,7 +1530,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>It is anticipated that the dataset description will be created as part of the same process that generates the data, i.e. they are part the same (automated) production workflow.</p>
 
-    <h3>7.2 Validation Tool</h3>
+    <h3 id="s7_2">7.2 Validation Tool</h3>
 
     <p>This tool allows for the validation of dataset descriptions against these specifications. The validator is available from http://www.macs.hw.ac.uk/~ajg33/HCLSValidator/.</p>
 
@@ -1514,7 +1544,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Currently, the validator requires the whole dataset description to be pasted into a web form. It is anticipated that an API will be provided.</p>
 
-    <h2>8 Use Cases</h2>
+    <h2 id="usecases">8 Use Cases</h2>
 
     <p><strong style="color: red;">brief intro. highlight elements of what the use case should express</strong></p>
 
@@ -1526,7 +1556,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <li>examples of metadata fields needed</li>
     </ul>
 
-    <h3>8.1 Marshfield Use Case</h3>
+    <h3 id="s8_1">8.1 Marshfield Use Case</h3>
 
     <p>Marshfield Clinic is one of the largest physician group practices in the United States, who employs approximately 780 physicians representing 84 different specialties and 6,500 additional staff working on the main campus in Marshfield or one of 52 regional clinics serving the population of Wisconsin and the upper peninsula of Michigan. Integral to clinical practice, Marshfield Clinic Research Foundation (MCRF) conducts clinical and biomedical research projects.</p>
 
@@ -1534,13 +1564,13 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Marshfield also participates in a clinical pharmacogenomics consortium called eMERGE-PGx. A goal of eMERGE-PGx is to discover novel associations between genotypes and pharmacogenomics responses. The more data accumulated from different participating sites, the higher the statistical power to detect novel associations. Standardized metadata description, especial descriptors of license conditions and rights, will ensure transparencies in genetic research and data sharing. With proper metadata available for each data set, pharmacogenomics discovery can be made by agent-based algorithms and proper reuse of data.</p>
 
-    <h3>8.2 Metaome Transcriptomics Use Case</h3>
+    <h3 id="s8_2">8.2 Metaome Transcriptomics Use Case</h3>
 
     <p>Gene expression data analysis has emerged as a powerful approach for understanding biology. RNA-seq, microarrays and qPCRs are some of the common approaches for analyzing gene expression. To understand gene function, it is often necessary to analyze gene expression over various experimental conditions. It is important that, from a large corpus of transcriptomics datasets, users are able to retrieve datasets that match specific experimental criteria. Further, based on the experiment metadata, the datasets can be enriched with relevant information such as related mutations, cell lines and phenotypes.</p>
 
     <p>A well-structured and standardized dataset description is imperative for this operation. Such an approach of slicing large corpus of transcriptomics data, based on biological parameters and experimental conditions is recognized by our customers as a strong base for gene expression analytics. A structured approach to describing datasets combined with gene expression analytics could lead to applications such as better classification of tumor samples and drug-repurposing.</p>
 
-    <h3>8.3 Radiotherapy Research Use Case</h3>
+    <h3 id="s8_3">8.3 Radiotherapy Research Use Case</h3>
 
     <p>MAASTRO Clinic is a radiotherapy clinic with approximately 200 employees and 60 researchers. There are both internal and external projects that employ distributed data, and data discovery is an important feature to researchers.</p>
 
@@ -1550,7 +1580,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>In the EURECA project, a legal and technical framework has been created that enables clinical care and clinical research data to be shared via a Center for Data Protection (CDP). However, as the data collection grows, it becomes steadily more difficult to find data based on attributes of interest. Therefore, a standardized dataset description will enable project partners to make better use of the data by enabling data discovery.</p>
 
-    <h3>8.4 Computational Network Biology</h3>
+    <h3 id="s8_4">8.4 Computational Network Biology</h3>
 
     <h4>8.4.1 Biological Network Data Users</h4>
 
@@ -1577,7 +1607,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <p>The goal of Pathway Commons (http://www.pathwaycommons.org/about/) is to collect all publicly available biological pathway information and make it easily and widely available. Pathguide (http://www.pathguide.org/) tracks over 540 databases containing pathway related information. This tracking website is currently manually updated, but it would be great if it could be automatically updated by downloading metadata files from each database. In addition to the above metadata useful for GeneMANIA and Cytoscape, the nature of the data source in terms of originality is important for Pathway Commons, as originally curated information is desired, not redundant copies of data from meta-databases. Pathguide terms this ‘primary’ (originally curated or predicted) or ‘secondary’ (collected from other sources). An example Pathguide record for GeneMANIA is at
     http://pathguide.org/fullrecord.php?organisms=all&availability=all&standards=all&order=alphabetic&DBID=334</p>
 
-    <h3>8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</h3>
+    <h3 id="s8_5">8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</h3>
 
     <p>Suzanne Tracy, AstraZeneca; Stephen Furlong, AstraZeneca; Robert Stanley, IO Informatics; Peter Bogetti, AstraZeneca; Jason Eshleman, IO Informatics; Michael Goodman, AstraZeneca)</p>
 
@@ -1591,15 +1621,15 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Results include reduced time to evaluate data from clinical trials and to facilitate forward looking decisions relevant to portfolios.  Alternatives are less efficient.  Trial data could previously be evaluated within a study; however there was no method to evaluate trials data across studies without manual intervention.  Semantic technologies applied for data description, manipulation and linking provided mission-critical value. This was particularly apparent for integration and harmonization, in light of differences discovered across resources.  IO’s Knowledge Explorer applied data visualization and manipulation, application of inference and SPARQL-based rules to RDF creation.  This resulted in efficient data modeling, transformation, harmonization and integration and helped assure a successful project.</p>
 
-    <h3>8.6 Sampling Large RDF graphs</h3>
+    <h3 id="s8_6">8.6 Sampling Large RDF Graphs</h3>
 
     <p>SampLD is a tool for sampling large RDF graphs. We use the network topology of an RDF graph to detect which triples are 'interesting' enough to be included in a sample. SampLD uses common network analysis tools such as PageRank to detect 'interesting' triples. Because we cannot directly apply pagerank to RDF graphs (as an RDF graph has labelled edges), we first apply a rewrite step where we rewrite RDF to a graph with unlabelled edges (without losing too much information). We determine the quality of the sample by how good a sample is able to return answers to a set of queries (i.e. calculating recall). (This is why we use BioPortal, as we have access to the querylogs via the USEWOD challenge). However, the performance of each sample method (i.e. combination of rewrite method + network analysis algorithm) differs between datasets. The probable reasons for these differences  are: (1) the structure of each dataset is different,  (2) the queries for each dataset have a different structure. (2), is something which we are currently analyzing by extracting important features from queries. However, (1) is still an open case. What we need are features of an RDF graph. This is where the Bio2RDF dataset metrics are useful. They provide an easy way of generating information about the RDF structure itself.</p>
 
-    <h3>8.7 Query Formulation Using Data Metrics</h3>
+    <h3 id="s8_7">8.7 Query Formulation Using Data Metrics</h3>
 
     <p>YASGUI (http://yasgui.org) is a query builder for SPARQL with a strong focus on usability. To assist the user in formulating queries, we provide autocompletion functionality as much as possible. Examples are prefix autocompletion using prefix.cc, and endpoint autocompletion using the CKAN-based datahub.io [Datahub] and Sparqles. However, what users need is mostly autocompletion for resources. The current version of YASGUI supports property and class autocompletion (more info on the taken approach is described here: http://laurensrietveld.nl/yasgui/help.html#autocomplete). However, our approach can be quite expensive. Additionally, the number of suggestions per autocompletion might be quite large. Where the Bio2RDF metrics are particularly useful are: fetching the number of distinct predicates, as this a lot cheaper than executing a "distinct ?p {?s ?p ?o}" query. Additionally, using these metrics we should be able to rank these predicates more meaningfully, based on the combination of its frequency and how this particular predicate is used in the query (e.g. is the object in this triple pattern a URI or a literal).</p>
 
-    <h3>8.8 Data Providers</h3>
+    <h3 id="s8_8">8.8 Data Providers</h3>
 
     <h4>8.8.1 Open PHACTS</h4>
 
@@ -1620,7 +1650,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>WormBase [WormBase] is a curated genetic and genomic data resource of 19 nematode species including the widely used research model organism Caenorhabditis elegans. Its heavily cross-referenced datasets have continuously grown since the establishment of WormBase more than a decade ago and their growth has accelerated with the availability of cheap next-generation sequencing techniques. Data integration and query federation have become major driving factors in the further development of WormBase, which is currently being addressed by the translation of Genomic Feature Format Version 3 (GFF3) datasets into RDF and their subsequent exposure via a SPARQL endpoint. WormBase will implement the dataset description guidelines to advertise its data resources to the wider bioinformatics and computational biology communities.</p>
 
-    <h3>8.9 Data Catalogs</h3>
+    <h3 id="s8_9">8.9 Data Catalogs</h3>
 
     <h4>8.9.1 BioSharing</h4>
 
@@ -1647,7 +1677,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Identifiers.org [Identifiers.org] is a system which provides resolvable and persistent URIs to identify data of interest to the life sciences. It relies upon an underlying Registry which provides detailed information on numerous resources which are crucial to scientific research. It includes details on resolving locations where records for a particular resource may be accessed, defines identifier patterns for each data provider, and reflects accessibility of data by recording the up time for individual resource. The content of the Registry is available as RDF, which is defined using DCAT. The use of such terminologies has been agreed upon by numerous communities, and enables standardised descriptions of such repositories and facilitates data sharing and processing between them.</p>
 
-    <h1 id="references">9 References</h1>
+    <h2 id="references">9 References</h1>
 
     <dl class="bib">
     <dt><a name="Bio2RDF" id="Bio2RDF">[Bio2RDF]</a></dt>
