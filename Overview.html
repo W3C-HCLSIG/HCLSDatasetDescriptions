@@ -4,9 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
   <head>
-    <meta name="generator" content="Emacs 22" />
-    <meta name="RCS-Id" content="$Id: Overview.html,v 1.5
-                                 7 2008/01/14 16:10:23 mmarshal Exp $" />
     <title>Dataset Descriptions: HCLS Community Profile</title>
 
 <!--  
@@ -74,11 +71,15 @@ pre {
       <dl>
 	<dt>Editors working draft.</dt>
 
+	<dt>Editors:</dt>
+	      <dd>Alasdair J.G. Gray, Heriott-Watt University, United Kingdom &lt;<a href="mailto:A.J.G.Gray@hw.ac.uk">A.J.G.Gray@hw.ac.uk</a>&gt;</dd>
+	      <dd>Michel Dumontier, Stanford University, USA &lt;<a href="mailto:michel.dumontier@stanford.edu">michel.dumontier@stanford.edu</a>&gt;</dd>
+	      <dd>M. Scott Marshall, MAASTRO Clinic, The Netherlands &lt;<a href="mailto:marshall@science.uva.nl">marshall@science.uva.nl</a>&gt;</dd>
 	<dt>Contributors:</dt>
 	      <dd>Peter Ansell, CSIRO, Australia &lt;<a href="mailto:peter.ansell@csiro.au">peter.ansell@csiro.au</a>&gt;</dd>
 	      <dd>Gary D. Bader, The Donnelly Centre, University of Toronto, Canada &lt;<a href="mailto:gary.bader@utoronto.ca">gary.bader@utoronto.ca</a>&gt;</dd>
 	      <dd>Asuka Bando, NBDC, Japan &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
-	      <dd>Joachim Baran, Ontario Institute for Cancer Research, Canada &lt;<a href="mailto:joachim.baran@gmail.com">TODO@TODO</a>&gt;</dd>
+	      <dd>Joachim Baran, Ontario Institute for Cancer Research, Canada &lt;<a href="mailto:joachim.baran@gmail.com">joachim.baran@gmail.com</a>&gt;</dd>
 	      <dd>Alison Callahan, Carleton University, Canada &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
 	      <dd>Jos&eacute; Cruz-Toledo, Carleton University, Canada &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
 	      <dd>Erich Gombocz, IO Informatics, USA &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
@@ -96,10 +97,6 @@ pre {
 	      <dd>Nick Juty, EMBL-EBI, UK &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
 	      <dd>James Malone, EMBL-EBI, UK &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
 	      <dd>Laurens Rietveld, VU University Amsterdam, Netherlands &lt;<a href="mailto:TODO@TODO">TODO@TODO</a>&gt;</dd>
-	<dt>Editors:</dt>
-	      <dd>Alasdair J.G. Gray, Heriott-Watt University, United Kingdom &lt;<a href="mailto:A.J.G.Gray@hw.ac.uk">A.J.G.Gray@hw.ac.uk</a>&gt;</dd>
-	      <dd>Michel Dumontier, Stanford University, USA &lt;<a href="mailto:michel.dumontier@stanford.edu">michel.dumontier@stanford.edu</a>&gt;</dd>
-	      <dd>M. Scott Marshall, MAASTRO Clinic, The Netherlands &lt;<a href="mailto:marshall@science.uva.nl">marshall@science.uva.nl</a>&gt;</dd>
       </dl>
 
       <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &#169; 2014 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&#174;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
@@ -223,7 +220,10 @@ pre {
     <li><strong>Distribution Level</strong>: The distribution level captures metadata about a specific form and version of a dataset.</li>
     </ul>
 
-    <img src="Figure1.png">Figure 1</img>
+    <p style="text-align: center">
+    <img src="Figure1.png" alt="Figure 1: Overview of dataset description level metadata profiles and their relationships"></img><br />
+    Figure 1: Overview of dataset description level metadata profiles and their relationships
+    </p>
 
     <p>Note that a distribution is the realisation of the data in a specific file format. The different distributions of a dataset may not be semantically equivalent due to differences between the data formats. For example, a chemical dataset may be released as a rich RDF dataset but also as an SD file. In this case, the SD file will not contain the same data content as the RDF dataset.</p>
 
@@ -247,6 +247,7 @@ pre {
 
     <p>The properties expected for each metadata profile are given in the table below.</p>
 
+    <p style="text-align: center">
     <table>
     <tr>
         <td>Profile</td>
@@ -682,7 +683,7 @@ pre {
     </tr>
     <tr>
         <td></td>
-        <td>???:latencyOfChange</td>
+        <td><strong style="color:red">???</strong>:latencyOfChange</td>
         <td></td>
         <td></td>
         <td></td>
@@ -842,7 +843,9 @@ pre {
         <td>SHOULD</td>
         <td>Only for RDF datasets</td>
     </tr>
-    </table>
+    </table><br />
+    Table 1: Properties and their recommended use in metadata profiles
+    </p>
 
 
     <h2 id="metadataguidancenotes">6. Metadata Guidance Notes</h2>
@@ -1128,7 +1131,10 @@ pre {
 
     <h4>6.4.2 Dataset Provenance</h4>
 
-    <img src="Figure2.png">Figure 2</img>
+    <p style="text-align: center">
+    <img src="Figure2.png" alt="Figure 2: TODO"></img><br />
+    Figure 2: <strong style="color: red">Improve diagram. Multiple appearance of concepts unclear.</strong>
+    </p>
 
     <p>A version level description of a dataset SHOULD identify the datasets used to create the published data. Use dct:source when the source dataset was used in whole or in part. Use pav:retrievedFrom when the source dataset was used in whole and was not modified from its original distribution. Use prov:wasDerivedFrom when the source dataset was in whole or in part and was modified from its original distribution.</p>
 
