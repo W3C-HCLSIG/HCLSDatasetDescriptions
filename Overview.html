@@ -18,8 +18,45 @@ TODO list:
 -->
 
     <style type="text/css">
-      /*<![CDATA[*/
-      /*]]>*/
+  table {
+    border-collapse:collapse;
+  }
+  td, th {
+    border:1px solid black;
+    padding:1em;
+  }  
+  table#namespaces td {
+    font-family: monospace;
+  }
+  table.definition {
+    width:100%;
+  }
+  table.definition td.prop {
+    width:10em;
+  }
+/*  .editorsnote::before {
+    content:    "Editor's Note";
+    display:    block;
+    width:      150px;
+    background: #F30023;
+    color:  #fff;
+    margin: -1.5em 0 0.5em 0;
+    font-weight:    bold;
+    border: 1px solid #cff6d9;
+    padding:    3px 1em;
+  }
+  .editorsnote {
+    margin: 1em 0em 1em 1em;
+    padding:    1em;
+    border: 2px solid #cff6d9;
+  } */
+pre {
+  padding: 1em;
+  border: 1px dashed #2f6fab;
+  color: black;
+  background-color: #f9f9f9;
+  line-height: 1.1em;
+}
     </style>
     <link rel="stylesheet" type="text/css" href="local.css" />
     <!-- link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/Note" / -->
@@ -210,7 +247,603 @@ TODO list:
 
     <p>The properties expected for each metadata profile are given in the table below.</p>
 
-    <strong style="color: red">TODO Table 1</strong>
+    <table>
+    <tr>
+        <td>Profile</td>
+        <td>Property</td>
+        <td>Value</td>
+        <td>Summary Level</td>
+        <td>Version Level</td>
+        <td>Distribution Level</td>
+        <td>Guidance notes to be added to main document</tr>
+    </tr>
+    <tr>
+        <td>Core Metadata</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>rdf:type</td>
+        <td>dct:Dataset | void:Dataset</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>void:Dataset should only be used for RDF distributions of the dataset</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:title</td>
+        <td>rdfs:langString</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:identifier</td>
+        <td>xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:alternative</td>
+        <td>rdfs:langString</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:description</td>
+        <td>rdfs:langString</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:created</td>
+        <td>xsd:dateTime</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>One of dct:created or dct:issued MUST be provided.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:createdOn</td>
+        <td>xsd:dateTime</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:authoredOn</td>
+        <td>xsd:dateTime</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:curatedOn</td>
+        <td>xsd:dateTime</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:creator</td>
+        <td>IRI or xsd:string</td>
+        <td>NEVER</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:contributor</td>
+        <td>IRI or xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:createdBy</td>
+        <td>IRI or xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:authoredBy</td>
+        <td>IRI or xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:curatedBy</td>
+        <td>IRI or xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Fine-grained assignation of the creation task</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:issued</td>
+        <td>xsd:dateTime</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>One of dct:created or dct:issued MUST be provided.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:publisher</td>
+        <td>IRI</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>foaf:page</td>
+        <td>IRI</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:license</td>
+        <td>IRI</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td>MUST</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:rights</td>
+        <td>rdfs:langString</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:language</td>
+        <td><a>http://lexvo.org/id/iso639-3/{tag}</a></td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:theme</td>
+        <td>skos:Concept</td>
+        <td>MAY</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:keyword</td>
+        <td>xsd:string</td>
+        <td>MAY</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:vocabulary</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:conformsTo</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>SHOULD</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>cito:citesAsAuthority</td>
+        <td>IRI</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:hasPart</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>For non-RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:subset</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td>Identifiers</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>idot:preferredPrefix</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>idot:alternatePrefix</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>idot:identifierPattern</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:uriRegexPattern</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>idot:accessPattern</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>idot:exampleIdentifier</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:exampleResource</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Provenance and Change</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>A dataset MUST never be modified. Any corrections MUST be made as a new version.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:inDataset</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:version</td>
+        <td>xsd:string</td>
+        <td>NEVER</td>
+        <td>MUST</td>
+        <td>SHOULD</td>
+        <td>Some datasets are versioned by date released</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:isVersionOf</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>MUST</td>
+        <td>NEVER</td>
+        <td>A data provider MAY choose to also include a pav:hasCurrentVersion from the Summary Level dataset description to the most recent Version Level description. If the property is provided then the provider takes on the task of ensuring that it is uptodate.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:previousVersion</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>Note that it is nonsensical to have an unversioned description point to a previous version of the dataset using the PAV property.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:hasCurrentVersion</td>
+        <td>IRI</td>
+        <td>MAY</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>Should only be used by authoriative sources. Users of the data should ensure that there is only one such relation for each summary level dataset.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:source</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>For datasets used in whole or in part.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:retrievedFrom</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>For datasets used in whole without modification.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>prov:wasDerivedFrom</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>SHOULD</td>
+        <td>For datasets used in whole or in part with modification.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>pav:createdWith</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>Identifies the version of the tool/script used to generate the instance data in the specified format</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:accrualPeriodicity</td>
+        <td>dctype:Frequency</td>
+        <td>SHOULD</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>Frequency of change is a property of the abstract dataset. The version level MUST never change. A new version MUST be created.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>???:latencyOfChange</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>Captures the time between a new source version being generated and the distribution being made. For example, the time taken to update the Bio2RDF scripts and run them to generate the new RDF representation of a non-RDF dataset.</td>
+    </tr>
+    <tr>
+        <td>Availability/Distributions</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dct:format</td>
+        <td>[ iana | edam | biosharing | xsd:String ]</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>MUST</td>
+        <td>Indicates the specific format of the formatted dataset files.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:distribution</td>
+        <td>[ a dcat:Distribution; dcat:downloadURL &lt;uri&gt;]</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>NEVER</td>
+        <td>Versioned description should point to the description of all formatted dataset descriptions.<br/>Formatted descriptions should point to the files containing the data.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:accessURL</td>
+        <td>IRI</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>To indicate a page/location to download files.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:downloadURL</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>For non-RDF resources we need a way of pointing to the download</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:dataDump</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only used for formatted descriptions of RDF datasets. Must point to RDF file in some serialisation; file may be compressed. Must not point to the directory containing the files.</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>dcat:landingPage</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>Link to the documentation page for an API through which the data can be accessed.</td>
+    </tr>
+    <tr>
+        <td>Statistics</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:triples</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:entities</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:distinctSubjects</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:properties</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:distinctObjects</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>XXX:distinctLiterals</td>
+        <td>xsd:integer</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sd:namedGraph</td>
+        <td>sd:NamedGraph</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:propertyPartition</td>
+        <td>[void:property &lt;IRI&gt;; void:triples &quot;XXX&quot;^^xsd:integer]</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>void:classPartition</td>
+        <td>[void:class &lt;IRI&gt;; void:entities &quot;XXX&quot;^^xsd:integer]</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
+        <td>SHOULD</td>
+        <td>Only for RDF datasets</td>
+    </tr>
+    </table>
+
 
     <h2 id="metadataguidancenotes">6. Metadata Guidance Notes</h2>
 
