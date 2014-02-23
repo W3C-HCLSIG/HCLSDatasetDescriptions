@@ -210,6 +210,8 @@ pre {
       </table>
     </div>
 
+    <p>The letter sequence "###" is used to denote a placeholde for a positive integer (&geq; 1) in examples. The integers that replace this surrogate are of type xsd:integer.</p>
+
     <h2 id="functionalrequirements">4 Functional Requirement</h2>
 
     <p>In this section we describe a set of essential functionality that the dataset descriptions must provide.</p>
@@ -839,7 +841,7 @@ pre {
     </tr>
     <tr>
         <td></td>
-        <td>XXX:distinctLiterals</td>
+        <td>###:distinctLiterals</td>
         <td>xsd:integer</td>
         <td>NEVER</td>
         <td>NEVER</td>
@@ -858,7 +860,7 @@ pre {
     <tr>
         <td></td>
         <td>void:propertyPartition</td>
-        <td>[void:property &lt;IRI&gt;; void:triples &quot;XXX&quot;^^xsd:integer]</td>
+        <td>[void:property &lt;IRI&gt;; void:triples &quot;###&quot;^^xsd:integer]</td>
         <td>NEVER</td>
         <td>NEVER</td>
         <td>SHOULD</td>
@@ -867,7 +869,7 @@ pre {
     <tr>
         <td></td>
         <td>void:classPartition</td>
-        <td>[void:class &lt;IRI&gt;; void:entities &quot;XXX&quot;^^xsd:integer]</td>
+        <td>[void:class &lt;IRI&gt;; void:entities &quot;###&quot;^^xsd:integer]</td>
         <td>NEVER</td>
         <td>NEVER</td>
         <td>SHOULD</td>
@@ -1292,7 +1294,7 @@ chembl.compound:chembl25
 
     <pre>
 :rdfdataset
-    void:triples “####”^^xsd:integer .
+    void:triples "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1305,7 +1307,7 @@ SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }
 
     <pre>
 :rdfdataset
-    void:entities “###”^^xsd:integer .
+    void:entities "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1318,7 +1320,7 @@ SELECT COUNT(distinct ?s) AS ?no { ?s a []  }
 
     <pre>
 :rdfdataset
-    void:distinctSubjects “###”^^xsd:integer .
+    void:distinctSubjects "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1331,7 +1333,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?no) {  ?s ?p ?o   }
 
     <pre>
 :rdfdataset
-    void:properties “##”^^xsd:integer .
+    void:properties "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1344,7 +1346,7 @@ SELECT count(distinct ?p) { ?s ?p ?o }
 
     <pre>
 :rdfdataset
-    void:distinctObjects “###”^^xsd:integer .
+    void:distinctObjects "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1490,10 +1492,10 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
         void:linkPredicate &lt;property-uri&gt; ;
         void:subjectsTarget [
             void:class &lt;subject-type-uri&gt; ;
-            void:entities "#"^^xsd:integer] ;
+            void:entities "###"^^xsd:integer] ;
             void:objectsTarget [
                 void:class &lt;object-type-uri&gt; ;
-                void:entities "#"^^xsd:integer
+                void:entities "###"^^xsd:integer
             ] ;
         ] ;
     ] .
