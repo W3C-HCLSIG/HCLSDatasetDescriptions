@@ -1686,6 +1686,20 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Identifiers.org [<a href="#Identifiers.org">Identifiers.org</a>] is a system which provides resolvable and persistent URIs to identify data of interest to the life sciences. It relies upon an underlying Registry which provides detailed information on numerous resources which are crucial to scientific research. It includes details on resolving locations where records for a particular resource may be accessed, defines identifier patterns for each data provider, and reflects accessibility of data by recording the up time for individual resource. The content of the Registry is available as RDF, which is defined using DCAT. The use of such terminologies has been agreed upon by numerous communities, and enables standardised descriptions of such repositories and facilitates data sharing and processing between them.</p>
 
+    <h3 id="s8_10">8.10 Experimental datasets use case</h3>
+
+    <p>The description of the experimental workflows in a standard way is important to understand the datasets produced and to make them re-usable for further investigations or meta-analysis. The ISA infrastructure [ISAtools] provides a format and a set of tools to manipulate it, enabling collecting, curating, managing and re-using datasets in a standards-compliant way.</p>
+
+    <p>Originally designed for describing high-throughput genomics and post-genomics experiments, used in conjunction with other technologies, the ISA format has also been applied for the description of experiments comparing computational methods [soapdenovo2], their inputs and outputs and methods, in the form of references to Galaxy workflows.</p>
+
+    <p>The ISA syntax provides terminology for describing sample characteristics, technologies and measurements, experimental design, instrument parameters, material and data provenance, inputs and outputs of processes and so on. The syntax relies on the annotation with ontological resources for providing domain-specific semantics. There are also tools for converting the ISA representations into RDF: ISA2RDF [ISA2RDF] produced by the ToxBank consortium [ToxBank] and ISA2OWL produced by the ISAtools team [ISAtools]. In particular, the ISA2OWL extends the representation of experimental workflows with the descriptors compliant with the guidelines presented in this document.</p>
+
+    <p>The community of users of the ISA metadata tracking framework is the ISA commons [ISAcommons]. It includes both life science (environmental and biomedical domains) researchers and industrial participants who adopted the ISA format and the ISA tools such as ISAconfigurator and ISAcreator for curation and data collection [ISA infrastructure], Risa for interface with R packages [Risa], BII for storage [ISA infrastructure].</p>
+
+    <p>Within the ISA community, there are examples of public repositories such as EBI Metabolights [<a href="#Metabolights">Metabolights</a>] and data publication platforms such as Nature Publishing Group Scientific Data [<a href="#ScientificData">Scientific Data</a>] and BioMedCentral-BGI GigaScience GigaDB [<a href="#GigaScience">GigaScience</a>].</p>
+
+
+
     <h2 id="references">9 References</h1>
 
     <dl class="bib">
@@ -1739,6 +1753,8 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <dd><cite><a href="http://www.biocurator.org">http://www.biocurator.org</a></cite></dd>
     <dt><a name="Lexvo" id="LexvoPaper">[Lexvo]</a></dt>
     <dd><cite><a href="http://www.semantic-web-journal.net/content/lexvoorg-language-related-information-linguistic-linked-data-cloud-0">Gerard de Melo. Lexvo.org: Language-Related Information for the Linguistic Linked Data Cloud. Submitted to Semantic Web Journal.</a></cite></dd>
+    <dt><a name="Metabolights" id="Metabolights">[Metabolights]</a></dt>
+    <dd><cite><a href="http://www.ebi.ac.uk/metabolights/">http://www.ebi.ac.uk/metabolights/</a></cite></dd>
     <dt><a name="NIF" id="NIF">[NIF]</a></dt>
     <dd><cite><a href="http://www.neuinfo.org">http://www.neuinfo.org</a></cite></dd>
     <dt><a name="OpenPHACTS" id="OpenPHACTS">[OpenPHACTS]</a></dt>
