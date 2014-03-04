@@ -874,7 +874,7 @@ pre {
 
     <h4>6.2.3 Dates of Creation and Issuance</h4>
 
-    <p>It is essential to know when a dataset came into existence. However for some datasets all that is known is when it was made public. Therefore, it is recommended that at least one of the creation or issued dates are provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:created. Both properties are restricted to a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> value. For instance, to specify that the chembl17 dataset (see section 6.4 for more details about :chembl17 declaration) was issued on 29 August 2013:</p>
+    <p>It is essential to know when a dataset came into existence. However for some datasets all that is known is when it was made public. Therefore, it is recommended that at least one of the creation or issued dates are provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:created. Both properties are restricted to a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> value. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013:</p>
 
     <pre>
 :chembl17 
@@ -1199,7 +1199,7 @@ chembl.compound:chembl25
 
     <p>Publishers may also provide their data through a SPARQL endpoint. We recommend that such an endpoint should have a service description [<a href="#SD">SD</a>] and this should link to the distribution level description that is currently loaded (see Figure 1).</p>
 
-    <p>Below is an example based on the one given in Section 6.5 of the VOID guidelines [<a href="#VOID">VOID</a>] to indicate how this may be achieved for the default graph of a triplestore.</p>
+    <p>Below is an example based on the one given in <a href="http://www.w3.org/TR/2011/NOTE-void-20110303/#sparql-sd">Section 6.5</a> of the VOID guidelines [<a href="#VOID">VOID</a>] to indicate how this may be achieved for the default graph of a triplestore.</p>
 
     <pre>
 &lt;#service&gt;
@@ -1701,8 +1701,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <dt><a name="ORCID" id="ORCID">[ORCID]</a></dt>
     <dd><cite><a href="http://orcid.org">http://orcid.org</a></cite></dd>
     <dt><a name="PAV" id="PAV">[PAV]</a></dt>
-    <dd><cite><a href="http://purl.org/pav">Paolo Ciccarese and Stian Soiland-Reyes. Provenance, authoring and versioning Ontology.</a></cite></dd>
-    <dt><a name="PAVPaper" id="PAVPaper">[PAVPaper]</a></dt>
+    <dd><cite><a href="http://purl.org/pav">Paolo Ciccarese and Stian Soiland-Reyes. Provenance, authoring and versioning Ontology</a>.</cite></dd>
     <dd><cite>Ciccarese, P.; Soiland-Reyes, S.; Belhajjame, K.; Gray, A. J. G.; Goble, C. and Clark, T. PAV ontology: Provenance, Authoring and Versioning. In Journal of Biomedical Semantics, 2013.</cite></dd>
     <dt><a name="PROV" id="PROV">[PROV]</a></dt>
     <dd><cite><a href="http://www.w3.org/TR/prov-overview">http://www.w3.org/TR/prov-overview</a></cite></dd>
