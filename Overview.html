@@ -105,6 +105,7 @@ pre {
               <dd>Sarala Wimalaratne, EMBL-EBI, UK &lt;<a href="mailto:sarala@ebi.ac.uk">sarala@ebi.ac.uk</a>&gt;</dd>
 	      <dd>James Malone, EMBL-EBI, UK &lt;<a href="mailto:malone@ebi.ac.uk">malone@ebi.ac.uk</a>&gt;</dd>
 	      <dd>Laurens Rietveld, VU University Amsterdam, The Netherlands &lt;<a href="mailto:laurens.rietveld@vu.nl">laurens.rietveld@vu.nl</a>&gt;</dd>
+          <dd>Sarala M. Wimalaratne, EMBL-EBI, UK &lt;<a href="mailto:sarala@ebi.ac.uk">sarala@ebi.ac.uk</a>&gt;</dd>
       </dl>
 
       <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &#169; 2014 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&#174;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
@@ -217,6 +218,7 @@ pre {
 	<tr><td><code>sd:</code></td>			<td><code>http://www.w3.org/ns/sparql-service-description#</code></td>	<td>SPARQL 1.1 Service Description</td></tr>
 	<tr><td><code>xsd:</code></td>			<td><code>http://www.w3.org/2001/XMLSchema#</code></td>	<td>XML Schema</td></tr>
 	<tr><td><code>vann:</code></td>			<td><code>http://purl.org/vocab/vann/</code></td>	<td>Vocabulary for Annotating vocabulary descriptions</td></tr>
+	<tr><td><code>void:</code></td>			<td><code>http://www.w3.org/TR/void/</code></td>	<td>Describing Linked Datasets with the VoID Vocabulary</td></tr>
       </table>
     </div>
 
@@ -1003,13 +1005,13 @@ pre {
 
     <h4>6.3.1 Preferred and Alternative Prefixes</h4>
 
-    <p>A preferred prefix is a short label that is commonly used to refer to the dataset and may stand in place of the base IRI of the dataset (e.g. see <a href="http://prefix.cc">http://prefix.cc</a>). It is described by the idot:preferredPrefix property and MAY be used for <strong>any</strong> descriptions.  It is recommended that that the idot:preferredPrefix is the same as the dct:identifier.</p>
+    <p>A preferred prefix is a short label that is commonly used to refer to the dataset and may stand in place of the base IRI of the dataset (e.g. see <a href="http://prefix.cc">http://prefix.cc</a>). It is recommended that that the idot:preferredPrefix is the same as the dct:identifier.</p>
 
     <p>An alternate prefix is a short label that is used by some community to refer to the dataset, but is not the preferred prefix.</p>
 
     <pre>
 :chembl
-    idot:preferredPrefix "chembl" ;
+    idot:preferredPrefix "chembl";
     idot:alternatePrefix "chembldb" .
     </pre>
 
@@ -1022,7 +1024,7 @@ pre {
     idot:identifierPattern "CHEMBL\d+"^^xsd:string .
     </pre>
 
-    <p>The void:uriRegexPattern property MAY be provided for distribution level descriptions, where it provides a regular expression whose transitive closure denotes a superset of data item URIs in the dataset. The property must NEVER be used for summary level descriptions or version level descriptions.</p>
+    <p>The void:uriRegexPattern property MAY be provided for distribution level descriptions, where it provides a regular expression whose transitive closure denotes a superset of data item URIs in the dataset./p>
 
     <pre>
 :chembl17rdf
@@ -1033,29 +1035,30 @@ pre {
 
     <pre>
 :chembl
-    idot:accessPattern [
-          rdf:type idot:AccessPattern;
-          idot:primarySource "true"^^xsd:boolean;
-          dct:publisher &lt;http://www.ebi.ac.uk&gt;;
-          dct:format "text/html";
-          rdf:value "http://www.ebi.ac.uk/chembl/compound/inspect/";
-    ]
-    idot:accessPattern [
-          rdf:type idot:AccessPattern;
-          dct:format "text/html";
-          rdf:value "http://identifiers.org/chembl.compound/";
-    ]
-    idot:accessPattern [
-          rdf:type idot:AccessPattern;
-          dct:format "application/rdf+xml";
-          rdf:value "http://linkedchemistry.info/chembl/chemblid/";
-    ]
-    idot:accessPattern [
-          rdf:type idot:AccessPattern;
-          dct:format "application/rdf+xml";
-          dct:publisher &lt;http://bio2rdf.org&gt;;
-          rdf:value "http://bio2rdf.org/chembl:";
-    ]
+    idot:accessPattern
+        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;,
+        &lt;http://identifiers.org/chembl.compound/&gt;
+        &lt;http://bio2rdf.org/chembl&gt;,
+        &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
+
+    &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
+        idot:primarySource true;
+        dct:format "text/html";
+        dct:publisher "http://www.ebi.ac.uk";
+        a idot:AccessPattern.
+
+    &lt;http://identifiers.org/chembl.compound/&gt;
+        dct:format "text/html";
+        a idot:AccessPattern.
+
+    &lt;http://bio2rdf.org/chembl>
+        dct:format "application/rdf+xml";
+        dct:publisher "http://bio2rdf.org";
+        a idot:AccessPattern .
+
+    &lt;http://linkedchemistry.info/chembl/chemblid&gt;
+        dct:format "application/rdf+xml";
+        a idot:AccessPattern.
     </pre>
 
     <h4>6.3.3 Example Identifier and Resource</h4>
