@@ -1117,11 +1117,11 @@ pre {
     dct:source :pubchem-bioassay-09-01-2014 .
     </pre>
 
-    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith <span class="todo">(need to capture the version of the tool)</span>.</p>
+    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.
 
     <pre>
 :chembl17rdf
-    pav:createdWith :chembl-sql2rdf-exporter .
+    pav:createdWith :chembl-sql2rdf-exporter-v1 .
     </pre>
 
     <h4>6.4.3 Entity Provenance</h4>
