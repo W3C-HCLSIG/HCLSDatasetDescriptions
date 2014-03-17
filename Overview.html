@@ -271,25 +271,6 @@ pre {
 
     <p>Note that a distribution is the realisation of the data in a specific file format. The different distributions of a dataset may not be semantically equivalent due to differences between the data formats. For example, a chemical dataset may be released as a rich RDF dataset but also as an <a href="http://en.wikipedia.org/wiki/Chemical_table_file#SDF">SD file</a>. In this case, the SD file will not contain the same data content as the RDF dataset.</p>
 
-    <p>For example, consider the ChEMBL dataset. It is manifested in 17 different versions, of which each version can be accessed in a variety of data formats. Thus, to be fully conformant with this specification, there would be one Summary Level description that is linked to 17 Version Level descriptions, and each of the Version Level descriptions would be linked to their corresponding Distribution Level descriptions. This is captured by the following example expressed in RDF/Turtle format:</p>
-
-    <pre>
-# Summary Level Description
-    :chembl a dctypes:Dataset .
-
-# Version Level Description
-:chembl17 a dctypes:Dataset ;
-    dct:isVersionOf :chembl;
-    pav:version "17.0";
-    dcat:distribution :chembl17rdf, 
-    	:chembl17relational, :chembl17csv .
-
-# Distribution Level Descriptions
-:chembl17rdf a dcat:Distribution, void:Dataset .
-:chembl17relational a dcat:Distribution .
-:chembl17csv a dcat:Distribution .
-    </pre>
-
     <p>The properties expected for each metadata profile are given in the table below.</p>
 
     <p style="text-align: center">
@@ -827,6 +808,25 @@ pre {
 
 
     <h2 id="metadataguidancenotes">6 Metadata Guidance Notes</h2>
+
+    <p>In this section, we discuss each of the properties to be provided for a metadata description and the expected values. To aid our discussion consider the ChEMBL dataset. It is manifested in 17 different versions, of which each version can be accessed in a variety of data formats. Thus, to be fully conformant with this specification, there would be one Summary Level description that is linked to 17 Version Level descriptions, and each of the Version Level descriptions would be linked to their corresponding Distribution Level descriptions. This is captured by the following example expressed in RDF/Turtle format:</p>
+
+    <pre>
+# Summary Level Description
+:chembl a dctypes:Dataset .
+
+# Version Level Description
+:chembl17 a dctypes:Dataset ;
+    dct:isVersionOf :chembl;
+    pav:version "17.0";
+    dcat:distribution :chembl17rdf, 
+    	:chembl17relational, :chembl17csv .
+
+# Distribution Level Descriptions
+:chembl17rdf a dcat:Distribution, void:Dataset .
+:chembl17relational a dcat:Distribution .
+:chembl17csv a dcat:Distribution .
+    </pre>
 
     <h3 id="s6_1">6.1 Literals</h3>
 
