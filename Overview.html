@@ -164,6 +164,8 @@ pre {
               <li class="tocline2"><a href="#s8_9">8.9 Data Catalogs</a></li>
               <li class="tocline2"><a href="#s8_10">8.10 Experimental Datasets Use Case</a></li>
           <li class="tocline1"><a href="#references">9 References</a> </li>
+          <li class="tocline1"><a href="#appendix">Appendix</a> </li>
+              <li class="tocline2"><a href="#appendix_1">10.1 Complete Example of a Dataset Description</a></li>
       </ul>
     </div>
 
@@ -1050,7 +1052,7 @@ pre {
         dct:format "text/html";
         a idot:AccessPattern.
 
-    &lt;http://bio2rdf.org/chembl>
+    &lt;http://bio2rdf.org/chembl&gt;
         dct:format "application/rdf+xml";
         dct:publisher "http://bio2rdf.org";
         a idot:AccessPattern .
@@ -1624,7 +1626,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
 
 
-    <h2 id="references">9 References</h1>
+    <h2 id="references">9 References</h2>
 
     <dl class="bib">
     <dt><a name="Bio2RDF" id="Bio2RDF">[Bio2RDF]</a></dt>
@@ -1703,6 +1705,277 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <dt><a name="WormBase" id="WormBase">[WormBase]</a></dt>
     <dd><cite><a href="http://www.wormbase.org">http://www.wormbase.org</a></cite></dd>
     </dl>
+
+    <h2 id="appendix">10 Appendix</h2>
+    
+    <h3 id="appendix_1">Complete Example of a Dataset Description</h3>
+
+    The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.
+
+<pre>
+# Summary Level Description
+    :chembl a dctypes:Dataset .
+
+# Version Level Description
+:chembl17 a dctypes:Dataset ;
+    dct:isVersionOf :chembl;
+    pav:version "17.0";
+    dcat:distribution :chembl17rdf, 
+      :chembl17relational, :chembl17csv .
+
+# Distribution Level Descriptions
+:chembl17rdf a dcat:Distribution, void:Dataset .
+:chembl17relational a dcat:Distribution .
+:chembl17csv a dcat:Distribution .
+    
+:chembl 
+    rdf:type dctypes:Dataset .
+    
+:chembl
+       dct:title "ChEMBL"@en ;
+       dct:alternative "ChEMBLdb"@en ;
+       dct:identifier "chembl"@en .
+    
+:chembl 
+    dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en .
+    
+:chembl17 
+    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime .
+    
+:chembl17
+    dct:creator &lt;https://www.ebi.ac.uk/chembl/&gt; .
+
+      :chembl_target_targetcmpt_linkset 
+          pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+    
+:chembl_target_targetcmpt_linkset 
+    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+    
+:chembl 
+    dct:publisher &lt;http://www.ebi.ac.uk&gt; .
+    
+:chembl 
+    foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+    schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
+    
+@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt;
+:chembl 
+    dcat:theme ncit:C48807. # chemical
+    dcat:keyword "chemical"^^xsd:string, "assay"^^xsd:string .
+    
+:chembl
+    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; .
+    
+:chembl
+    dct:language &lt;http://lexvo.org/id/iso639-3/en&gt; .
+    
+:chembl
+    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt;
+    
+:chembl 
+    void:vocabulary &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt;, &lt;http://purl.org/dc/terms/&gt; .
+    
+:dataset 
+    dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; .
+    
+:chembl 
+    void:subset :chembl_rdf_molecule_dataset, :chembl_rdf_target_dataset .
+    
+:chembl
+    idot:preferredPrefix "chembl";
+    idot:alternatePrefix "chembldb" .
+    
+:chembl17
+    idot:identifierPattern "CHEMBL\d+"^^xsd:string .
+    
+:chembl17rdf
+    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\d+" .
+    
+:chembl
+    idot:accessPattern
+        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;,
+        &lt;http://identifiers.org/chembl.compound/&gt;
+        &lt;http://bio2rdf.org/chembl&gt;,
+        &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
+
+    &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
+        idot:primarySource true;
+        dct:format "text/html";
+        dct:publisher "http://www.ebi.ac.uk";
+        a idot:AccessPattern.
+
+    &lt;http://identifiers.org/chembl.compound/&gt;
+        dct:format "text/html";
+        a idot:AccessPattern.
+
+    &lt;http://bio2rdf.org/chembl&gt;
+        dct:format "application/rdf+xml";
+        dct:publisher "http://bio2rdf.org";
+        a idot:AccessPattern .
+
+    &lt;http://linkedchemistry.info/chembl/chemblid&gt;
+        dct:format "application/rdf+xml";
+        a idot:AccessPattern.
+    
+:chembl
+    idot:exampleIdentifier "CHEMBL25"^^xsd:string .
+    
+:chembl17rdf
+    void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; .
+    
+:chembl17 
+    dct:isVersionOf :chembl .
+    
+:chembl17
+    pav:version "17"^^xsd:string .
+    
+:chembl17
+    pav:previousVersion :chembl16 .
+    
+:chembl
+    pav:hasCurrentVersion :chembl17 .
+    
+:chembl
+    dct:source :pubchem-bioassay-09-01-2014 .
+    
+:chembl17rdf
+    pav:createdWith :chembl-sql2rdf-exporter-v1 .
+    
+chembl.compound:chembl25
+    void:inDataset :chembl17rdf .
+    
+:chembl
+    dct:accrualPeriodicity freq:quarterly .
+    
+:chembl17-1
+    pav:previousVersion :chembl17 .
+    
+:chembl17
+    dcat:distribution :chembl17rdf, :chembl17db .
+
+:chembl17rdf 
+    a dctype:Dataset, void:Dataset ;
+    dcat:format "text/turtle" ;
+    dcat:format &lt;http://www.w3.org/ns/formats/Turtle&gt; .
+
+:chembl17db
+    a dctype:Dataset ;
+    dct:format "application/sql" .
+    
+:chembl
+    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb&gt; .
+
+:chembl17
+    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; .
+
+:chembl17sql
+    dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
+    dcat:byteSize "861443887"^^xsd:decimal .
+
+:chembl17rdf
+    void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz&gt; .
+    
+&lt;#service&gt;
+    a sd:Service ;
+    sd:defaultDatasetDescription [
+        a sd:Dataset ;
+        sd:defaultGraph [
+            a sd:Graph ;
+            dct:source :chembl17rdf ;
+        ] ;
+    ] .
+    
+:chembl17
+    dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt&gt; .
+    
+:rdfdataset
+    void:triples "1492029"^^xsd:integer .
+    
+:rdfdataset
+    void:entities "982739"^^xsd:integer .
+    
+:rdfdataset
+    void:distinctSubjects "822920"^^xsd:integer .
+    
+:rdfdataset
+    void:properties "208"^^xsd:integer .
+    
+:rdfdataset
+    void:distinctObjects "1209321"^^xsd:integer .
+    
+:rdfdataset
+    void:classPartition [
+        void:class rdfs:Class ;
+        void:entities "291"^^xsd:integer
+    ] .
+    
+:rdfdataset
+    void:classPartition [
+        void:class rdfs:Literal ;
+        void:entities "782032"^^xsd:integer
+    ] .
+    
+:rdfdataset
+    void:classPartition [
+        void:class sd:Graph ;
+        void:entities "3"^^xsd:integer
+    ].
+    
+:rdfdataset
+    void:classPartition [
+        void:class &lt;class-uri&gt; ;
+        void:entities "14"^^xsd:integer
+    ] .
+    
+:rdfdataset
+    void:propertyPartition [
+        void:property &lt;property-uri&gt; ;
+        void:triples "79"^^xsd:integer
+    ] .
+    
+:rdfdataset
+    void:subset [
+        a void:LinkSet ;
+        void:linkPredicate &lt;property-uri&gt; ;
+        void:objectsTarget [
+            void:class rdfs:Class ;
+            void:entities "68"^^xsd:integer
+        ]
+    ] .
+    
+:rdfdataset
+    void:subset [
+        a void:LinkSet ;
+        void:linkPredicate &lt;property-uri&gt; ;
+        void:objectsTarget [
+            void:class rdfs:Literal;
+            void:entities "288"^^xsd:integer
+        ]
+    ] .
+    
+:rdfdataset
+    void:subset [
+        a void:LinkSet ; 
+        void:linkPredicate &lt;property-uri&gt; ;
+        void:subjectsTarget [
+            void:class &lt;subject-type-uri&gt; ;
+            void:entities "88102"^^xsd:integer] ;
+            void:objectsTarget [
+                void:class &lt;object-type-uri&gt; ;
+                void:entities "2819"^^xsd:integer
+            ] 
+        ]
+    ] .
+    
+:rdfdataset
+    void:subset [
+        a void:LinkSet ;
+        void:linkPredicate &lt;property-uri&gt; ;
+        void:subjectsTarget &lt;subject-dataset-uri&gt; ; 
+        void:objectsTarget &lt;object-dataset-uri&gt; ;
+        void:triples "281902"^^xsd:integer
+    ] .
+</pre>
 
     <div class="changes">
       <h2 id="chlog">Change Log</h2>
