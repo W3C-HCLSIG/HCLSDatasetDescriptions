@@ -683,7 +683,7 @@ pre {
     <tr>
         <td></td>
         <td>dct:accrualPeriodicity</td>
-        <td>dctype:Frequency</td>
+        <td>dctypes:Frequency</td>
         <td>SHOULD</td>
         <td>NEVER</td>
         <td>NEVER</td>
@@ -898,8 +898,8 @@ pre {
 :chembl17
     dct:creator &lt;https://www.ebi.ac.uk/chembl/&gt; .
 
-      :chembl_target_targetcmpt_linkset 
-          pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+:chembl_target_targetcmpt_linkset 
+    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
     </pre>
 
     <p>Fine-grained attribution of creation events such as authoring or curation MAY additionally be supplied using the terms from the PAV ontology.</p>
@@ -940,9 +940,10 @@ pre {
     <p>Keywords and topics of coverage of the dataset MAY be given. It is recommended that such terms are drawn from a suitable domain vocabulary and declared using the dcat:theme predicate. The dcat:keyword predicate is provided for the rare occasions where there is not a suitable term in a vocabulary.</p>
 
     <pre>
-@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt;
+@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt; .
+
 :chembl 
-    dcat:theme ncit:C48807. # chemical
+    dcat:theme ncit:C48807 ; # chemical
     dcat:keyword "chemical"^^xsd:string, "assay"^^xsd:string .
     </pre>
 
@@ -972,7 +973,7 @@ pre {
 
     <pre>
 :chembl
-    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt;
+    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; .
     </pre>
 
     <h4>6.2.11 Vocabularies</h4>
@@ -1022,14 +1023,14 @@ pre {
 
     <pre>
 :chembl17
-    idot:identifierPattern "CHEMBL\d+"^^xsd:string .
+    idot:identifierPattern "CHEMBL\\d+"^^xsd:string .
     </pre>
 
-    <p>The void:uriRegexPattern property MAY be provided for distribution level descriptions, where it provides a regular expression whose transitive closure denotes a superset of data item URIs in the dataset./p>
+    <p>The void:uriRegexPattern property MAY be provided for distribution level descriptions, where it provides a regular expression whose transitive closure denotes a superset of data item URIs in the dataset.</p>
 
     <pre>
 :chembl17rdf
-    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\d+" .
+    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
     </pre>
 
     <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources.</p>
@@ -1037,9 +1038,9 @@ pre {
     <pre>
 :chembl
     idot:accessPattern
-        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;,
-        &lt;http://identifiers.org/chembl.compound/&gt;
-        &lt;http://bio2rdf.org/chembl&gt;,
+        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
+        &lt;http://identifiers.org/chembl.compound/&gt; ,
+        &lt;http://bio2rdf.org/chembl&gt; ,
         &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
 
     &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
@@ -1131,7 +1132,7 @@ pre {
     <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It should be used with distribution level descriptions, and must NEVER be used for summary level descriptions or version level descriptions.</p>
 
     <pre>
-chembl.compound:chembl25
+:chembl-compound
     void:inDataset :chembl17rdf .
     </pre>
 
@@ -1166,12 +1167,12 @@ chembl.compound:chembl25
     dcat:distribution :chembl17rdf, :chembl17db .
 
 :chembl17rdf 
-    a dctype:Dataset, void:Dataset ;
+    a dctypes:Dataset, void:Dataset ;
     dcat:format "text/turtle" ;
     dcat:format &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 
 :chembl17db
-    a dctype:Dataset ;
+    a dctypes:Dataset ;
     dct:format "application/sql" .
     </pre>
 
@@ -1201,7 +1202,7 @@ chembl.compound:chembl25
     <p>Below is an example based on the one given in <a href="http://www.w3.org/TR/2011/NOTE-void-20110303/#sparql-sd">Section 6.5</a> of the VOID guidelines [<a href="#VOID">VOID</a>] to indicate how this may be achieved for the default graph of a triplestore.</p>
 
     <pre>
-&lt;#service&gt;
+:service
     a sd:Service ;
     sd:defaultDatasetDescription [
         a sd:Dataset ;
@@ -1437,7 +1438,7 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
         void:linkPredicate &lt;property-uri&gt; ;
         void:subjectsTarget [
             void:class &lt;subject-type-uri&gt; ;
-            void:entities "###"^^xsd:integer] ;
+            void:entities "###"^^xsd:integer ;
             void:objectsTarget [
                 void:class &lt;object-type-uri&gt; ;
                 void:entities "###"^^xsd:integer
@@ -1708,13 +1709,32 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <h2 id="appendix">10 Appendix</h2>
     
-    <h3 id="appendix_1">Complete Example of a Dataset Description</h3>
+    <h3 id="appendix_1">10.1 Complete Example of a Dataset Description</h3>
 
     The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.
 
 <pre>
+@prefix cito: &lt;http://purl.org/spar/cito/&gt; .
+@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
+@prefix dctypes: &lt;ttp://purl.org/dc/dcmitype/&gt; .
+@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
+@prefix idot: &lt;http://identifiers.org/idot/&gt; .
+@prefix lexvo: &lt;http://lexvo.org/ontology#&gt; .
+@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt; .
+@prefix pav: &lt;http://purl.org/pav/&gt; .
+@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix schemaorg: &lt;http://schema.org/&gt; .
+@prefix sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+@prefix vann: &lt;http://purl.org/vocab/vann/&gt; .
+@prefix void: &lt;http://www.w3.org/TR/void/&gt; .
+
 # Summary Level Description
-    :chembl a dctypes:Dataset .
+:chembl a dctypes:Dataset .
 
 # Version Level Description
 :chembl17 a dctypes:Dataset ;
@@ -1745,11 +1765,8 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 :chembl17
     dct:creator &lt;https://www.ebi.ac.uk/chembl/&gt; .
 
-      :chembl_target_targetcmpt_linkset 
-          pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
-    
 :chembl_target_targetcmpt_linkset 
-    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
     
 :chembl 
     dct:publisher &lt;http://www.ebi.ac.uk&gt; .
@@ -1758,9 +1775,8 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
     schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
     
-@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt;
 :chembl 
-    dcat:theme ncit:C48807. # chemical
+    dcat:theme ncit:C48807 ; # chemical
     dcat:keyword "chemical"^^xsd:string, "assay"^^xsd:string .
     
 :chembl
@@ -1770,7 +1786,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     dct:language &lt;http://lexvo.org/id/iso639-3/en&gt; .
     
 :chembl
-    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt;
+    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; .
     
 :chembl 
     void:vocabulary &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt;, &lt;http://purl.org/dc/terms/&gt; .
@@ -1782,20 +1798,20 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     void:subset :chembl_rdf_molecule_dataset, :chembl_rdf_target_dataset .
     
 :chembl
-    idot:preferredPrefix "chembl";
+    idot:preferredPrefix "chembl" ;
     idot:alternatePrefix "chembldb" .
     
 :chembl17
-    idot:identifierPattern "CHEMBL\d+"^^xsd:string .
+    idot:identifierPattern "CHEMBL\\d+"^^xsd:string .
     
 :chembl17rdf
-    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\d+" .
+    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
     
 :chembl
     idot:accessPattern
-        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;,
-        &lt;http://identifiers.org/chembl.compound/&gt;
-        &lt;http://bio2rdf.org/chembl&gt;,
+        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
+        &lt;http://identifiers.org/chembl.compound/&gt; ,
+        &lt;http://bio2rdf.org/chembl&gt; ,
         &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
 
     &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
@@ -1841,7 +1857,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 :chembl17rdf
     pav:createdWith :chembl-sql2rdf-exporter-v1 .
     
-chembl.compound:chembl25
+:chembl-compound
     void:inDataset :chembl17rdf .
     
 :chembl
@@ -1854,12 +1870,12 @@ chembl.compound:chembl25
     dcat:distribution :chembl17rdf, :chembl17db .
 
 :chembl17rdf 
-    a dctype:Dataset, void:Dataset ;
+    a dctypes:Dataset, void:Dataset ;
     dcat:format "text/turtle" ;
     dcat:format &lt;http://www.w3.org/ns/formats/Turtle&gt; .
 
 :chembl17db
-    a dctype:Dataset ;
+    a dctypes:Dataset ;
     dct:format "application/sql" .
     
 :chembl
@@ -1875,7 +1891,7 @@ chembl.compound:chembl25
 :chembl17rdf
     void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz&gt; .
     
-&lt;#service&gt;
+:service
     a sd:Service ;
     sd:defaultDatasetDescription [
         a sd:Dataset ;
@@ -1923,20 +1939,20 @@ chembl.compound:chembl25
     
 :rdfdataset
     void:classPartition [
-        void:class &lt;class-uri&gt; ;
+        void:class &lt;http://linkedchemistry.info/chembl/assay/a93337&gt; ;
         void:entities "14"^^xsd:integer
     ] .
     
 :rdfdataset
     void:propertyPartition [
-        void:property &lt;property-uri&gt; ;
+        void:property &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
         void:triples "79"^^xsd:integer
     ] .
     
 :rdfdataset
     void:subset [
         a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
+        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
         void:objectsTarget [
             void:class rdfs:Class ;
             void:entities "68"^^xsd:integer
@@ -1946,7 +1962,7 @@ chembl.compound:chembl25
 :rdfdataset
     void:subset [
         a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
+        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
         void:objectsTarget [
             void:class rdfs:Literal;
             void:entities "288"^^xsd:integer
@@ -1956,12 +1972,12 @@ chembl.compound:chembl25
 :rdfdataset
     void:subset [
         a void:LinkSet ; 
-        void:linkPredicate &lt;property-uri&gt; ;
+        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
         void:subjectsTarget [
-            void:class &lt;subject-type-uri&gt; ;
-            void:entities "88102"^^xsd:integer] ;
+            void:class &lt;http://linkedchemistry.info/chembl/chemblid/CHEMBL702808/chemblid&gt; ;
+            void:entities "88102"^^xsd:integer ;
             void:objectsTarget [
-                void:class &lt;object-type-uri&gt; ;
+                void:class &lt;http://rdf.farmbio.uu.se/chembl/onto/#Assay&gt; ;
                 void:entities "2819"^^xsd:integer
             ] 
         ]
@@ -1970,9 +1986,9 @@ chembl.compound:chembl25
 :rdfdataset
     void:subset [
         a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
-        void:subjectsTarget &lt;subject-dataset-uri&gt; ; 
-        void:objectsTarget &lt;object-dataset-uri&gt; ;
+        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
+        void:subjectsTarget &lt;http://linkedchemistry.info/chembl/assay/a93337&gt; ; 
+        void:objectsTarget &lt;http://linkedchemistry.info/chembl/resource/r13299&gt; ;
         void:triples "281902"^^xsd:integer
     ] .
 </pre>
@@ -1980,13 +1996,6 @@ chembl.compound:chembl25
     <div class="changes">
       <h2 id="chlog">Change Log</h2>
       
-      <p>Raw CVS log:</p>
-      <pre>
-
-	$Log: Overview.html,v $
-
-    </pre></div>
-
     <div class="nav"><a href="http://validator.w3.org/check/referer">
       <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a>
       </div><hr></hr>
