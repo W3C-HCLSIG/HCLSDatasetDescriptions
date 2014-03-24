@@ -224,6 +224,8 @@ pre {
       </table>
     </div>
 
+    <p>The letter sequence "###" is used to denote a placeholder for a positive integer (&geq; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
+
     <h2 id="functionalrequirements">4 Functional Requirement</h2>
 
     <p>In this section we describe a set of essential functionality that the dataset descriptions must provide.</p>
@@ -271,7 +273,7 @@ pre {
 
     <p>Note that a distribution is the realisation of the data in a specific file format. The different distributions of a dataset may not be semantically equivalent due to differences between the data formats. For example, a chemical dataset may be released as a rich RDF dataset but also as an <a href="http://en.wikipedia.org/wiki/Chemical_table_file#SDF">SD file</a>. In this case, the SD file will not contain the same data content as the RDF dataset.</p>
 
-    <p>The properties expected for each metadata profile are given in the table below. Note that the sequence "###" is used to denote a placeholder for a positive integer (≥ 1) in examples. The integers that replace this surrogate are of type xsd:integer.</p>
+    <p>The properties expected for each metadata profile are given in the table below.</p>
 
     <p style="text-align: center">
     <table>
@@ -1021,7 +1023,7 @@ pre {
     <p>An alternate prefix is a short label that is used by some community to refer to the dataset, but is not the preferred prefix.</p>
 
     <pre>
-:chembl
+:chembl17rdf
     idot:preferredPrefix "chembl";
     idot:alternatePrefix "chembldb" .
     </pre>
@@ -1031,7 +1033,7 @@ pre {
     <p>The idot:identifierPattern MAY be provided for distribution level descriptions, where it provides a regular expression for alphanumeric strings used to identify items or records in the dataset.</p>
 
     <pre>
-:chembl17
+:chembl17rdf
     idot:identifierPattern "CHEMBL\\d+"^^xsd:string .
     </pre>
 
@@ -1074,14 +1076,14 @@ pre {
 
     <h4>6.3.3 Example Identifier and Resource</h4>
 
-    <p>An example identifier MAY be provided using the idot:exampleIdentifier for any level descriptions.</p>
+    <p>An example identifier SHOULD be provided using the idot:exampleIdentifier for any level descriptions.</p>
 
     <pre>
-:chembl
+:chembl17rdf
     idot:exampleIdentifier "CHEMBL25"^^xsd:string .
     </pre>
 
-    <p>An example resource MAY be provided using the void:exampleResource property for any level description.</p>
+    <p>An example resource SHOULD be provided using the void:exampleResource property for any level description.</p>
 
     <pre>
 :chembl17rdf
@@ -1092,7 +1094,7 @@ pre {
 
     <h4>6.4.1 Versioning</h4>
 
-    <p>A version level description MUST use the dct:isVersionOf property to relate to the summary level description. The versions of the summary level resource may then be inferred due to the declared inverse property pav:hasVersion.</p>
+    <p>A version level description MUST use the dct:isVersionOf property to relate to the summary level description. The versions of the summary level resource may then be inferred due to the declared inverse property dct:hasVersion.</p>
 
     <pre>
 :chembl17 
@@ -1106,7 +1108,7 @@ pre {
     pav:version "17"^^xsd:string .
     </pre>
 
-    <p>Links to the previous version of the dataset SHOULD be provided using pav:previousVersion. For instance, to state that :chembl16 is a prior version of :chembl17, the following triple should be created:</p>
+    <p>A link to the previous version of the dataset SHOULD be provided using pav:previousVersion. This creates a chain of links through the versions of the dataset. For instance, to state that :chembl16 is a prior version of :chembl17, the following triple should be created:</p>
 
     <pre>
 :chembl17
@@ -1129,7 +1131,7 @@ pre {
     dct:source :pubchem-bioassay-09-01-2014 .
     </pre>
 
-    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.
+    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values on a blank node. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.
 
     <pre>
 :chembl17rdf
@@ -1153,6 +1155,8 @@ pre {
 :chembl
     dct:accrualPeriodicity freq:quarterly .
     </pre>
+    
+    <p>Note that the change frequency is an indication of the update interval, not a contractual obligation.</p>
 
     <h4>6.4.5 Modifications</h4>
 
@@ -1190,12 +1194,15 @@ pre {
     <p>It is recommended to use dcat:downloadURL to declare the distribution file in conjunction with dcat:byteSize to declare the size of the file. For RDF resources, the files should be declared using void:dataDump. Use dcat:accessURL to specify a directory containing the file(s) of interest.</p>
 
     <pre>
+# Summary level declaration
 :chembl
     dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb&gt; .
 
+# Version level declaration
 :chembl17
     dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; .
 
+# Distribution level declaration
 :chembl17sql
     dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
     dcat:byteSize "861443887"^^xsd:decimal .
@@ -1237,15 +1244,11 @@ pre {
 
     <h3 id="s6_6">6.6 Statistics</h3>
 
-    <p>Dataset statistics offer one means by which to understand the contents of the dataset and their relation to other datasets. Below we provide recommendations for the capture of dataset statistics for RDF formatted files using the VoID vocabulary. These statistics can be computed on an RDF dataset using SPARQL queries [<a href="#VOID-SPARQL">VOID-SPARQL</a>]. The results of the SPARQL queries can be added to the description of the RDF-formatted dataset.</p>
-
-    <p>In the following examples, the sequence "###" is used to denote a placeholder for a positive integer (≥ 1) in examples. The integers that replace this surrogate are of type xsd:integer.</p>
+    <p>Dataset statistics offer one means by which to understand the contents of the dataset and their relation to other datasets. Below we provide recommendations for the capture of dataset statistics for RDF formatted files using the VoID vocabulary. These statistics can be computed on an RDF dataset using the provided SPARQL queries [<a href="#VOID-SPARQL">VOID-SPARQL</a>]. The results of the SPARQL queries can be added to the description of the RDF-formatted dataset.</p>
 
     <h4>6.6.1 Core statistics</h4>
 
     <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset.</p>
-
-    <p>Basic statistics provide counts about RDF triples in the dataset, such as the total number of triples in the dataset, the number of unique subjects, properties, etc.</p>
 
     <p>To specify the <strong>number of triples</strong> in the dataset:</p>
 
@@ -1483,11 +1486,9 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <h3 id="s7_1">7.1 Dataset Description Generation Tool</h3>
 
-    <p>This tool helps with the creation of initial drafts of dataset descriptions. The dataset generator is available from http://voideditor.cs.man.ac.uk/.</p>
+    <p>The <a href="http://voideditor.cs.man.ac.uk/">dataset generator</a> helps with the creation of initial drafts of dataset descriptions. It is anticipated that the dataset description will be created as part of the same process that generates the data, i.e. they are part the same (automated) production workflow, and the template generated by the tool can be used in a production pipeline.</p>
 
-    <p>Note that the current tool is for the creation of datasets conforming to the closely related Open PHACTS dataset description guidelines http://www.openphacts.org/specs/datadesc/. This will be updated.</p>
-
-    <p>It is anticipated that the dataset description will be created as part of the same process that generates the data, i.e. they are part the same (automated) production workflow.</p>
+    <p>Note that the current tool is for the creation of datasets conforming to the closely related <a href="http://www.openphacts.org/specs/datadesc/">Open PHACTS dataset description guidelines</a>. This will be updated.</p>
 
     <h3 id="s7_2">7.2 Validation Tool</h3>
 
