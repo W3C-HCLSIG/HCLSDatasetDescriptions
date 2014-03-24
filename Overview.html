@@ -937,8 +937,8 @@ pre {
 
     <h4>6.2.6 Webpage and Logo</h4>
 
-    <p>A link to the human-oriented web page for the dataset is provided using the foaf:page property [<a href="#FOAF">FOAF</a>]. Due to the inverse-functional properties, foaf:homepage must not be used as it could result in the data about different versions of a dataset being combined. For instance, to specify that the chembl dataset is accessible at [<a href="#ChEMBL">ChEMBL</a>]:</p>
-    <p>A link to an image file containing the logo for the dataset is provided using the schemaorg:logo property [<a href="#SCHEMAORG">SCHEMA.ORG</a>]. Due to the inverse-function properties of foaf:logo must not be used.</p>
+    <p>A link to the human-oriented web page for the dataset is provided using the foaf:page property [<a href="#FOAF">FOAF</a>]. The property foaf:homepage must not be used as it could result in the data about different versions of a dataset being combined as it is an inverse-functional property. The example below specifies the chembl dataset is accessible at [<a href="#ChEMBL">ChEMBL</a>].</p>
+    <p>A link to an image file containing the logo for the dataset is provided using the schemaorg:logo property [<a href="#SCHEMAORG">SCHEMA.ORG</a>]. The property foaf:logo must not be used since it is an inverse-function property.</p>
 
     <pre>
 :chembl 
