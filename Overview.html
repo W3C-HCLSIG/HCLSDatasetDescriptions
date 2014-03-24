@@ -886,16 +886,20 @@ pre {
 
     <h4>6.2.3 Dates of Creation and Issuance</h4>
 
-    <p>It is essential to know when a dataset came into existence. However for some datasets all that is known is when it was made public. Therefore, it is recommended that at least one of the creation or issued dates are provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:created. Both properties are restricted to a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> value. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013:</p>
+    <p>It is essential to know when a dataset came into existence. Within the dataset description model, the summary level description is not associated with a creation or issued date, these are associated with the version and distribution level description.</p>
+
+    <p>Since some datasets only provide information about when they are made public, it is recommended that at least one of the creation or issued dates MUST be provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:created. Both properties are restricted to a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> value. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013.</p>
 
     <pre>
 :chembl17 
     dct:issued "2013-08-29T00:00:00"^^xsd:dateTime .
     </pre>
     
-    <p>Note that since the time that the dataset was published is unknown, these are set to the beginning of the time period. If only the month and year had been known, the value would have been given as "2013-08-01T00:00:00". Where the time is known, the timezone should be provided.</p>
+    <p>As the time that the dataset was published is unknown, these are set to the beginning of the time period. If only the month and year had been known, the value would have been given as "2013-08-01T00:00:00". Where the time is known, the timezone should be provided.</p>
+    
+    <p>To state when a dataset (i.e. at the abstract level) was originally created, a version level description representing the first version should be provided which states the orginal creation date of the dataset.</p>
 
-    <p>Other, more specific properties, e.g. the date the dataset was authored or curated, MAY be given using terms from the PAV ontology [<a href="#PAV">PAV</a>].</p>
+    <p>Note that other more specific properties, e.g. the date the dataset was authored or curated, MAY be given in addition using terms from the PAV ontology [<a href="#PAV">PAV</a>].</p>
 
     <h4>6.2.4 Authorship, Creation, Curation</h4>
 
