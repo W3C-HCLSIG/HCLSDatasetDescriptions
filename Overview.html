@@ -1181,12 +1181,15 @@ pre {
     <p>It is recommended to use dcat:downloadURL to declare the distribution file in conjunction with dcat:byteSize to declare the size of the file. For RDF resources, the files should be declared using void:dataDump. Use dcat:accessURL to specify a directory containing the file(s) of interest.</p>
 
     <pre>
+# Summary level declaration
 :chembl
     dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb&gt; .
 
+# Version level declaration
 :chembl17
     dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; .
 
+# Distribution level declaration
 :chembl17sql
     dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
     dcat:byteSize "861443887"^^xsd:decimal .
