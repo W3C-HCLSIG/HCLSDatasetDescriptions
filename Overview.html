@@ -860,17 +860,16 @@ pre {
     rdf:type void:Dataset .
     </pre>
 
-    <h4>6.2.2 Title, Alternative Names, and Short Code</h4>
+    <h4>6.2.2 Title</h4>
 
-    <p>A dataset can be known by several names. At least one of these must be provided for use in human interfaces for applications using the dataset. It is expected that the preferred – commonly used – name for a dataset will be provided using the dct:title term, while alternative forms of the name, or older names for the dataset, may be given using the dct:alternative property. We also recommend that data providers specify exactly one short-code for a dataset using the dct:identifier property and that it should be in lower case.</p>
+    <p>At least one human-readable title should be provided for a dataset using dct:title. Alternative or older titles may be specified using dct:alternative.</p>
 
-    <p>For example, to provide a title, alternative name, and identier for the ChEMBL dataset:</p>
+    <p>For example, to provide a title and alternative title for the ChEMBL dataset:</p>
 
     <pre>
 :chembl
        dct:title "ChEMBL"@en ;
        dct:alternative "ChEMBLdb"@en ;
-       dct:identifier "chembl"@en .
     </pre>
 
     <h4>6.2.3 Description</h4>
