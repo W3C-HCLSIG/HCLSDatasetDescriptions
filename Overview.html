@@ -521,16 +521,16 @@ pre {
         <td></td>
         <td>idot:preferredPrefix</td>
         <td>xsd:string</td>
-        <td>NEVER</td>
-        <td>NEVER</td>
+        <td>MAY</td>
+        <td>MAY</td>
         <td>MAY</td>
     </tr>
     <tr>
         <td></td>
         <td>idot:alternatePrefix</td>
         <td>xsd:string</td>
-        <td>NEVER</td>
-        <td>NEVER</td>
+        <td>MAY</td>
+        <td>MAY</td>
         <td>MAY</td>
     </tr>
     <tr>
@@ -1009,10 +1009,10 @@ pre {
 
     <h4>6.3.1 Preferred and Alternative Prefixes</h4>
 
-    <p>A preferred prefix is a short label that is commonly used to refer to the dataset. Such a label may stand in place of the base IRI of the dataset (e.g. see <a href="http://prefix.cc">http://prefix.cc</a>). Preferred short names should be specified using idot:preferredPrefix while alternate short names should be specified using idot:alternatePrefix. </p>
+    <p>A preferred prefix is a short label that is commonly used to refer to the dataset. Such a label may stand in place of the base IRI of the dataset (e.g. see <a href="http://prefix.cc">http://prefix.cc</a>). Preferred short names should be specified using idot:preferredPrefix while alternate short names should be specified using idot:alternatePrefix. These properties may be used at any description level.</p>
 
     <pre>
-:chembl17rdf
+:chembl
     idot:preferredPrefix "chembl";
     idot:alternatePrefix "chembldb" .
     </pre>
