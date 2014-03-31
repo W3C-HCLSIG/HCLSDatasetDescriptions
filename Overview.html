@@ -553,8 +553,8 @@ pre {
         <td></td>
         <td>idot:accessPattern</td>
         <td>xsd:string</td>
-        <td>NEVER</td>
-        <td>NEVER</td>
+        <td>MAY</td>
+        <td>MAY</td>
         <td>MAY</td>
     </tr>
     <tr>
@@ -1033,29 +1033,29 @@ pre {
     void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
     </pre>
 
-    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources.</p>
+    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; To specify that the access pattern is for the primary data provider, set idot:primarySource to true. The access pattern specifies the This can be specified for the most current version, a specific version, or a specific distribution.</p>
 
     <pre>
 :chembl
     idot:accessPattern
         &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
         &lt;http://identifiers.org/chembl.compound/&gt; ,
-        &lt;http://bio2rdf.org/chembl&gt; ,
+        &lt;http://bio2rdf.org/chembl:&gt; ,
         &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
 
     &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
         idot:primarySource true;
         dct:format "text/html";
-        dct:publisher "http://www.ebi.ac.uk";
+        dct:publisher &lt;http://www.ebi.ac.uk&gt;;
         a idot:AccessPattern.
 
-    &lt;http://identifiers.org/chembl.compound/&gt;
+    &lt;http://identifiers.org/chembl.compound/&gt;;
         dct:format "text/html";
         a idot:AccessPattern.
 
-    &lt;http://bio2rdf.org/chembl&gt;
+    &lt;http://bio2rdf.org/chembl:&gt;
         dct:format "application/rdf+xml";
-        dct:publisher "http://bio2rdf.org";
+        dct:publisher &lt;http://bio2rdf.org&gt;;
         a idot:AccessPattern .
 
     &lt;http://linkedchemistry.info/chembl/chemblid&gt;
