@@ -1790,11 +1790,11 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 :chembl 
     void:vocabulary &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt;, &lt;http://purl.org/dc/terms/&gt; .
     
-:dataset 
+:chembl17
     dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; .
     
 :chembl 
-    void:subset :chembl_rdf_molecule_dataset, :chembl_rdf_target_dataset .
+    dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset .
     
 :chembl
     idot:preferredPrefix "chembl" ;
