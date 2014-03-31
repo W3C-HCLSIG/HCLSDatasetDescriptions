@@ -998,11 +998,11 @@ pre {
 
     <h4>6.2.13 Subsets</h4>
 
-    <p>The parts of a dataset MAY be described using dct:hasPart, or void:subset in the case of RDF datasets. For example, ChEMBL identifies several datasets, e.g. one containing data about molecules and another about targets. Each of these subsets can be assigned appropriate topics.</p>
+    <p>The parts of a dataset MAY be described using dct:hasPart. For example, ChEMBL identifies several datasets, e.g. one containing data about molecules and another about targets. Each of these subsets can be assigned appropriate topics.</p>
 
     <pre>
-:chembl 
-    void:subset :chembl_rdf_molecule_dataset, :chembl_rdf_target_dataset .
+:chembl17
+    dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset .
     </pre>
 
     <h3 id="s6_3">6.3 Identifiers</h3>
