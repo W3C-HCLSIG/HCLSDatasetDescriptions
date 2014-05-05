@@ -329,7 +329,7 @@ pre {
     <tr>
         <td></td>
         <td>dct:created</td>
-        <td>xsd:dateTime</td>
+        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> encoded using the relevant <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time compliant string</a> and typed using the appropriate XML Schema datatype [<cite><a href="#bib-xmlschema-2" class="bibref">xmlschema-2</a></cite>]</td>
         <td>NEVER</td>
         <td>SHOULD</td>
         <td>SHOULD</td>
@@ -401,7 +401,7 @@ pre {
     <tr>
         <td></td>
         <td>dct:issued</td>
-        <td>xsd:dateTime</td>
+        <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> encoded using the relevant <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time compliant string</a> and typed using the appropriate XML Schema datatype [<cite><a href="#bib-xmlschema-2" class="bibref">xmlschema-2</a></cite>]</td>
         <td>NEVER</td>
         <td>SHOULD</td>
         <td>SHOULD</td>
@@ -829,7 +829,19 @@ pre {
 
     <h4>6.1.1 Dates</h4>
 
-    <p>Dates should be given as accurately as possible. It is recommended that <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> is used (YYYY-MM-DDThh:mm:ss[Z], where [Z] is optionally specified as Z for UTC time or provided as a time zone offset, e.g. -04:00 for EDT). In the case that the time is not precisely known, we recommend using the first valid value for the fields that are not known, i.e. the value '01' for days and months, the value '00' for hours, minutes and seconds.</p>
+    <p>Dates should be given as accurately as possible as an rdfs:Literal. 
+    It is recommended that the value is typed as an <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>
+    (YYYY-MM-DDThh:mm:ss[Z], where [Z] is optionally specified as Z for UTC time or provided as a time zone offset, 
+    e.g. -04:00 for EDT). In the case that the time is not precisely known, we recommend using the relevant 
+    <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time compliant string</a> typed using the 
+    appropriate <a href="http://www.w3.org/TR/xmlschema-2/"></a>XML Schema datatype</a>. For example
+    </p>
+    <ul>
+    	<li>Only year is known: '"2013"^^xsd:gYear';</li>
+    	<li>Year and month is known: '"2013-12"^^xsd:gYearMonth';</li>
+    	<li>Year, month and day is known: '"2013-12-05"^^xsd:date';</li>
+    	<li>Yead, month, day and timestamp (with timezone): '"2013-12-05T05:32:23-05:00"^^xsd:dateTime'.</li>
+    </ul>
 
     <h4>6.1.2 Values as Strings</h4>
 
