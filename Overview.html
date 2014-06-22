@@ -1135,7 +1135,9 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <pre>
 :chembl17
-    dct:source :pubchem-bioassay-09-01-2014 .
+    dct:source :pubchem-bioassay-09-01-2014 ;
+    pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+    prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 .
     </pre>
 
     <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values on a blank node. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.
@@ -1147,7 +1149,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.4.3 Entity Provenance</h4>
 
-    <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It should be used with distribution level descriptions, and must NEVER be used for summary level descriptions or version level descriptions.</p>
+    <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It SHOULD be used with distribution level descriptions, and must NEVER be used for summary level descriptions or version level descriptions.</p>
 
     <pre>
 :chembl-compound
