@@ -1734,6 +1734,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.
 
 <pre>
+@base &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
 @prefix cito: &lt;http://purl.org/spar/cito/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dctypes: &lt;ttp://purl.org/dc/dcmitype/&gt; .
@@ -1751,7 +1752,6 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 @prefix sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt; .
 @prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
 @prefix void: &lt;http://www.w3.org/TR/void/&gt; .
-@prefix : &lt;#&gt; .
 
 # Summary Level Description
 :chembl a dctypes:Dataset .
