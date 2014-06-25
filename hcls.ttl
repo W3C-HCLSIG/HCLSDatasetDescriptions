@@ -1,3 +1,4 @@
+@base <http://w3.org/hclsdatasetdescriptionsexample> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix cito: <http://purl.org/spar/cito/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
@@ -15,7 +16,6 @@
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix void: <http://www.w3.org/TR/void/> .
-@prefix : <#> .
 
 :chembl
     idot:accessPattern <http://bio2rdf.org/chembl>, <http://identifiers.org/chembl.compound/>, <http://linkedchemistry.info/chembl/chemblid>, <http://www.ebi.ac.uk/chembl/compound/inspect/> ;
