@@ -966,16 +966,22 @@ pre {
 
     <h4>6.2.8 Licensing and Rights</h4>
 
-    <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and/or the distribution level. The details of the license may be summarised in a rights statement.</p>
+
+    <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
 
     <pre>
-:chembl
+&lt;http://example.com&gt; dct:license [ rdfs:comment "License unknown.]
+    </pre>
+
+    <p>The details of the license may be summarised in a rights statement.</p>
+    
+    <pre>:chembl
     dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; .
-    dct:rights "The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL.  For publications using ChEMBL data, the primary current citation is: 
+    dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL.  For publications using ChEMBL data, the primary current citation is:
 
-1.  A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+1.  A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, &amp; J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."
+If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""
     </pre>
 
     <h4>6.2.9 Language</h4>
