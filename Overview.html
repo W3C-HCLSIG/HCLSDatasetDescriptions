@@ -337,7 +337,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:createdOn</td>
-        <td>xsd:dateTime</td>
+        <td>xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear</td>
         <td>NEVER</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -345,7 +345,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:authoredOn</td>
-        <td>xsd:dateTime</td>
+        <td>xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear</td>
         <td>NEVER</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -353,7 +353,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:curatedOn</td>
-        <td>xsd:dateTime</td>
+        <td>xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear</td>
         <td>NEVER</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -892,11 +892,11 @@ pre {
 
     <p>It is essential to know when a dataset came into existence. Within the dataset description model, the summary level description is not associated with a creation or issued date, these are associated with the version and distribution level description.</p>
 
-    <p>Since some datasets only provide information about when they are made public, it is recommended that at least one of the creation or issued dates MUST be provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:issued. Both properties are restricted to a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a> value. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013.</p>
+    <p>Since some datasets only provide information about when they are made public, it is recommended that at least one of the creation or issued dates MUST be provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:issued. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013.</p>
 
     <pre>
 :chembl17 
-    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime .
+    dct:issued "2013-08-29"^^xsd:date .
     </pre>
     
     <p>As the time that the dataset was published is unknown, these are set to the beginning of the time period. If only the month and year had been known, the value would have been given as "2013-08-01T00:00:00". Where the time is known, the timezone should be provided.</p>
@@ -920,9 +920,9 @@ pre {
     <p>Fine-grained attribution of creation events such as authoring or curation MAY additionally be supplied using the terms from the PAV ontology.</p>
 
     <ul>
-    <li><strong>Authorship</strong>: State the author(s) with pav:authoredBy and linking to URIs for the authors. The date of authorship should be given using pav:authoredOn with a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>.</li>
-    <li><strong>Creation</strong>: State the creator(s) with pav:createdBy and linking to URIs for the authors. The date of authorship should be given using pav:createdOn with a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>.</li>
-    <li><strong>Curation</strong>: State the author(s) with pav:curatedBy and linking to URIs for the authors. The date of authorship should be given using pav:curatedOn with a <a href="http://www.w3.org/TR/xmlschema-2/#dateTime">xsd:dateTime</a>.</li>
+    <li><strong>Authorship</strong>: State the author(s) with pav:authoredBy and linking to URIs for the authors. The date of authorship should be given using pav:authoredOn.</li>
+    <li><strong>Creation</strong>: State the creator(s) with pav:createdBy and linking to URIs for the authors. The date of authorship should be given using pav:createdOn.</li>
+    <li><strong>Curation</strong>: State the author(s) with pav:curatedBy and linking to URIs for the authors. The date of authorship should be given using pav:curatedOn.</li>
     </ul>
 
     <pre>
@@ -1786,7 +1786,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en .
     
 :chembl17 
-    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime .
+    dct:issued "2013-08-29"^^xsd:date .
     
 :chembl17
     dct:creator &lt;https://www.ebi.ac.uk/chembl/&gt; .
