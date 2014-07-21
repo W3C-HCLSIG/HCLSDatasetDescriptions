@@ -297,9 +297,17 @@ pre {
     <tr>
         <td></td>
         <td>rdf:type</td>
-        <td>dctypes:Dataset or void:Dataset or dcat:Distribution</td>
+        <td>dctypes:Dataset</td>
         <td>MUST</td>
         <td>MUST</td>
+        <td>SHOULD</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>rdf:type</td>
+        <td>void:Dataset or dcat:Distribution</td>
+        <td>NEVER</td>
+        <td>NEVER</td>
         <td>MUST</td>
     </tr>
     <tr>
@@ -855,7 +863,7 @@ pre {
 
     <h4>6.2.1 Dataset Identification and Declaration of Type</h4>
 
-    <p>It is a good general practice that data represented using Semantic Web technologies be typed as an instance of some class of entities. All datasets are typed as dctypes:Dataset with the exception of RDF formatted datasets which are typed as an instance of a  void:Dataset.</p>
+    <p>It is a good general practice that data represented using Semantic Web technologies be typed as an instance of some class of entities. All summary and version level descriptions are typed as dctypes:Dataset. The distribution level description can also be typed as dctypes:Dataset but needs to be additionally typed as a dcat:Distribution. RDF formatted datasets are typed as an instance of a void:Dataset.</p>
 
     <pre>
 :chembl 
