@@ -188,11 +188,11 @@ pre {
     <p>Here we describe the efforts of a multi-stakeholder effort under the auspices of the W3C Semantic Web for Health Care and Life Sciences [<a href="#HCLS">HCLS</a>] Interest Group to produce a specification for the description of datasets that meets key functional requirements, uses existing vocabularies, and is expressed using the Resource Description Framework [<a href="#RDF">RDF</a>]. We discuss elements of data description including provenance and versioning, and describe how these can be used for data discovery, exchange, and query (with SPARQL). This then enables the retrieval and reuse of data to encourage reproducible science.</p>
     <p>
     Specifically, we provide
+    </p>
     <ul>
     <li>A community specification for describing datasets (<a href="#datasetdescriptionlevels">Section 5</a>) in RDF with detailed guidance notes (<a href="#metadataguidancenotes">Section 6</a>).</li>
     <li>Detailed requirements (<a href="#functionalrequirements">Section 4</a>) that have been drawn from a wide range of use cases (<a href="#usecases">Section 8</a>).</li>
     </ul>
-    </p>
 
     <h2 id="scope">2 Scope</h2>
 
@@ -225,7 +225,7 @@ pre {
       </table>
     </div>
 
-    <p>The letter sequence "###" is used to denote a placeholder for a positive integer (&geq; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
+    <p>The letter sequence "###" is used to denote a placeholder for a positive integer (&ge; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
 
     <h2 id="functionalrequirements">4 Functional Requirement</h2>
 
@@ -276,8 +276,7 @@ pre {
 
     <p>The properties expected for each metadata profile are given in the table below.</p>
 
-    <p style="text-align: center">
-    <table>
+    <table style="text-align: center">
     <tr>
         <th>Profile</th>
         <th>Property</th>
@@ -807,8 +806,6 @@ pre {
         <td>MAY</td>
     </tr>
     </table>
-    </p>
-
 
     <h2 id="metadataguidancenotes">6 Metadata Guidance Notes</h2>
 
@@ -1154,7 +1151,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 .
     </pre>
 
-    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values on a blank node. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.
+    <p>A distribution level description of a dataset MAY describe a tool used to create the dataset (where appropriate). Details of the specific version of the tool used should be given, either as a versioned URI (e.g. from a GitHub commit) or by providing human interpretable values on a blank node. This information is useful for debugging automatic generation of the dataset. The property to be used for this purpose is: pav:createdWith, which ideally includes a reference to the version of the tool used to create the dataset.</p>
 
     <pre>
 :chembl17rdf
@@ -1577,7 +1574,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <h4>8.4.2 Pathway Commons and Pathguide.org</h4>
 
     <p>The goal of Pathway Commons (http://www.pathwaycommons.org/about/) is to collect all publicly available biological pathway information and make it easily and widely available. Pathguide (http://www.pathguide.org/) tracks over 540 databases containing pathway related information. This tracking website is currently manually updated, but it would be great if it could be automatically updated by downloading metadata files from each database. In addition to the above metadata useful for GeneMANIA and Cytoscape, the nature of the data source in terms of originality is important for Pathway Commons, as originally curated information is desired, not redundant copies of data from meta-databases. Pathguide terms this &ldquo;primary&rdquo; (originally curated or predicted) or &ldquo;secondary&rdquo; (collected from other sources). An example Pathguide record for GeneMANIA is at
-    <a href="http://pathguide.org/fullrecord.php?organisms=all&availability=all&standards=all&order=alphabetic&DBID=334">http://pathguide.org/fullrecord.php?organisms=all&availability=all&standards=all&order=alphabetic&DBID=334</a>.</p>
+    <a href="http://pathguide.org/fullrecord.php?organisms=all&amp;availability=all&amp;standards=all&amp;order=alphabetic&amp;DBID=334">http://pathguide.org/fullrecord.php?organisms=all&amp;availability=all&amp;standards=all&amp;order=alphabetic&amp;DBID=334</a>.</p>
 
     <h3 id="s8_5">8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</h3>
 
@@ -1745,7 +1742,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     
     <h3 id="appendix_1">10.1 Complete Example of a Dataset Description</h3>
 
-    The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.
+    <p>The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.</p>
 
 <pre>
 @base &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
@@ -1819,7 +1816,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 Under the -BY clause, we request attribution for subsequent use of ChEMBL.  
 For publications using ChEMBL data, the primary current citation is: 
 
-1.  A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+1.  A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, &amp; J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
 If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, 
 and that the release number of ChEMBL is clearly displayed.""" .
@@ -2038,10 +2035,11 @@ and that the release number of ChEMBL is clearly displayed.""" .
 
     <div class="changes">
       <h2 id="chlog">Change Log</h2>
+    </div>
       
     <div class="nav"><a href="http://validator.w3.org/check/referer">
       <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a>
-      </div><hr></hr>
+    </div><hr></hr>
 
   </body>
 
