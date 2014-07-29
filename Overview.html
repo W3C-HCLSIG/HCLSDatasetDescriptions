@@ -893,7 +893,7 @@ pre {
         scientific literature."""@en .
     </pre>
 
-    <h4>6.2.3 Dates of Creation and Issuance</h4>
+    <h4>6.2.4 Dates of Creation and Issuance</h4>
 
     <p>It is essential to know when a dataset came into existence. Within the dataset description model, the summary level description is not associated with a creation or issued date, these are associated with the version and distribution level description.</p>
 
@@ -910,7 +910,7 @@ pre {
 
     <p>Note that other more specific properties, e.g. the date the dataset was authored or curated, MAY be given in addition using terms from the PAV ontology [<a href="#PAV">PAV</a>].</p>
 
-    <h4>6.2.4 Authorship, Creation, Curation</h4>
+    <h4>6.2.5 Authorship, Creation, Curation</h4>
 
     <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers.  The value may be a string if a suitable IRI cannot be supplied.</p>
 
@@ -935,7 +935,7 @@ pre {
     pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
     </pre>
     
-    <h4>6.2.5 Publisher</h4>
+    <h4>6.2.6 Publisher</h4>
 
     <p>A link to the organisation responsible for publishing the dataset.</p>
 
@@ -944,7 +944,7 @@ pre {
     dct:publisher &lt;http://www.ebi.ac.uk&gt; .
     </pre>
 
-    <h4>6.2.6 Webpage and Logo</h4>
+    <h4>6.2.7 Webpage and Logo</h4>
 
     <p>A link to the human-oriented web page for the dataset is provided using the foaf:page property [<a href="#FOAF">FOAF</a>]. The property foaf:homepage must not be used as it could result in the data about different versions of a dataset being combined as it is an inverse-functional property. The example below specifies the chembl dataset is accessible at [<a href="#ChEMBL">ChEMBL</a>].</p>
     <p>A link to an image file containing the logo for the dataset is provided using the schemaorg:logo property [<a href="#SCHEMAORG">SCHEMA.ORG</a>]. The property foaf:logo must not be used since it is an inverse-function property.</p>
@@ -955,7 +955,7 @@ pre {
     schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
     </pre>
 
-    <h4>6.2.7 Keywords</h4>
+    <h4>6.2.8 Keywords</h4>
 
     <p>Keywords and topics of coverage of the dataset MAY be given. It is recommended that such terms are drawn from a suitable domain vocabulary and declared using the dcat:theme predicate. The dcat:keyword predicate is provided for the rare occasions where there is not a suitable term in a vocabulary.</p>
 
@@ -969,7 +969,7 @@ pre {
 
     <p>Note that the ncit namespace refers to the National Cancer Institute (NCI) Thesaurus.</p>
 
-    <h4>6.2.8 Licensing and Rights</h4>
+    <h4>6.2.9 Licensing and Rights</h4>
 
 
     <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
@@ -989,7 +989,7 @@ pre {
 If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""
     </pre>
 
-    <h4>6.2.9 Language</h4>
+    <h4>6.2.10 Language</h4>
 
     <p>Declare the languages the data is published in using dct:language and values taken from the Lexvo.org Ontology [<a href="#Lexvo">Lexvo</a>].</p>
 
@@ -998,7 +998,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:language &lt;http://lexvo.org/id/iso639-3/en&gt; .
     </pre>
 
-    <h4>6.2.10 Literature Reference</h4>
+    <h4>6.2.11 Literature Reference</h4>
 
     <p>Provide a literature reference as a CiTO entry [<a href="#CiTO">CiTO</a>] using cito:citesAsAuthority property. For example, for the :chembl dataset the literature reference is [<a href="#Gaultonetal2011">Gaulton et al 2011</a>].</p>
 
@@ -1007,7 +1007,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; .
     </pre>
 
-    <h4>6.2.11 Vocabularies</h4>
+    <h4>6.2.12 Vocabularies</h4>
 
     <p>RDF datasets use one or more RDFS vocabularies or OWL ontologies to represent the data. It is recommended that the distribution level metadata, for RDF datasets, should state what terminologies were used in the dataset using void:vocabulary [<a href="#VOID">VOID</a>]. The value has to be a URI identifying the terminology used.</p>
 
@@ -1016,7 +1016,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     void:vocabulary &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt;, &lt;http://purl.org/dc/terms/&gt; .
     </pre>
 
-    <h4>6.2.12 Conformance</h4>
+    <h4>6.2.13 Conformance</h4>
 
     <p>Indicate that the dataset conforms to a particular format or standard using the dct:conformsTo property. For example, the follow states that the ChEMBL description conforms to this specification.</p>
 
@@ -1025,7 +1025,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; .
     </pre>
 
-    <h4>6.2.13 Subsets</h4>
+    <h4>6.2.14 Subsets</h4>
 
     <p>The parts of a dataset MAY be described using dct:hasPart. For example, ChEMBL identifies several datasets, e.g. one containing data about molecules and another about targets. Each of these subsets can be assigned appropriate topics.</p>
 
@@ -1602,7 +1602,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 
     <p>Open PHACTS [<a href="#OpenPHACTS">OpenPHACTS</a>] is an open-source project to build a data integration platform for drug discovery data. The platform provides a domain specific API through which the integrated data can be retrieved. The platform is populated with open data sets including ChEMBL, UniProt, ChemSpider and Wikipathways. The data items within these datasets are related through VoID linksets [<a href="#VOID">VOID</a>]. The linksets are published as part of the delivery of the open platform.</p>
 
-    <p>The Open PHACTS platform is being further developed to rely on the VoID specification to drive the automated update of the integrated data from external providers. In particular, we would like to be able to rely on knowing when a dataset is updated and at what period it is updated. To know when to download new information. Furthermore, we need to do know the type of dataset we are dealing with whether it is a linkset or dataset. Importantly, knowing the correct predicate to find where to download or obtain dumps of provider data is crucial. 
+    <p>The Open PHACTS platform is being further developed to rely on the VoID specification to drive the automated update of the integrated data from external providers. In particular, we would like to be able to rely on knowing when a dataset is updated and at what period it is updated to know when to download new information. Furthermore, we need to do know the type of dataset we are dealing with whether it is a linkset or dataset. Importantly, knowing the correct predicate to find where to download or obtain dumps of provider data is crucial. 
     Finally, it's important for us to be able to correctly link back to data providers (i.e. provenance) to give credit. To do this correctly, we need to know both human readable and machine readable provenance links.</p>
 
     <h4>8.8.2 EBI RDF Platform</h4>
