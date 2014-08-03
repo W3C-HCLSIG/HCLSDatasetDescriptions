@@ -1070,26 +1070,26 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
         &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
         &lt;http://identifiers.org/chembl.compound/&gt; ,
         &lt;http://bio2rdf.org/chembl:&gt; ,
-        &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
+        &lt;http://linkedchemistry.info/chembl/chemblid&gt; .
 
-    &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
-        idot:primarySource true;
-        dct:format "text/html";
-        dct:publisher &lt;http://www.ebi.ac.uk&gt;;
-        a idot:AccessPattern.
+&lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
+    idot:primarySource true ;
+    dct:format "text/html" ;
+    dct:publisher &lt;http://www.ebi.ac.uk&gt; ;
+    a idot:AccessPattern .
 
-    &lt;http://identifiers.org/chembl.compound/&gt;;
-        dct:format "text/html";
-        a idot:AccessPattern.
+&lt;http://identifiers.org/chembl.compound/&gt;
+    dct:format "text/html" ;
+    a idot:AccessPattern .
 
-    &lt;http://bio2rdf.org/chembl:&gt;
-        dct:format "application/rdf+xml";
-        dct:publisher &lt;http://bio2rdf.org&gt;;
-        a idot:AccessPattern .
+&lt;http://bio2rdf.org/chembl:&gt;
+    dct:format "application/rdf+xml" ;
+    dct:publisher &lt;http://bio2rdf.org&gt; ;
+    a idot:AccessPattern .
 
-    &lt;http://linkedchemistry.info/chembl/chemblid&gt;
-        dct:format "application/rdf+xml";
-        a idot:AccessPattern.
+&lt;http://linkedchemistry.info/chembl/chemblid&gt;
+    dct:format "application/rdf+xml" ;
+    a idot:AccessPattern .
     </pre>
 
     <h4>6.3.3 Example Identifier and Resource</h4>
@@ -1745,7 +1745,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <p>The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.</p>
 
 <pre>
-@base &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
+@prefix : &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
 @prefix cito: &lt;http://purl.org/spar/cito/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 @prefix dctypes: &lt;ttp://purl.org/dc/dcmitype/&gt; .
@@ -1851,26 +1851,26 @@ and that the release number of ChEMBL is clearly displayed.""" .
         &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
         &lt;http://identifiers.org/chembl.compound/&gt; ,
         &lt;http://bio2rdf.org/chembl&gt; ,
-        &lt;http://linkedchemistry.info/chembl/chemblid&gt;.
+        &lt;http://linkedchemistry.info/chembl/chemblid&gt; .
 
-    &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
-        idot:primarySource true;
-        dct:format "text/html";
-        dct:publisher "http://www.ebi.ac.uk";
-        a idot:AccessPattern.
+&lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
+    idot:primarySource true ;
+    dct:format "text/html" ;
+    dct:publisher "http://www.ebi.ac.uk" ;
+    a idot:AccessPattern .
 
-    &lt;http://identifiers.org/chembl.compound/&gt;
-        dct:format "text/html";
-        a idot:AccessPattern.
+&lt;http://identifiers.org/chembl.compound/&gt;
+    dct:format "text/html" ;
+    a idot:AccessPattern .
 
-    &lt;http://bio2rdf.org/chembl&gt;
-        dct:format "application/rdf+xml";
-        dct:publisher "http://bio2rdf.org";
-        a idot:AccessPattern .
+&lt;http://bio2rdf.org/chembl&gt;
+    dct:format "application/rdf+xml" ;
+    dct:publisher "http://bio2rdf.org" ;
+    a idot:AccessPattern .
 
-    &lt;http://linkedchemistry.info/chembl/chemblid&gt;
-        dct:format "application/rdf+xml";
-        a idot:AccessPattern.
+&lt;http://linkedchemistry.info/chembl/chemblid&gt;
+    dct:format "application/rdf+xml" ;
+    a idot:AccessPattern .
     
 :chembl
     idot:exampleIdentifier "CHEMBL25"^^xsd:string .
