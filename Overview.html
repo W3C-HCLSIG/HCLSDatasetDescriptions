@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -100,6 +100,7 @@ pre {
 	      <dd>Toshiaki Katayama, Database Center for Life Sciences, Japan &lt;<a href="mailto:ktym@dbcls.jp">ktym@dbcls.jp</a>&gt;</dd>
 	      <dd>Kalpana Krishnaswami, Metaome, USA &lt;<a href="mailto:kalpana@metaome.com">kalpana@metaome.com</a>&gt;</dd>
 	      <dd>Simon Lin, Marshfield Clinic Research Foundation, USA &lt;<a href="mailto:lin.simon@mcrf.mfldclin.edu">lin.simon@mcrf.mfldclin.edu</a>&gt;</dd>
+	      <dd>Michael Miller, Institute for Systems Biology, USA &lt;<a href="mailto:mmiller@systemsbiology.org">mmiller@systemsbiology.org</a>&gt;</dd>
 	      <dd>Chris Mungall, Lawrence Berkeley National Laboratory, USA &lt;<a href="mailto:cjm@berkeleybop.org">cjm@berkeleybop.org</a>&gt;</dd>
 	      <dd>Nicolas Le Nov&egrave;re, Babraham Institute, UK &lt;<a href="mailto:n.lenovere@gmail.com">n.lenovere@gmail.com</a>&gt;</dd>
 	      <dd>Camille Laibe, EMBL-EBI, UK &lt;<a href="mailto:laibe@ebi.ac.uk">laibe@ebi.ac.uk</a>&gt;</dd>
@@ -151,6 +152,7 @@ pre {
               <li class="tocline2"><a href="#s6_4">6.4 Provenance and Change</a></li>
               <li class="tocline2"><a href="#s6_5">6.5 Availability and Distributions</a></li>
               <li class="tocline2"><a href="#s6_6">6.6 Statistics</a></li>
+              <li class="tocline2"><a href="#s6_7">6.7 Workflows</a></li>
           <li class="tocline1"><a href="#toolingsupport">7 Tooling Support</a> </li>
               <li class="tocline2"><a href="#s7_1">7.1 Dataset Description Generation Tool</a></li>
               <li class="tocline2"><a href="#s7_2">7.2 Validation Tool</a></li>
@@ -202,7 +204,7 @@ pre {
 
     <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.</p>
 
-    <p>RDF data in this document is expressed in Turtle [<a href="#ref-TURTLE">TURTLE</a>]. Queries on this data are expressed in SPARQL [<a href="#ref-SPARQL">SPARQL</a>]. The following namespace prefix bindings are assumed unless otherwise stated:</p>
+    <p>RDF data in this document are expressed in Turtle [<a href="#ref-TURTLE">TURTLE</a>]. Queries on this data are expressed in SPARQL [<a href="#ref-SPARQL">SPARQL</a>]. The following namespace prefix bindings are assumed unless otherwise stated:</p>
     <div style="text-align: center;">
       <table style="border-collapse: collapse; border-color: #000000" border="1" cellpadding="5">
 	<tr><th>Prefix</th>				<th>URI</th>	  <th>Description</th></tr>
@@ -1501,6 +1503,80 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     ] .
     </pre>
 
+    <h3 id="s6_7">6.7 Workflows</h3>
+
+<p>A common usecase for dataset usage and creation is within workflows.  The above sections have detailed the
+what and where of dataset description.  This section will briefly describe the contex of how a dataset could be 
+consumed or produced within a workflow definition.  Both PROV [<a href="#PROV">PROV</a>] and PAV [<a href="#PAV">PAV</a>] ontologies 
+provide terms for describing how the provenance of a workflow that dataset(s) are a part of can be captured, much of which 
+is captured in the sections above.  One can also use terms from the PROV derived ontologies, wfprov and wfdesc [<a href="#wf4ever">wf4ever</a>] 
+or the OPMW ontology [<a href="#OPMW">OPMW</a>] which derives from both PROV and OPM [<a href="#OPM">OPM</a>].  
+These ontologies provide the ability to capture abstract workflows that workflow runs can use as a plan and provide finer grained terms for 
+specifying parameters, where datasets are associated with parameters.  The Taverna project provides a model 
+[<a href="#TavernaProvenance">TavernaProvenance</a>] for capturing their workflows as PROV using wfprov and wfdesc along
+with their extension tavernaprov [<a href="#TavernaProv">TavernaProv</a>].</p>
+
+<p>Using PROV, the basic template is that the dataset itself is described following the recommendation of this
+note, with the following addition considerations.  A dataset will be referenced as appropriate in the 
+workflow triples as an input </p>
+    <pre>
+:workflow a prov:Activity .
+:chembl17rdf a prov:Entity .
+
+:workflow prov:used :chembl17rdf .
+    </pre>
+
+and/or as an output 
+    <pre>
+:workflow a prov:Activity .
+:chembl17rdf a prov:Entity .
+
+:chembl17rdf prov:wasGeneratedBy :workflow .
+#    or
+:chembl17rdf prov:wasDerivedFrom :workflow .
+# or one of prov:wasDerivedFrom three property subclasses
+    </pre>
+
+<p>The dataset can be associated with persons, software, or organizations from both PROV and PAV</p>
+    <pre>
+:simon a prov:Agent;
+       a prov:Person .
+
+:chembl17rdf prov:wasAttributedTo :simon .
+:chembl17rdf pav:createdBy :simon .
+    </pre>
+    
+<p>Extending this using terms from wfprov and wfdesc, the version description of a Dataset can 
+be used in the Workflow description as input or output</p>
+    <pre>
+:workflow a wfdesc:WorkflowInstance .
+:process a wfdesc:Process .
+:input a wfdesc:Input .
+:output a wfdesc:Output .
+:chembl17 a wfdesc:Artifact .
+
+:workflow wfdesc:hasSubProcess :process .
+:process wfdesc:hasInput :input .
+:process wfdesc:hasOutput :output .
+:input wfdesc:hasArtifact :chembl17 .
+:output wfdesc:hasArtifact :chembl17 .
+    </pre>
+
+<p>In a corresponding run for this WorkflowInstance, the distributed description of the Dataset will be used</p>
+    <pre>
+:run a wfprov:WorkflowRun .
+:processRun a wfprov:ProcessRun .
+:chembl17rdf a wfprov:Artifact .
+:chembl17sql a wfprov:Artifact .
+
+:run wfprov:descrbedByWorkflow :workflow .
+:processRun wfprov:describedByProcess :process ;
+            wfProv:usedInput :chembl17rdf .
+:chembl17rdf wfprov:describedByParameter :input .
+:chembl17sql wfprov:describedByParameter :output ;
+             wfProv:outputFrom :processRun .
+    </pre> 
+
     <h2 id="toolingsupport">7 Tooling Support</h2>
 
     <p>To support the provision of dataset descriptions conforming with this specification, two tools have been provided.</p>
@@ -1717,6 +1793,10 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <dd><cite><a href="http://www.neuinfo.org">http://www.neuinfo.org</a></cite></dd>
     <dt><a name="OpenPHACTS" id="OpenPHACTS">[OpenPHACTS]</a></dt>
     <dd><cite><a href="http://www.openphacts.org">http://www.openphacts.org</a></cite></dd>
+    <dt><a name="OPM" id="OPM">[OPM]</a></dt>
+    <dd><cite><a href="http://openprovenance.org/">Luc Moreau, Ben Clifford, Juliana Freire, Joe Futrelle, Yolanda Gil, Paul Groth, Natalia Kwasnikowska, Simon Miles, Paolo Missier, Jim Myers, Beth Plale, Yogesh Simmhan, Eric Stephan, and Jan Van den Bussche. The open provenance model core specification (v1.1). Future Generation Computer Systems, July 2010. doi: 10.1016</a></cite></dd>
+    <dt><a name="OPMW" id="OPMW">[OPMW]</a></dt>
+    <dd><cite><a href="http://www.opmw.org/">"Towards Open Publication of Reusable Scientific Workflows: Abstractions, Standards, and Linked Data". Garijo, D., and Gil, Y. Internal Project Report, January 2012</a></cite></dd>
     <dt><a name="ORCID" id="ORCID">[ORCID]</a></dt>
     <dd><cite><a href="http://orcid.org">http://orcid.org</a></cite></dd>
     <dt><a name="PAV" id="PAV">[PAV]</a></dt>
@@ -1730,10 +1810,16 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <dd><cite><a href="http://schema.org/Dataset">http://schema.org/Dataset</a></cite></dd>
     <dt><a name="ScientificData" id="ScientificData">[ScientificData]</a></dt>
     <dd><cite><a href="http://nature.com/scientificdata">Nature Publishing Group’s Scientific Data</a></cite></dd>
+    <dt><a name="TavernaProvenance" id="TavernaProvenance">[TavernaProvenance]</a></dt>
+    <dd><cite><a href="http://www.taverna.org.uk/documentation/taverna-2-x/provenance">http://www.taverna.org.uk/documentation/taverna-2-x/provenance</a></cite></dd>
+    <dt><a name="TavernaProv" id="TavernaProv">[TavernaProv]</a></dt>
+    <dd><cite><a href="http://ns.taverna.org.uk/2012/tavernaprov/">http://ns.taverna.org.uk/2012/tavernaprov/</a></cite></dd>
     <dt><a name="VOID" id="VOID">[VOID]</a></dt>
     <dd><cite><a href="http://www.w3.org/TR/void">http://www.w3.org/TR/void</a></cite></dd>
     <dt><a name="VOID-SPARQL" id="VOID-SPARQL">[VOID-SPARQL]</a></dt>
     <dd><cite><a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics</a></cite></dd>
+    <dt><a name="wf4ever" id="wf4ever">[wf4ever]</a></dt>
+    <dd><cite><a href="http://www.wf4ever-project.org/">Belhajjame K, Corcho O, Garijo D, Zhao J, Missier P, Newman DR, Palma R,  Bechhofer S, Garcia-Cuesta E, Gómez-Pérez JM, Klyne G, Page K, Roos M, Ruiz JE, Soiland-Reyes S, Verdes-Montenegro L, De Roure D, Goble CA: Workflow-Centric Research Objects: A First Class Citizen in the Scholarly Discourse. In proceedings of the ESWC2012 Workshop on the Future of Scholarly Communication in the Semantic Web (SePublica2012), Heraklion, Greece, May 2012</a></cite></dd>
     <dt><a name="WormBase" id="WormBase">[WormBase]</a></dt>
     <dd><cite><a href="http://www.wormbase.org">http://www.wormbase.org</a></cite></dd>
     </dl>
@@ -1748,7 +1834,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
 @prefix : &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
 @prefix cito: &lt;http://purl.org/spar/cito/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dctypes: &lt;ttp://purl.org/dc/dcmitype/&gt; .
+@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
 @prefix dct: &lt;http://purl.org/dc/terms/&gt; .
 @prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
 @prefix freq: &lt;http://purl.org/cld/freq/&gt; .
