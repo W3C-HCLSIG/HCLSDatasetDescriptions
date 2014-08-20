@@ -1506,38 +1506,35 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     <h3 id="s6_7">6.7 Workflows</h3>
 
 <p>A common usecase for dataset usage and creation is within workflows.  The above sections have detailed the
-what and where of dataset description.  This section will briefly describe the contex of how a dataset could be 
-consumed or produced within a workflow definition.  Both PROV [<a href="#PROV">PROV</a>] and PAV [<a href="#PAV">PAV</a>] ontologies 
-provide terms for describing how the provenance of a workflow that dataset(s) are a part of can be captured, much of which 
-is captured in the sections above.  One can also use terms from the PROV derived ontologies, wfprov and wfdesc [<a href="#wf4ever">wf4ever</a>] 
-or the OPMW ontology [<a href="#OPMW">OPMW</a>] which derives from both PROV and OPM [<a href="#OPM">OPM</a>].  
-These ontologies provide the ability to capture abstract workflows that workflow runs can use as a plan and provide finer grained terms for 
-specifying parameters, where datasets are associated with parameters.  The Taverna project provides a model 
-[<a href="#TavernaProvenance">TavernaProvenance</a>] for capturing their workflows as PROV using wfprov and wfdesc along
-with their extension tavernaprov [<a href="#TavernaProv">TavernaProv</a>].</p>
+what and where of dataset description.  This section will briefly describe the contex of how a dataset might be
+consumed or produced within a workflow definition.  A more complete description is outside the scope of this 
+note.</p>
 
-<p>Using PROV, the basic template is that the dataset itself is described following the recommendation of this
-note, with the following addition considerations.  A dataset will be referenced as appropriate in the 
-workflow triples as an input </p>
+    <h4>6.7.1 General Workflows</h4>
+
+<p>Both PROV [<a href="#PROV">PROV</a>] and PAV [<a href="#PAV">PAV</a>] ontologies provide terms for describing 
+how the provenance of a workflow that dataset(s) are a part of can be captured, much of which is captured in the 
+sections above.  Using PROV, the basic template is that the dataset itself is described following the recommendation 
+of this note, with the following addition considerations.  A dataset description MAY be referenced as appropriate in 
+the workflow triples as an input</p>
     <pre>
-:workflow a prov:Activity .
-:chembl17rdf a prov:Entity .
+:workflow a prov:Activity
+:chembl17rdf a prov:Entity
 
 :workflow prov:used :chembl17rdf .
     </pre>
-
-<p>and/or as an output </p>
+<p>and/or as an output</p> 
     <pre>
-:workflow a prov:Activity .
-:chembl17rdf a prov:Entity .
+:workflow a prov:Activity
+:chembl17rdf a prov:Entity
 
 :chembl17rdf prov:wasGeneratedBy :workflow .
 #    or
 :chembl17rdf prov:wasDerivedFrom :workflow .
-# or one of prov:wasDerivedFrom three property subclasses
+# or one of prov:wasDerivedFrom three property subclasses: prov:wasQuotedFrom; prov:wasRevisionOf; or prov:hadPrimarySource
     </pre>
-
-<p>The dataset can be associated with persons, software, or organizations from both PROV and PAV</p>
+<p>The dataset MAY be associated with persons, software, or organizations from both PROV and PAV.  The VIVO 
+[<a href="#PAV">VIVO</a>] ontology MAY also provide more fine-grained terms for describing people and organizations</p>
     <pre>
 :simon a prov:Agent;
        a prov:Person .
@@ -1545,8 +1542,19 @@ workflow triples as an input </p>
 :chembl17rdf prov:wasAttributedTo :simon .
 :chembl17rdf pav:createdBy :simon .
     </pre>
+
+    <h4>6.7.2 Computational Workflows</h4>
+
+<p>One MAY also use terms from the PROV derived ontologies, wfprov and wfdesc [<a href="#wf4ever">wf4ever</a>] or the 
+OPMW ontology [<a href="#OPMW">OPMW</a>] which derives from both PROV and OPM [<a href="#OPM">OPM</a>] to 
+describe more computational based workflows.  These ontologies provide the ability to capture abstract workflows that 
+workflow runs can use as a plan and provide finer grained terms for specifying parameters, where dataset generation MAY 
+be associated with parameters.  The Taverna project provides a model for capturing their workflows as PROV 
+[<a href="#TavernaProvenance">TavernaProvenance</a>] using wfprov and wfdesc along with their extension 
+tavernaprov [<a href="#TavernaProv">TavernaProv</a>].</p>
+
     
-<p>Extending this using terms from wfprov and wfdesc, the version description of a Dataset can 
+<p>Extending this using terms from wfprov and wfdesc, the version description of a Dataset MAY 
 be used in the Workflow description as input or output</p>
     <pre>
 :workflow a wfdesc:WorkflowInstance .
@@ -1562,7 +1570,7 @@ be used in the Workflow description as input or output</p>
 :output wfdesc:hasArtifact :chembl17 .
     </pre>
 
-<p>In a corresponding run for this WorkflowInstance, the distributed description of the Dataset will be used</p>
+<p>In a corresponding run for this WorkflowInstance, the distributed description of the Dataset MAY be used</p>
     <pre>
 :run a wfprov:WorkflowRun .
 :processRun a wfprov:ProcessRun .
@@ -1814,6 +1822,8 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://www.taverna.org.uk/documentation/taverna-2-x/provenance">http://www.taverna.org.uk/documentation/taverna-2-x/provenance</a></cite></dd>
     <dt><a name="TavernaProv" id="TavernaProv">[TavernaProv]</a></dt>
     <dd><cite><a href="http://ns.taverna.org.uk/2012/tavernaprov/">http://ns.taverna.org.uk/2012/tavernaprov/</a></cite></dd>
+    <dt><a name="VIVO" id="VIVO">[VIVO]</a></dt>
+    <dd><cite><a href="https://wiki.duraspace.org/display/VIVO/VIVO-ISF+Ontology">https://wiki.duraspace.org/display/VIVO/VIVO-ISF+Ontology</a></cite></dd>
     <dt><a name="VOID" id="VOID">[VOID]</a></dt>
     <dd><cite><a href="http://www.w3.org/TR/void">http://www.w3.org/TR/void</a></cite></dd>
     <dt><a name="VOID-SPARQL" id="VOID-SPARQL">[VOID-SPARQL]</a></dt>
