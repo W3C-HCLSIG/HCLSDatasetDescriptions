@@ -298,7 +298,7 @@ pre {
     <tr>
         <td></td>
         <td>rdf:type</td>
-        <td>dctypes:Dataset</td>
+        <td>dctypes:Dataset (all levels) or for distribution-level dcat:Distribution or void:Dataset (for RDF)</td>
         <td>MUST</td>
         <td>MUST</td>
         <td>SHOULD</td>
@@ -594,7 +594,7 @@ pre {
     <tr>
         <td></td>
         <td>void:inDataset</td>
-        <td>IRI</td>
+        <td>IRI a void:Dataset</td>
         <td>NEVER</td>
         <td>NEVER</td>
         <td>SHOULD</td>
@@ -1020,7 +1020,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.2.13 Conformance</h4>
 
-    <p>Indicate that the dataset conforms to a particular format or standard using the dct:conformsTo property. For example, the follow states that the ChEMBL description conforms to this specification.</p>
+    <p>Indicate that the dataset conforms to a particular format or standard using the dct:conformsTo property, which is NEVER represented at the summary level, MAY be represented at the version, and SHOULD be represented at the distribution level. For example, the follow states that the ChEMBL description conforms to this specification.</p>
 
     <pre>
 :chembl17
@@ -1162,7 +1162,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.4.3 Entity Provenance</h4>
 
-    <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It SHOULD be used with distribution level descriptions, and must NEVER be used for summary level descriptions or version level descriptions.</p>
+    <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It SHOULD be used with distribution level descriptions of RDF distributions that are typed as void:Dataset, and must NEVER be used for summary level descriptions or version level descriptions.</p>
 
     <pre>
 :chembl-compound
