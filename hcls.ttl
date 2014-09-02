@@ -118,11 +118,11 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
         void:linkPredicate <http://semanticscience.org/resource/SIO_000300> ;
         void:subjectsTarget [
             void:class <http://linkedchemistry.info/chembl/chemblid/CHEMBL702808/chemblid> ;
-            void:entities 88102 ;
-            void:objectsTarget [
-                void:class <http://rdf.farmbio.uu.se/chembl/onto/#Assay> ;
-                void:entities 2819
-            ]
+            void:entities 88102 
+        ]
+        void:objectsTarget [
+            void:class <http://rdf.farmbio.uu.se/chembl/onto/#Assay> ;
+            void:entities 2819
         ]
     ], [
         a void:LinkSet ;
