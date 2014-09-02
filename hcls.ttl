@@ -79,7 +79,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz> ;
     void:exampleResource <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
     void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
-    dcat:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" .
+    dct:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" .
 
 :chembl17relational
     a dcat:Distribution .
