@@ -704,6 +704,14 @@ pre {
     </tr>
     <tr>
         <td></td>
+        <td>dcat:landingPage</td>
+        <td>IRI</td>
+        <td>NEVER</td>
+        <td>MAY</td>
+        <td>MAY</td>
+    </tr>
+    <tr>
+        <td></td>
         <td>dcat:downloadURL</td>
         <td>IRI</td>
         <td>NEVER</td>
@@ -720,13 +728,13 @@ pre {
     </tr>
     <tr>
         <td></td>
-        <td>dcat:landingPage</td>
+        <td>void:sparqlEndpoint</td>
         <td>IRI</td>
-        <td>NEVER</td>
-        <td>MAY</td>
-        <td>MAY</td>
-    </tr>
-    <tr>
+        <td>SHOULD</td>
+        <td>SHOULD NOT</td>
+        <td>SHOULD NOT</td>
+    </tr>    
+	<tr>
         <td>Statistics</td>
         <td></td>
         <td></td>
@@ -1253,7 +1261,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <p>Note that once the file is loaded into the triplestore it becomes a different representation of the same dataset version. Hence the use dct:source rather than directly linking to the dataset description file.</p>
 
-    <p>We recommend that the void:sparqlEndpoint MUST NOT be used since it would become a maintenance issue. It would be &mdash; when naively implemented &mdash; untracable which version of a dataset description is referring to the data that is actually loaded data in the triplestore.</p>
+    <p>We recommend that the void:sparqlEndpoint SHOULD be used at the summary level. However, we recommend that this property SHOULD NOT be used at the version and/or distribution level, unless there is a commitment to specifically provide that content in the specified endpoint.</p>
 
     <h4>6.5.4 Dataset Documentation</h4>
 
