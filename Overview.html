@@ -369,7 +369,7 @@ pre {
     <tr>
         <td></td>
         <td>dct:creator</td>
-        <td>IRI or xsd:string</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MUST</td>
         <td>MUST</td>
@@ -377,7 +377,7 @@ pre {
     <tr>
         <td></td>
         <td>dct:contributor</td>
-        <td>IRI or xsd:string</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -385,7 +385,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:createdBy</td>
-        <td>IRI or xsd:string</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -393,7 +393,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:authoredBy</td>
-        <td>IRI or xsd:string</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -401,7 +401,7 @@ pre {
     <tr>
         <td></td>
         <td>pav:curatedBy</td>
-        <td>IRI or xsd:string</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -921,7 +921,7 @@ pre {
 
     <h4>6.2.5 Authorship, Creation, Curation</h4>
 
-    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers.  The value may be a string if a suitable IRI cannot be supplied.</p>
+    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers.</p>
 
     <pre>
 :chembl17
@@ -929,6 +929,14 @@ pre {
 
 :chembl_target_targetcmpt_linkset 
     pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
+    </pre>
+    
+    <p></p>If it is not possible to use an existing IRI then a string can be included using the following construct:</p>
+    <pre>
+:chembl17
+    dct:creator [
+        foaf:name "John Smith"
+    ] .
     </pre>
 
     <p>Fine-grained attribution of creation events such as authoring or curation MAY additionally be supplied using the terms from the PAV ontology.</p>
