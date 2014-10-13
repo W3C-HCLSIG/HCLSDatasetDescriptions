@@ -84,6 +84,7 @@ pre {
 	      <dd>M. Scott Marshall, MAASTRO Clinic, The Netherlands &lt;<a href="mailto:m.scott.marshall@maastro.nl">m.scott.marshall@maastro.nl</a>&gt;</dd>
 	      <dd>Joachim Baran, Stanford University, USA &lt;<a href="mailto:joachim.baran@stanford.edu">joachim.baran@stanford.edu</a>&gt;</dd>
 	<dt>Contributors:</dt>
+		  <dd>Vladimir Alexiev, OntoText, Bulgaria</dd>
 	      <dd>Peter Ansell, CSIRO, Australia &lt;<a href="mailto:peter.ansell@csiro.au">peter.ansell@csiro.au</a>&gt;</dd>
 	      <dd>Gary D. Bader, The Donnelly Centre, University of Toronto, Canada &lt;<a href="mailto:gary.bader@utoronto.ca">gary.bader@utoronto.ca</a>&gt;</dd>
 	      <dd>Asuka Bando, NBDC, Japan &lt;<a href="mailto:bando@biosciencedbc.jp">bando@biosciencedbc.jp</a>&gt;</dd>
@@ -107,7 +108,7 @@ pre {
 	      <dd>Nick Juty, EMBL-EBI, UK &lt;<a href="mailto:juty@ebi.ac.uk">juty@ebi.ac.uk</a>&gt;</dd>
 	      <dd>James Malone, EMBL-EBI, UK &lt;<a href="mailto:malone@ebi.ac.uk">malone@ebi.ac.uk</a>&gt;</dd>
 	      <dd>Laurens Rietveld, VU University Amsterdam, The Netherlands &lt;<a href="mailto:laurens.rietveld@vu.nl">laurens.rietveld@vu.nl</a>&gt;</dd>
-              <dd>Sarala M. Wimalaratne, EMBL-EBI, UK &lt;<a href="mailto:sarala@ebi.ac.uk">sarala@ebi.ac.uk</a>&gt;</dd>
+          <dd>Sarala M. Wimalaratne, EMBL-EBI, UK &lt;<a href="mailto:sarala@ebi.ac.uk">sarala@ebi.ac.uk</a>&gt;</dd>
       </dl>
 
       <p class="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &#169; 2014 <a href="http://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&#174;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>, <a href="http://ev.buaa.edu.cn/">Beihang</a>), All Rights Reserved. W3C <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="http://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="http://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules apply.</p>
@@ -223,7 +224,9 @@ pre {
 	<tr><td><code>sd:</code></td>			<td><code>http://www.w3.org/ns/sparql-service-description#</code></td>	<td><a href="http://www.w3.org/TR/sparql11-service-description/">SPARQL 1.1 Service Description</a></td></tr>
 	<tr><td><code>xsd:</code></td>			<td><code>http://www.w3.org/2001/XMLSchema#</code></td>	<td><a href="http://www.w3.org/TR/xmlschema11-2/">XML Schema</a></td></tr>
 	<tr><td><code>void:</code></td>			<td><code>http://www.w3.org/TR/void/</code></td>	<td><a href="http://www.w3.org/TR/void/">Describing Linked Datasets with the VoID Vocabulary</a></td></tr>
-      </table>
+	<tr><td><code>void-ext:</code></td>			<td><code>http://ldf.fi/void-ext</code></td>	<td><a href="http://ldf.fi/void-ext">Extensions to the Vocabulary of Interlinked Datasets (VoID)</a></td></tr>
+
+	</table>
     </div>
 
     <p>The letter sequence "###" is used to denote a placeholder for a positive integer (&ge; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
@@ -1423,7 +1426,7 @@ SELECT (COUNT(DISTINCT ?g ) AS ?no) { GRAPH ?g { ?s ?p ?o}}
     <p>SPARQL query:</p>
 
     <pre>
-SELECT  ?class (COUNT(?s) AS ?count ) { ?s a ?class } GROUP BY ?class
+SELECT ?class (COUNT(?s) AS ?count) { ?s a ?class } GROUP BY ?class
     </pre>
 
     <p>To specify the <strong>properties and their frequency</strong> in the dataset:</p>
@@ -1442,70 +1445,83 @@ SELECT  ?class (COUNT(?s) AS ?count ) { ?s a ?class } GROUP BY ?class
 SELECT  ?p (COUNT(?p) AS ?count ) { ?s ?p ?o } GROUP BY ?p
     </pre>
 
-    <p>To specify the <strong>properties and the number of unique objects linked to the property</strong> in the dataset:</p>
-
-    <pre>
-:rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
-        void:objectsTarget [
-            void:class rdfs:Class ;
-            void:entities "###"^^xsd:integer
-        ]
-    ] .
-    </pre>
-
     <p>SPARQL query:</p>
 
     <pre>
-SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
+SELECT (COUNT(DISTINCT ?s) AS ?scount) ?p (COUNT(DISTINCT ?o) AS ?ocount) { ?s ?p ?o } GROUP BY ?p
+    </pre>
+	
+	
+<p>To specify the <strong>properties and the number of unique typed subjects linked to the property</strong>in the dataset:</p>
+    <pre>
+:rdfdataset
+	void:propertyPartition [
+		void:property &lt;property-uri&gt; ;
+		void:classPartition [
+			void:class &lt;subject-class-uri&gt; ;
+			void:entities "###"^^xsd:integer ;
+		]
+	].
+    </pre>
+    <p>SPARQL query:</p>
+    <pre>
+SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GROUP BY ?p ?stype
+    </pre>
+
+	
+	<p>To specify the <strong>properties and the number of unique typed objects linked to the property</strong> in the dataset:</p>
+    <pre>
+:rdfdataset
+	void:propertyPartition [
+		void:property &lt;property-uri&gt; ;
+        void-ext:objectClassPartition [
+			void:class &lt;object-class-uri&gt; ;
+            void:entities "###"^^xsd:integer]
+	].
+    </pre>
+    <p>SPARQL query:</p>
+    <pre>
+SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GROUP BY ?p ?otype
     </pre>
 
     <p>To specify the <strong>properties and the number of unique literals</strong> in the dataset:</p>
 
     <pre>
 :rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
-        void:objectsTarget [
+	void:propertyPartition [
+        void:property &lt;property-uri&gt; ;
+        void-ext:objectClassPartition [
             void:class rdfs:Literal;
             void:entities "###"^^xsd:integer
         ]
     ] .
     </pre>
-
     <p>SPARQL query:</p>
-
     <pre>
 SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
     </pre>
 
+	
     <p>To specify the number and list of <strong>unique subject types that are linked through a property to unique object types</strong> in the dataset:</p>
 
     <pre>
 :rdfdataset
-    void:subset [
-        a void:LinkSet ; 
-        void:linkPredicate &lt;property-uri&gt; ;
-        void:subjectsTarget [
-            void:class &lt;subject-type-uri&gt; ;
-            void:entities "###"^^xsd:integer ;
-            void:objectsTarget [
-                void:class &lt;object-type-uri&gt; ;
-                void:entities "###"^^xsd:integer
-            ] 
-        ]
-    ] .
+	void:propertyPartition [
+		void:property &lt;property-uri&gt; ;
+        void:classPartition [
+			void:class &lt;subject-class-uri&gt; ;
+			void:entities "###"^^xsd:integer ;
+		];
+		void-ext:objectClassPartition [
+			void:class &lt;object-class-uri&gt; ;
+            void:entities "###"^^xsd:integer]
+		]
+	] .
     </pre>
 
-    <p>SPARQL query:</p>
 
-    <pre>
-SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o } GROUP BY ?p
-    </pre>
-
+	
+	
     <p>To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</p>
 
     <pre>
