@@ -151,24 +151,25 @@ pre {
               <li class="tocline2"><a href="#s6_4">6.4 Provenance and Change</a></li>
               <li class="tocline2"><a href="#s6_5">6.5 Availability and Distributions</a></li>
               <li class="tocline2"><a href="#s6_6">6.6 Statistics</a></li>
-              <li class="tocline2"><a href="#s6_7">6.7 Workflows</a></li>
-          <li class="tocline1"><a href="#toolingsupport">7 Tooling Support</a> </li>
-              <li class="tocline2"><a href="#s7_1">7.1 Dataset Description Generation Tool</a></li>
-              <li class="tocline2"><a href="#s7_2">7.2 Validation Tool</a></li>
-          <li class="tocline1"><a href="#usecases">8 Use Cases</a> </li>
-              <li class="tocline2"><a href="#s8_1">8.1 Marshfield Use Case</a></li>
-              <li class="tocline2"><a href="#s8_2">8.2 Metaome Transcriptomics Use Case</a></li>
-              <li class="tocline2"><a href="#s8_3">8.3 Radiotherapy Research Use Case</a></li>
-              <li class="tocline2"><a href="#s8_4">8.4 Computational Network Biology</a></li>
-              <li class="tocline2"><a href="#s8_5">8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</a></li>
-              <li class="tocline2"><a href="#s8_6">8.6 Sampling Large RDF Graphs</a></li>
-              <li class="tocline2"><a href="#s8_7">8.7 Query Formulation Using Data Metrics</a></li>
-              <li class="tocline2"><a href="#s8_8">8.8 Data Providers</a></li>
-              <li class="tocline2"><a href="#s8_9">8.9 Data Catalogs</a></li>
-              <li class="tocline2"><a href="#s8_10">8.10 Experimental Datasets Use Case</a></li>
-          <li class="tocline1"><a href="#references">9 References</a> </li>
+          <li class="tocline1"><a href="#usageNotes">7 Using Dataset Descriptions</a></li>
+              <li class="tocline2"><a href="#s7n_1">7.1 Workflows</a></li>
+          <li class="tocline1"><a href="#toolingsupport">8 Tooling Support</a> </li>
+              <li class="tocline2"><a href="#s7_1">8.1 Dataset Description Generation Tool</a></li>
+              <li class="tocline2"><a href="#s7_2">8.2 Validation Tool</a></li>
+          <li class="tocline1"><a href="#usecases">9 Use Cases</a> </li>
+              <li class="tocline2"><a href="#s8_1">9.1 Marshfield Use Case</a></li>
+              <li class="tocline2"><a href="#s8_2">9.2 Metaome Transcriptomics Use Case</a></li>
+              <li class="tocline2"><a href="#s8_3">9.3 Radiotherapy Research Use Case</a></li>
+              <li class="tocline2"><a href="#s8_4">9.4 Computational Network Biology</a></li>
+              <li class="tocline2"><a href="#s8_5">9.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</a></li>
+              <li class="tocline2"><a href="#s8_6">9.6 Sampling Large RDF Graphs</a></li>
+              <li class="tocline2"><a href="#s8_7">9.7 Query Formulation Using Data Metrics</a></li>
+              <li class="tocline2"><a href="#s8_8">9.8 Data Providers</a></li>
+              <li class="tocline2"><a href="#s8_9">9.9 Data Catalogs</a></li>
+              <li class="tocline2"><a href="#s8_10">9.10 Experimental Datasets Use Case</a></li>
+          <li class="tocline1"><a href="#references">10 References</a> </li>
           <li class="tocline1"><a href="#appendix">Appendix</a> </li>
-              <li class="tocline2"><a href="#appendix_1">10.1 Complete Example of a Dataset Description</a></li>
+              <li class="tocline2"><a href="#appendix_1">11.1 Complete Example of a Dataset Description</a></li>
       </ul>
     </div>
 
@@ -1519,14 +1520,15 @@ SELECT (COUNT(DISTINCT ?s ) AS ?scount ) ?p (COUNT(DISTINCT ?o ) AS ?ocount ) { 
     ] .
     </pre>
 
-    <h3 id="s6_7">6.7 Workflows</h3>
+  <h2 id="usageNotes">7 Using Dataset Descriptions</h2>
+    <h3 id="s7n_1">7.1 Workflows</h3>
 
 <p>A common usecase for dataset usage and creation is within workflows.  The above sections have detailed the
 what and where of dataset description.  This section will briefly describe the contex of how a dataset might be
 consumed or produced within a workflow definition.  A more complete description is outside the scope of this 
 note.</p>
 
-    <h4>6.7.1 General Workflows</h4>
+    <h4>7.1.1 General Workflows</h4>
 
 <p>Both PROV [<a href="#PROV">PROV</a>] and PAV [<a href="#PAV">PAV</a>] ontologies provide terms for describing 
 how the provenance of a workflow that dataset(s) are a part of can be captured, much of which is captured in the 
@@ -1559,7 +1561,7 @@ the workflow triples as an input</p>
 :chembl17rdf pav:createdBy :simon .
     </pre>
 
-    <h4>6.7.2 Computational Workflows</h4>
+    <h4>7.1.2 Computational Workflows</h4>
 
 <p>One MAY also use terms from the PROV derived ontologies, wfprov and wfdesc [<a href="#wf4ever">wf4ever</a>] or the 
 OPMW ontology [<a href="#OPMW">OPMW</a>] which derives from both PROV and OPM [<a href="#OPM">OPM</a>] to 
@@ -1601,7 +1603,7 @@ be used in the Workflow description as input or output</p>
              wfProv:outputFrom :processRun .
     </pre> 
 
-    <h2 id="toolingsupport">7 Tooling Support</h2>
+    <h2 id="toolingsupport">8 Tooling Support</h2>
 
     <p>To support the provision of dataset descriptions conforming with this specification, two tools have been provided.</p>
 
@@ -1623,9 +1625,9 @@ be used in the Workflow description as input or output</p>
 
     <p>Currently, the validator requires the whole dataset description to be pasted into a web form. It is anticipated that an API will be provided.</p>
 
-    <h2 id="usecases">8 Use Cases</h2>
+    <h2 id="usecases">9 Use Cases</h2>
 
-    <h3 id="s8_1">8.1 Marshfield Use Case</h3>
+    <h3 id="s8_1">9.1 Marshfield Use Case</h3>
 
     <p>Marshfield Clinic is one of the largest physician group practices in the United States, who employs approximately 780 physicians representing 84 different specialties and 6,500 additional staff working on the main campus in Marshfield or one of 52 regional clinics serving the population of Wisconsin and the upper peninsula of Michigan. Integral to clinical practice, Marshfield Clinic Research Foundation (MCRF) conducts clinical and biomedical research projects.</p>
 
@@ -1633,13 +1635,13 @@ be used in the Workflow description as input or output</p>
 
     <p>Marshfield also participates in a clinical pharmacogenomics consortium called eMERGE-PGx. A goal of eMERGE-PGx is to discover novel associations between genotypes and pharmacogenomics responses. The more data accumulated from different participating sites, the higher the statistical power to detect novel associations. Standardized metadata description, especial descriptors of license conditions and rights, will ensure transparencies in genetic research and data sharing. With proper metadata available for each data set, pharmacogenomics discovery can be made by agent-based algorithms and proper reuse of data.</p>
 
-    <h3 id="s8_2">8.2 Metaome Transcriptomics Use Case</h3>
+    <h3 id="s8_2">9.2 Metaome Transcriptomics Use Case</h3>
 
     <p>Gene expression data analysis has emerged as a powerful approach for understanding biology. RNA-seq, microarrays and qPCRs are some of the common approaches for analyzing gene expression. To understand gene function, it is often necessary to analyze gene expression over various experimental conditions. It is important that, from a large corpus of transcriptomics datasets, users are able to retrieve datasets that match specific experimental criteria. Further, based on the experiment metadata, the datasets can be enriched with relevant information such as related mutations, cell lines and phenotypes.</p>
 
     <p>A well-structured and standardized dataset description is imperative for this operation. Such an approach of slicing large corpus of transcriptomics data, based on biological parameters and experimental conditions is recognized by our customers as a strong base for gene expression analytics. A structured approach to describing datasets combined with gene expression analytics could lead to applications such as better classification of tumor samples and drug-repurposing.</p>
 
-    <h3 id="s8_3">8.3 Radiotherapy Research Use Case</h3>
+    <h3 id="s8_3">9.3 Radiotherapy Research Use Case</h3>
 
     <p>MAASTRO Clinic is a radiotherapy clinic with approximately 200 employees and 60 researchers. There are both internal and external projects that employ distributed data, and data discovery is an important feature to researchers.</p>
 
@@ -1649,9 +1651,9 @@ be used in the Workflow description as input or output</p>
 
     <p>In the EURECA project, a legal and technical framework has been created that enables clinical care and clinical research data to be shared via a Center for Data Protection (CDP). However, as the data collection grows, it becomes steadily more difficult to find data based on attributes of interest. Therefore, a standardized dataset description will enable project partners to make better use of the data by enabling data discovery.</p>
 
-    <h3 id="s8_4">8.4 Computational Network Biology</h3>
+    <h3 id="s8_4">9.4 Computational Network Biology</h3>
 
-    <h4>8.4.1 Biological Network Data Users</h4>
+    <h4>9.4.1 Biological Network Data Users</h4>
 
     <p>The Cytoscape software for network visualization and analysis [<a href="#Cytoscape">Cytoscape</a>] and the GeneMANIA software for gene function prediction (http://genemania.org/) depend on loading biological network and related data from numerous and diverse sources to support various types of analysis. Cytoscape is a stand alone workbench application and data loading is driven by users and GeneMANIA primarily accesses data using an automated build process. Both systems will benefit from knowledge of the following aspects of a data set:</p>
 
@@ -1671,12 +1673,12 @@ be used in the Workflow description as input or output</p>
 
     <p>For Cytoscape, most users would also be interested to know how others have used the data, as otherwise, they would not know what to do with the list of data sets (at least if there was no further categorization).</p>
 
-    <h4>8.4.2 Pathway Commons and Pathguide.org</h4>
+    <h4>9.4.2 Pathway Commons and Pathguide.org</h4>
 
     <p>The goal of Pathway Commons (http://www.pathwaycommons.org/about/) is to collect all publicly available biological pathway information and make it easily and widely available. Pathguide (http://www.pathguide.org/) tracks over 540 databases containing pathway related information. This tracking website is currently manually updated, but it would be great if it could be automatically updated by downloading metadata files from each database. In addition to the above metadata useful for GeneMANIA and Cytoscape, the nature of the data source in terms of originality is important for Pathway Commons, as originally curated information is desired, not redundant copies of data from meta-databases. Pathguide terms this &ldquo;primary&rdquo; (originally curated or predicted) or &ldquo;secondary&rdquo; (collected from other sources). An example Pathguide record for GeneMANIA is at
     <a href="http://pathguide.org/fullrecord.php?organisms=all&amp;availability=all&amp;standards=all&amp;order=alphabetic&amp;DBID=334">http://pathguide.org/fullrecord.php?organisms=all&amp;availability=all&amp;standards=all&amp;order=alphabetic&amp;DBID=334</a>.</p>
 
-    <h3 id="s8_5">8.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</h3>
+    <h3 id="s8_5">9.5 Safety Information Evaluation and Visual Exploration ("SIEVE")</h3>
 
     <p>AstraZeneca ("AZ") Patient Safety Science wanted to improve retrieval of clinical trial data and biometric assessments across studies.  Traditionally, evaluation of clinical trials data across studies required manual intervention to deliver desired datasets.   A proposal titled Safety Information Evaluation and Visual Exploration ("SIEVE") was sponsored by Patient Safety Science.  This took the form of collaboration between AZ and IO Informatics ("IO").  AZ provided the project environment, data resources, subject matter expertise ("SME") and business expertise.  IO provided semantic software, data modeling and integration services including solutions architecture, knowledge engineering and software engineering.</p>
 
@@ -1688,38 +1690,38 @@ be used in the Workflow description as input or output</p>
 
     <p>Results include reduced time to evaluate data from clinical trials and to facilitate forward looking decisions relevant to portfolios.  Alternatives are less efficient.  Trial data could previously be evaluated within a study; however there was no method to evaluate trials data across studies without manual intervention.  Semantic technologies applied for data description, manipulation and linking provided mission-critical value. This was particularly apparent for integration and harmonization, in light of differences discovered across resources.  IO’s Knowledge Explorer applied data visualization and manipulation, application of inference and SPARQL-based rules to RDF creation.  This resulted in efficient data modeling, transformation, harmonization and integration and helped assure a successful project.</p>
 
-    <h3 id="s8_6">8.6 Sampling Large RDF Graphs</h3>
+    <h3 id="s8_6">9.6 Sampling Large RDF Graphs</h3>
 
     <p>SampLD is a tool for sampling large RDF graphs. We use the network topology of an RDF graph to detect which triples are 'interesting' enough to be included in a sample. SampLD uses common network analysis tools such as PageRank to detect 'interesting' triples. Because we cannot directly apply pagerank to RDF graphs (as an RDF graph has labelled edges), we first apply a rewrite step where we rewrite RDF to a graph with unlabelled edges (without losing too much information). We determine the quality of the sample by how good a sample is able to return answers to a set of queries (i.e. calculating recall). (This is why we use BioPortal, as we have access to the querylogs via the USEWOD challenge). However, the performance of each sample method (i.e. combination of rewrite method + network analysis algorithm) differs between datasets. The probable reasons for these differences  are: (1) the structure of each dataset is different,  (2) the queries for each dataset have a different structure. (2), is something which we are currently analyzing by extracting important features from queries. However, (1) is still an open case. What we need are features of an RDF graph. This is where the Bio2RDF dataset metrics are useful. They provide an easy way of generating information about the RDF structure itself.</p>
 
-    <h3 id="s8_7">8.7 Query Formulation Using Data Metrics</h3>
+    <h3 id="s8_7">9.7 Query Formulation Using Data Metrics</h3>
 
     <p><a href="http://yasgui.org">YASGUI</a> is a query builder for SPARQL with a strong focus on usability. To assist the user in formulating queries, we provide autocompletion functionality as much as possible. Examples are prefix autocompletion using prefix.cc, and endpoint autocompletion using the CKAN-based datahub.io [<a href="#Datahub">Datahub</a>] and Sparqles. However, what users need is mostly autocompletion for resources. The current version of YASGUI supports property and class autocompletion (more info on the taken approach is described here: http://laurensrietveld.nl/yasgui/help.html#autocomplete). However, our approach can be quite expensive. Additionally, the number of suggestions per autocompletion might be quite large. Where the Bio2RDF metrics are particularly useful are: fetching the number of distinct predicates, as this a lot cheaper than executing a "distinct ?p {?s ?p ?o}" query. Additionally, using these metrics we should be able to rank these predicates more meaningfully, based on the combination of its frequency and how this particular predicate is used in the query (e.g. is the object in this triple pattern a URI or a literal).</p>
 
-    <h3 id="s8_8">8.8 Data Providers</h3>
+    <h3 id="s8_8">9.8 Data Providers</h3>
 
-    <h4>8.8.1 Open PHACTS</h4>
+    <h4>9.8.1 Open PHACTS</h4>
 
     <p>Open PHACTS [<a href="#OpenPHACTS">OpenPHACTS</a>] is an open-source project to build a data integration platform for drug discovery data. The platform provides a domain specific API through which the integrated data can be retrieved. The platform is populated with open data sets including ChEMBL, UniProt, ChemSpider and Wikipathways. The data items within these datasets are related through VoID linksets [<a href="#VOID">VOID</a>]. The linksets are published as part of the delivery of the open platform.</p>
 
     <p>The Open PHACTS platform is being further developed to rely on the VoID specification to drive the automated update of the integrated data from external providers. In particular, we would like to be able to rely on knowing when a dataset is updated and at what period it is updated to know when to download new information. Furthermore, we need to do know the type of dataset we are dealing with whether it is a linkset or dataset. Importantly, knowing the correct predicate to find where to download or obtain dumps of provider data is crucial. 
     Finally, it's important for us to be able to correctly link back to data providers (i.e. provenance) to give credit. To do this correctly, we need to know both human readable and machine readable provenance links.</p>
 
-    <h4>8.8.2 EBI RDF Platform</h4>
+    <h4>9.8.2 EBI RDF Platform</h4>
 
     <p>The European Bioinformatics Institute (EBI) is the largest Bioinformatics resource provider in Europe. The recently released RDF platform [<a href="#EBI-RDF">EBI-RDF</a>] presents a coordinated effort to bring together RDF resources from multiple services and databases at the EBI. The EBI invests heavily in the curation and annotation of the source databases to ensure the most up-to-date and accurate information is readily available to the scientific community.  Given that the generated RDF is typically the result of a conversions from the source database, it is important that our users understand the relationship between the RDF and the source. To address this we publish detailed provenance for each dataset that includes important information such as version number and release date. This data is available in RDF via content-negotiation from stable dataset URIs and is described using a variety of standard meta-data vocabularies. These dataset descriptions will conform to the recommendations outlined in this document.</p>
 
-    <h4>8.8.3 Bio2RDF</h4>
+    <h4>9.8.3 Bio2RDF</h4>
 
     <p>Bio2RDF [<a href="#Bio2RDF">Bio2RDF</a>] is an open-source project to provide Linked Data for the Life Sciences. Bio2RDF defines a set of simple conventions to create RDF(S) compatible Linked Data from a diverse set of heterogeneously formatted sources obtained from multiple data providers. Bio2RDF has developed a registry of over 2000 datasets that acts to provide basic information about bio-datasets and to normalize different identifiers to a common URI scheme. Bio2RDF generates a wide variety of statistics to describe the internal contents of each dataset so as to facilitate an understanding of their contents and to use in autocompletion services. Bio2RDF will implement the dataset description guidelines for the description of its datasets, the provenance of the datasets, and dataset statistics.</p>
 
-    <h4>8.8.4 WormBase</h4>
+    <h4>9.8.4 WormBase</h4>
 
     <p>WormBase [<a href="#WormBase">WormBase</a>] is a curated genetic and genomic data resource of 19 nematode species including the widely used research model organism Caenorhabditis elegans. Its heavily cross-referenced datasets have continuously grown since the establishment of WormBase more than a decade ago and their growth has accelerated with the availability of cheap next-generation sequencing techniques. Data integration and query federation have become major driving factors in the further development of WormBase, which is currently being addressed by the translation of Genomic Feature Format Version 3 (GFF3) datasets into RDF and their subsequent exposure via a SPARQL endpoint. WormBase will implement the dataset description guidelines to advertise its data resources to the wider bioinformatics and computational biology communities.</p>
 
-    <h3 id="s8_9">8.9 Data Catalogs</h3>
+    <h3 id="s8_9">9.9 Data Catalogs</h3>
 
-    <h4>8.9.1 BioSharing</h4>
+    <h4>9.9.1 BioSharing</h4>
 
     <p>BioSharing [<a href="#BioSharing">BioSharing</a>] is a registry of:</p>
 
@@ -1736,15 +1738,15 @@ be used in the Workflow description as input or output</p>
     <p>BioSharing also provides information about life science data, the tools that can be used to access them, the standards that have been used to generate the data or that can be used to access the data. It follows and extends the information required by the <strong>BioDBCore</strong> reporting guidelines. In particular, BioSharing identifies what reporting guidelines, terminological artifacts and/or exchange formats are considered within a particular dataset.
     BioDBCore [<a href="#BioDBCore">BioDBCore</a>, <a href="#Gaudetetal2010">Gaudet et al 2010</a>] is a checklist, or minimum information standard, including the core attributes for the description of biological databases. It is a community-driven effort overseen by the International Society for Biocuration [<a href="#ISB">ISB</a>], in collaboration with the BioSharing catalogue, which implements the BioDBCore guidelines [<a href="#BioDBCore">BioDBCore</a>]. The BioDBCore checklist main goals involve to compile information on biological databases allowing to survey the current landscape and promote the interoperability of the resources by adoption of of syntactic and semantic standards. The proposed core attributes are listed at the BioDBCore website [<a href="#BioDBCore">BioDBCore</a>].</p>
 
-    <h4>8.9.2 Integbio Database Catalog</h4>
+    <h4>9.9.2 Integbio Database Catalog</h4>
 
     <p>Integbio Database Catalog [<a href="#Integbio">Integbio</a>] is a catalog which provides basic information on life science databases according to the uniformed description items such as URLs, database description and biological species to promote circulation of the databases created in Japan. Toward our goal of covering all databases scattered within Japan, we already merged the four ministries' existing database lists into Integbio Database Catalog and also continue a survey to collect information of the databases financially supported by research funds in Japan. The content of Integbio Database Catalog is already available to users as CSV format under the Creative Commons CC0 license. Also, the CSV dataset is translated into RDF and currently exposed through a SPARQL endpoint. We participate in the discussion for the dataset description guidelines to refine the RDF dataset.</p>
 
-    <h4>8.9.3 identifiers.org</h4>
+    <h4>9.9.3 identifiers.org</h4>
 
     <p>Identifiers.org [<a href="#Identifiers.org">Identifiers.org</a>] is a system which provides resolvable and persistent URIs to identify data of interest to the life sciences. It relies upon an underlying Registry which provides detailed information on numerous resources which are crucial to scientific research. It includes details on resolving locations where records for a particular resource may be accessed, defines identifier patterns for each data provider, and reflects accessibility of data by recording the up time for individual resource. The content of the Registry is available as RDF, which is defined using DCAT. The use of such terminologies has been agreed upon by numerous communities, and enables standardised descriptions of such repositories and facilitates data sharing and processing between them.</p>
 
-    <h3 id="s8_10">8.10 Experimental Datasets Use Case</h3>
+    <h3 id="s8_10">9.10 Experimental Datasets Use Case</h3>
 
     <p>The description of the experimental workflows in a standard way is important to understand the datasets produced and to make them re-usable for further investigations or meta-analysis. The ISA infrastructure [ISAtools] provides a format and a set of tools to manipulate it, enabling collecting, curating, managing and re-using datasets in a standards-compliant way.</p>
 
@@ -1758,7 +1760,7 @@ be used in the Workflow description as input or output</p>
 
 
 
-    <h2 id="references">9 References</h2>
+    <h2 id="references">10 References</h2>
 
     <dl class="bib">
     <dt><a name="Bio2RDF" id="Bio2RDF">[Bio2RDF]</a></dt>
@@ -1850,9 +1852,9 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://www.wormbase.org">http://www.wormbase.org</a></cite></dd>
     </dl>
 
-    <h2 id="appendix">10 Appendix</h2>
+    <h2 id="appendix">11 Appendix</h2>
     
-    <h3 id="appendix_1">10.1 Complete Example of a Dataset Description</h3>
+    <h3 id="appendix_1">11.1 Complete Example of a Dataset Description</h3>
 
     <p>The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.</p>
 
