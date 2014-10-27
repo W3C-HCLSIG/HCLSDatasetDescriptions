@@ -230,13 +230,13 @@ pre {
 	</table>
     </div>
 
-    <p>The letter sequence "###" is used to denote a placeholder for a positive integer (&ge; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
+    <p>The character sequence "###" is used to denote a placeholder for a positive integer (&ge; 1) in examples. The integers that replace this surrogate are of type <a href="http://www.w3.org/TR/xmlschema11-2/#integer">xsd:integer</a>.</p>
 
-    <h2 id="functionalrequirements">4 Functional Requirement</h2>
+    <h2 id="functionalrequirements">4 Functional Requirements</h2>
 
     <p>In this section we describe a set of essential functionality that the dataset descriptions must provide.</p>
 
-    <h3 id="s4_1">4.1 Dataset Identification, Description, Licensing, and Provenance</h3>
+    <h3 id="s4_1">4.1 Dataset Identification, Description, Licensing and Provenance</h3>
 
     <p>High quality data descriptions are necessary to understand the nature and provenance of data including what the data is, the format the data is represented with, where the data can be retrieved from, what license is associated with the dataset, how it was generated, when it was generated, and who generated it. Importantly, such dataset descriptions should provide globally unique identifiers for specific versions and formats of datasets so that they may be used and referenced by others in downstream analyses.</p>
 
@@ -264,7 +264,7 @@ pre {
 
     <h2 id="datasetdescriptionlevels">5 Dataset Description Levels</h2>
 
-    <p>In this section, we describe the W3C HCLS recommendation for rich descriptions of datasets. There are three levels each covering a different type of resource describing the data:</p>
+    <p>In this section, we describe the W3C HCLS [<a href="#HCLS">HCLS</a>] recommendation for rich descriptions of datasets. There are three levels, each covering a different type of resource describing the data:</p>
 
     <ul>
     <li><strong>Summary Level</strong>: The summary level provides a description of a dataset that is independent of a specific version or format.</li>
@@ -301,7 +301,7 @@ pre {
     <tr>
         <td></td>
         <td>rdf:type</td>
-        <td>dctypes:Dataset (all levels) or for distribution-level dcat:Distribution or void:Dataset (for RDF)</td>
+        <td>dctypes:Dataset</td>
         <td>MUST</td>
         <td>MUST</td>
         <td>SHOULD</td>
