@@ -1459,7 +1459,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?p (COUNT(DISTINCT ?o) AS ?ocount) { ?s ?
 		void:property &lt;property-uri&gt; ;
 		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
-			void:entities "###"^^xsd:integer ;
+			void:distinctSubjects "###"^^xsd:integer ;
 		]
 	].
     </pre>
@@ -1476,7 +1476,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GRO
 		void:property &lt;property-uri&gt; ;
         void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:entities "###"^^xsd:integer]
+            void:distinctObjects "###"^^xsd:integer]
 	].
     </pre>
     <p>SPARQL query:</p>
@@ -1492,7 +1492,7 @@ SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GR
         void:property &lt;property-uri&gt; ;
         void-ext:objectClassPartition [
             void:class rdfs:Literal;
-            void:entities "###"^^xsd:integer
+            void:distinctObjects "###"^^xsd:integer
         ]
     ] .
     </pre>
@@ -1510,18 +1510,16 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
 		void:property &lt;property-uri&gt; ;
         void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
-			void:entities "###"^^xsd:integer ;
+			void:distinctSubjects "###"^^xsd:integer ;
 		];
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:entities "###"^^xsd:integer]
+            void:distinctObjects "###"^^xsd:integer]
 		]
 	] .
     </pre>
 
 
-	
-	
     <p>To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</p>
 
     <pre>
