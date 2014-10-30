@@ -1296,7 +1296,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <pre>
 :rdfdataset
-    void:triples "###"^^xsd:integer .
+	void:triples "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1309,7 +1309,7 @@ SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }
 
     <pre>
 :rdfdataset
-    void:entities "###"^^xsd:integer .
+	void:entities "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1322,7 +1322,7 @@ SELECT COUNT(distinct ?s) AS ?no { ?s a []  }
 
     <pre>
 :rdfdataset
-    void:distinctSubjects "###"^^xsd:integer .
+	void:distinctSubjects "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1335,7 +1335,7 @@ SELECT (COUNT(DISTINCT ?s ) AS ?no) {  ?s ?p ?o   }
 
     <pre>
 :rdfdataset
-    void:properties "###"^^xsd:integer .
+	void:properties "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1348,7 +1348,7 @@ SELECT count(distinct ?p) { ?s ?p ?o }
 
     <pre>
 :rdfdataset
-    void:distinctObjects "###"^^xsd:integer .
+	void:distinctObjects "###"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1363,10 +1363,10 @@ SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(!isLiteral(?o)) }
 
     <pre>
 :rdfdataset
-    void:classPartition [
-        void:class rdfs:Class ;
-        void:entities "###"^^xsd:integer
-    ] .
+	void:classPartition [
+		void:class rdfs:Class ;
+		void:distinctSubjects "###"^^xsd:integer
+	] .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1379,10 +1379,10 @@ SELECT DISTINCT ?type { ?s a ?type }
 
     <pre>
 :rdfdataset
-    void:classPartition [
-        void:class rdfs:Literal ;
-        void:entities "###"^^xsd:integer
-    ] .
+	void:classPartition [
+		void:class rdfs:Literal ;
+		void:distinctSubjects "###"^^xsd:integer
+	] .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1397,10 +1397,10 @@ SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(isLiteral(?o)) }
 
     <pre>
 :rdfdataset
-    void:classPartition [
-        void:class sd:Graph ;
-        void:entities "###"^^xsd:integer
-    ].
+	void:classPartition [
+		void:class sd:Graph ;
+		void:distinctSubjects "###"^^xsd:integer
+	].
     </pre>
 
     <p>SPARQL query:</p>
@@ -1417,10 +1417,10 @@ SELECT (COUNT(DISTINCT ?g ) AS ?no) { GRAPH ?g { ?s ?p ?o}}
 
     <pre>
 :rdfdataset
-    void:classPartition [
-        void:class &lt;class-uri&gt; ;
-        void:entities "###"^^xsd:integer
-    ] .
+	void:classPartition [
+		void:class &lt;class-uri&gt; ;
+		void:distinctSubjects "###"^^xsd:integer
+	] .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1433,10 +1433,10 @@ SELECT ?class (COUNT(?s) AS ?count) { ?s a ?class } GROUP BY ?class
 
     <pre>
 :rdfdataset
-    void:propertyPartition [
-        void:property &lt;property-uri&gt; ;
-        void:triples "###"^^xsd:integer
-    ] .
+	void:propertyPartition [
+		void:property &lt;property-uri&gt; ;
+		void:triples "###"^^xsd:integer
+	] .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1444,15 +1444,9 @@ SELECT ?class (COUNT(?s) AS ?count) { ?s a ?class } GROUP BY ?class
     <pre>
 SELECT  ?p (COUNT(?p) AS ?count ) { ?s ?p ?o } GROUP BY ?p
     </pre>
-
-    <p>SPARQL query:</p>
-
-    <pre>
-SELECT (COUNT(DISTINCT ?s) AS ?scount) ?p (COUNT(DISTINCT ?o) AS ?ocount) { ?s ?p ?o } GROUP BY ?p
-    </pre>
 	
 	
-<p>To specify the <strong>properties and the number of unique typed subjects linked to the property</strong>in the dataset:</p>
+	<p>To specify the <strong>properties and the number of unique typed subjects linked to the property</strong>in the dataset:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
