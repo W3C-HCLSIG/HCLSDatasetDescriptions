@@ -1473,9 +1473,9 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GRO
 :rdfdataset
 	void:propertyPartition [
 		void:property &lt;property-uri&gt; ;
-        void-ext:objectClassPartition [
+		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:distinctObjects "###"^^xsd:integer
+			void:distinctObjects "###"^^xsd:integer
 	]].
     </pre>
     <p>SPARQL query:</p>
@@ -1488,10 +1488,10 @@ SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GR
     <pre>
 :rdfdataset
 	void:propertyPartition [
-        void:property &lt;property-uri&gt; ;
-        void-ext:objectClassPartition [
-            void:class rdfs:Literal;
-            void:distinctObjects "###"^^xsd:integer
+		void:property &lt;property-uri&gt; ;
+		void-ext:objectClassPartition [
+			void:class rdfs:Literal;
+			void:distinctObjects "###"^^xsd:integer
 	]] .
     </pre>
     <p>SPARQL query:</p>
@@ -1506,13 +1506,13 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
 :rdfdataset
 	void:propertyPartition [
 		void:property &lt;property-uri&gt; ;
-        void:classPartition [
+		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
 			void:distinctSubjects "###"^^xsd:integer ;
 		];
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:distinctObjects "###"^^xsd:integer ;
+			void:distinctObjects "###"^^xsd:integer ;
 		];
 	] .
     </pre>
