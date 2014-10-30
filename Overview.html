@@ -1460,8 +1460,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?p (COUNT(DISTINCT ?o) AS ?ocount) { ?s ?
 		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
 			void:distinctSubjects "###"^^xsd:integer ;
-		]
-	].
+	]].
     </pre>
     <p>SPARQL query:</p>
     <pre>
@@ -1476,8 +1475,8 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GRO
 		void:property &lt;property-uri&gt; ;
         void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:distinctObjects "###"^^xsd:integer]
-	].
+            void:distinctObjects "###"^^xsd:integer
+	]].
     </pre>
     <p>SPARQL query:</p>
     <pre>
@@ -1493,8 +1492,7 @@ SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GR
         void-ext:objectClassPartition [
             void:class rdfs:Literal;
             void:distinctObjects "###"^^xsd:integer
-        ]
-    ] .
+	]] .
     </pre>
     <p>SPARQL query:</p>
     <pre>
@@ -1514,8 +1512,8 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
 		];
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
-            void:distinctObjects "###"^^xsd:integer]
-		]
+            void:distinctObjects "###"^^xsd:integer ;
+		];
 	] .
     </pre>
 
