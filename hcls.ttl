@@ -49,9 +49,57 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
 #TODO check :chembl17_rdf_molecule_dataset and :chembl17_rdf_target_dataset are defined
 
+###Version Level (Complete)
+:chembl17
+    rdf:type dctypes:Dataset;
+    dct:title "ChEMBL Version 17"@en ;
+    dct:alternative "ChEMBLdb17"@en ;
+    dct:description "ChEMBL17 is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
+    dct:created "2013-08"^^xsd:gYearMonth;
+    pav:createdOn "2013-08"^^xsd:gYearMonth;
+    pav:authoredOn "2013-07"^^xsd:gYearMonth;
+    pav:curatedOn "2013-07"^^xsd:gYearMonth;
+    dct:creator <https://www.ebi.ac.uk/chembl/> ;
+    dct:contributor :annaGaulton ;
+    pav:createdBy [foaf:name "Mark Davies"] ;
+    pav:authoredBy :annaGaulton ;
+    pav:curatedBy :annaGaulton ;
+    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
+    dct:publisher <http://www.ebi.ac.uk> ;
+    foaf:page <http://www.ebi.ac.uk/chembl/> ;
+    schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
+    dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
+    dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
+
+1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+
+If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+    dct:language <http://lexvo.org/id/iso639-3/en> ;
+    dcat:theme ncit:C48807 ;
+    dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
+    dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
+    cito:citesAsAuthority <http://nar.oxfordjournals.org/content/40/D1/D1100> ;
+    dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+    idot:preferredPrefix "chembl" ;
+    idot:alternatePrefix "chembldb" ;
+    idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+    pav:version "17"^^xsd:string, "17.0" ;
+    dct:isVersionOf :chembl ;
+    pav:previousVersion :chembl16 ;
+    dct:source :pubchem-bioassay-09-01-2014 ;
+    pav:retrievedFrom <http://example.com/madeUp/forExample> ;
+    pav:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    dcat:distribution :chembl17db, :chembl17rdf ;
+    dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
+    dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> ;
+.
+
+:annaGaulton foaf:name "Anna Gaulton" .
+
 #  :chembl
 # -    idot:accessPattern <http://bio2rdf.org/chembl>, <http://identifiers.org/chembl.compound/>, <http://linkedchemistry.info/chembl/chemblid>, <http://www.ebi.ac.uk/chembl/compound/inspect/> ;
 # -    idot:alternatePrefix "chembldb" ;
+#idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
 # -    idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
 # -    idot:preferredPrefix "chembl" ;
 # -    dct:accrualPeriodicity freq:quarterly ;
@@ -61,7 +109,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 #      dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
 # -    dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
 # -    dct:identifier "chembl"@en ;
-# -    dct:language <http://lexvo.org/id/iso639-3/en> ;
+# -
 # -    dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
 #      dct:publisher <http://www.ebi.ac.uk> ;
 # +    foaf:page <http://www.ebi.ac.uk/chembl/> ;
@@ -98,18 +146,6 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 # :chembl-compound
 #     void:inDataset :chembl17rdf .
 #
-# :chembl17
-#     idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
-#     dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
-#     dct:creator <https://www.ebi.ac.uk/chembl/> ;
-#     dct:isVersionOf :chembl ;
-#     dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
-#     pav:previousVersion :chembl16 ;
-#     pav:version "17"^^xsd:string, "17.0" ;
-#     a dctypes:Dataset ;
-#     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
-#     dcat:distribution :chembl17csv, :chembl17db, :chembl17rdf, :chembl17relational ;
-#     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> .
 #
 # :chembl17-1
 #     pav:previousVersion :chembl17 .
