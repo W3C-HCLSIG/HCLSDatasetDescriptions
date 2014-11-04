@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -996,7 +996,7 @@ pre {
     <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
 
     <pre>
-&lt;http://example.com&gt; dct:license [ rdfs:comment "License unknown.]
+&lt;http://example.com&gt; dct:license [ rdfs:comment "License unknown".]
     </pre>
 
     <p>The details of the license may be summarised in a rights statement.</p>
@@ -1720,10 +1720,9 @@ be used in the Workflow description as input or output</p>
 
     <h4>9.8.1 Open PHACTS</h4>
 
-    <p>Open PHACTS [<a href="#OpenPHACTS">OpenPHACTS</a>] is an open-source project to build a data integration platform for drug discovery data. The platform provides a domain specific API through which the integrated data can be retrieved. The platform is populated with open data sets including ChEMBL, UniProt, ChemSpider and Wikipathways. The data items within these datasets are related through VoID linksets [<a href="#VOID">VOID</a>]. The linksets are published as part of the delivery of the open platform.</p>
+    <p>Open PHACTS [<a href="#OpenPHACTS">OpenPHACTS</a>] is an open-source project to build a data integration platform for drug discovery data, called the Open PHACTS Discovery Platform [<a href="#Grayetal2014">Gray et al, 2014</a>]. The platform provides a domain specific API through which the integrated data can be retrieved. A key feature of the Open PHACTS Discovery Platform is that it provides provenance links back to the datasets that it has loaded, allowing the user to discover where each data point has come from. The platform is populated with open data sets including ChEMBL, UniProt, ChemSpider and Wikipathways. The data items within these datasets are related through VoID linksets [<a href="#VOID">VOID</a>]. The linksets are published as part of the delivery of the open platform.</p>
 
-    <p>The Open PHACTS platform is being further developed to rely on the VoID specification to drive the automated update of the integrated data from external providers. In particular, we would like to be able to rely on knowing when a dataset is updated and at what period it is updated to know when to download new information. Furthermore, we need to do know the type of dataset we are dealing with whether it is a linkset or dataset. Importantly, knowing the correct predicate to find where to download or obtain dumps of provider data is crucial. 
-    Finally, it's important for us to be able to correctly link back to data providers (i.e. provenance) to give credit. To do this correctly, we need to know both human readable and machine readable provenance links.</p>
+    <p>The Open PHACTS Discovery Platform aims to rely on the information in the dataset descriptions in order to enable the automatic loading of data. This requires information about the expected publication frequency of the datasets and details of the distribution files associated with a new release of a dataset, i.e. where the data can be obtained from. Once loaded, the Open PHACTS Discovery Platform computes links between the datasets. These linksets need to be published with adequate provenance information about how they were computed and upon which versions of datasets they are derived. Finally, it is important for us to be able to correctly link back to data providers to give credit and assure our users where our data has come from. To do this correctly, we need to know both human readable and machine readable provenance links to the specific files of the versions of the dataset that have been loaded.</p>
 
     <h4>9.8.2 EBI RDF Platform</h4>
 
@@ -1813,6 +1812,8 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://nar.oxfordjournals.org/content/early/2010/11/17/nar.gkq1173.abstract">"Towards BioDBCore: a community-defined information specification for biological databases". Nucleic Acids Research, Database Issue</a></cite></dd>
     <dt><a name="Gaultonetal2011" id="Gaultonetal2011">[Gaulton et al 2011]</a></dt>
     <dd><cite><a href="http://nar.oxfordjournals.org/content/40/D1/D1100">ChEMBL: a large-scale bioactivity database for drug discovery"" Nucleic Acids Research. Volume 40. Issue D1. Pages D1100-D1107. 2011.</a></cite></dd>
+    <dt><a name="Grayetal2014" id="Grayetal2014">[Gray et al 2014]</a></dt>
+    <dd><cite><a href="http://dx.doi.org/10.3233/SW-2012-0088">Applying linked data approaches to pharmacology: Architectural decisions and implementation. Semantic Web Journal. 5(2):101-113. 2014.</a></cite></dd>
     <dt><a name="GigaScience" id="GigaScience">[GigaScience]</a></dt>
     <dd><cite><a href="http://www.gigasciencejournal.com">GigaScience Journal</a></cite></dd>
     <dt><a name="HCLS" id="HCLS">[HCLS]</a></dt>
