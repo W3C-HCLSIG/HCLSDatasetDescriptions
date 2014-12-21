@@ -1698,7 +1698,12 @@ be used in the Workflow description as input or output</p>
 
     <h3 id="s8_7">9.7 Query Formulation Using Data Metrics</h3>
 
-    <p><a href="http://yasgui.org">YASGUI</a> is a query builder for SPARQL with a strong focus on usability. To assist the user in formulating queries, we provide autocompletion functionality as much as possible. Examples are prefix autocompletion using prefix.cc, and endpoint autocompletion using the CKAN-based datahub.io [<a href="#Datahub">Datahub</a>] and Sparqles. However, what users need is mostly autocompletion for resources. The current version of YASGUI supports property and class autocompletion (more info on the taken approach is described here: http://laurensrietveld.nl/yasgui/help.html#autocomplete). However, our approach can be quite expensive. Additionally, the number of suggestions per autocompletion might be quite large. Where the Bio2RDF metrics are particularly useful are: fetching the number of distinct predicates, as this a lot cheaper than executing a "distinct ?p {?s ?p ?o}" query. Additionally, using these metrics we should be able to rank these predicates more meaningfully, based on the combination of its frequency and how this particular predicate is used in the query (e.g. is the object in this triple pattern a URI or a literal).</p>
+    <p>YASGUI [<a href="#YASGUI">YASGUI</a>] is a query builder for SPARQL with a strong focus on usability. 
+    To assist the user in formulating queries, YASGUI provides prefix autocompletion autocompletion using prefix.cc [<a href="#prefixcc">Prefix.cc</a>], endpoint autocompletion using the CKAN-based datahub.io [<a href="#Datahub">Datahub</a>], and property/class autocompletion using the LOV [<a href="#LOV">LOV</a>] API 
+    However, none of these autocompletions are based on the users dataset where the query is written for.
+    What users need are autocompletions based on the target dataset, in a fast and scalable manner. 
+    However, querying the complete dataset for this information via SPARQL, can be expensive and slow. Additionally, the number of suggestions can be large. 
+    The dataset metrics enables fetching such autocompletions in a fast manner, supporting meaningful ranking of the suggestions as well (e.g. by how often a particular class co-occurs with the current predicate).</p>
 
     <h3 id="s8_8">9.8 Data Providers</h3>
 
@@ -1812,6 +1817,8 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://www.biocurator.org">http://www.biocurator.org</a></cite></dd>
     <dt><a name="Lexvo" id="LexvoPaper">[Lexvo]</a></dt>
     <dd><cite><a href="http://www.semantic-web-journal.net/content/lexvoorg-language-related-information-linguistic-linked-data-cloud-0">Gerard de Melo. Lexvo.org: Language-Related Information for the Linguistic Linked Data Cloud. Submitted to Semantic Web Journal.</a></cite></dd>
+    <dt><a name="LOV" id="LOV">[LOV]</a></dt>
+    <dd><cite><a href="http://lov.okfn.org/">Linked Open Vocabularies</a></cite></dd>
     <dt><a name="Metabolights" id="Metabolights">[Metabolights]</a></dt>
     <dd><cite><a href="http://www.ebi.ac.uk/metabolights/">http://www.ebi.ac.uk/metabolights/</a></cite></dd>
     <dt><a name="NIF" id="NIF">[NIF]</a></dt>
@@ -1827,6 +1834,8 @@ be used in the Workflow description as input or output</p>
     <dt><a name="PAV" id="PAV">[PAV]</a></dt>
     <dd><cite><a href="http://purl.org/pav">Paolo Ciccarese and Stian Soiland-Reyes. Provenance, authoring and versioning Ontology</a>.</cite></dd>
     <dd><cite>Ciccarese, P.; Soiland-Reyes, S.; Belhajjame, K.; Gray, A. J. G.; Goble, C. and Clark, T. PAV ontology: Provenance, Authoring and Versioning. In Journal of Biomedical Semantics, 2013.</cite></dd>
+    <dt><a name="prefixcc" id="prefixcc">[Prefix.cc]</a></dt>
+    <dd><cite><a href="http://prefix.cc">http://prefix.cc</a></cite></dd>
     <dt><a name="PROV" id="PROV">[PROV]</a></dt>
     <dd><cite><a href="http://www.w3.org/TR/prov-overview">http://www.w3.org/TR/prov-overview</a></cite></dd>
     <dt><a name="RDF" id="RDF">[RDF]</a></dt>
@@ -1849,6 +1858,8 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://www.wf4ever-project.org/">Belhajjame K, Corcho O, Garijo D, Zhao J, Missier P, Newman DR, Palma R,  Bechhofer S, Garcia-Cuesta E, Gómez-Pérez JM, Klyne G, Page K, Roos M, Ruiz JE, Soiland-Reyes S, Verdes-Montenegro L, De Roure D, Goble CA: Workflow-Centric Research Objects: A First Class Citizen in the Scholarly Discourse. In proceedings of the ESWC2012 Workshop on the Future of Scholarly Communication in the Semantic Web (SePublica2012), Heraklion, Greece, May 2012</a></cite></dd>
     <dt><a name="WormBase" id="WormBase">[WormBase]</a></dt>
     <dd><cite><a href="http://www.wormbase.org">http://www.wormbase.org</a></cite></dd>
+    <dt><a name="YASGUI" id="YASGUI">[YASGUI]</a></dt>
+    <dd><cite><a href="http://yasgui.org">http://yasgui.org</a></cite></dd>
     </dl>
 
     <h2 id="appendix">11 Appendix</h2>
