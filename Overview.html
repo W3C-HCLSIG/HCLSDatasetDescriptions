@@ -13,7 +13,7 @@ TODO list:
 * left-align "Description" field of RDF bundle table
 
 -->
-
+    <link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/base" />
     <style type="text/css">
   table {
     border-collapse:collapse;
@@ -61,10 +61,11 @@ pre {
   background-color: yellow;
   font-weight: bold;
 }
+  h5 { font-style: normal; text-decoration: underline;}
     </style>
     <!-- <link rel="stylesheet" type="text/css" href="local.css" /> -->
     <!-- link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/Note" / -->
-    <link rel="stylesheet" type="text/css" href="http://www.w3.org/StyleSheets/TR/base" />
+    
   </head>
 
   <body>
@@ -1290,9 +1291,9 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.6.1 Core statistics</h4>
 
-    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset.</p>
+    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset. We use <a href="http://www.w3.org/TR/void/">VoID</a> and <a href="http://ldf.fi/void-ext">extensions</a> as a vocabulary to specify the datasets statistics. Additional SPARQL queries can be found at <a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">VoID-impl</a> and <a href="https://gist.github.com/yayamamo/8052bd4620c1c58adff8">here</a>.</p>
 
-    <p>To specify the <strong>number of triples</strong> in the dataset:</p>
+    <h5>6.6.1.1 To specify the <strong>number of triples</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1302,10 +1303,12 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }
+SELECT (COUNT(*) AS ?triples) 
+FROM &lt;graphname&gt;
+{ ?s ?p ?o  }
     </pre>
 
-    <p>To specify the <strong>number of unique entities</strong> (an entity must have a URI) in the dataset:</p>
+    <h5>6.6.1.2 To specify the <strong>number of unique, typed entities</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1315,10 +1318,13 @@ SELECT (COUNT(*) AS ?no) { ?s ?p ?o  }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT COUNT(distinct ?s) AS ?no { ?s a []  }
+SELECT (COUNT(DISTINCT ?s) AS ?entities)
+FROM &lt;graphname&gt;
+{ ?s a []  }
     </pre>
 
-    <p>To specify the <strong>number of unique subjects</strong> in the dataset:</p>
+	
+    <h5>6.6.1.3 To specify the <strong>number of unique subjects</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1328,10 +1334,12 @@ SELECT COUNT(distinct ?s) AS ?no { ?s a []  }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?s ) AS ?no) {  ?s ?p ?o   }
+SELECT (COUNT(DISTINCT ?s ) AS ?distinctSubjects) 
+FROM &lt;graphname&gt;
+{  ?s ?p ?o   }
     </pre>
 
-    <p>To specify the <strong>number of unique properties</strong> in the dataset:</p>
+    <h5>6.6.1.4 To specify the <strong>number of unique properties</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1341,10 +1349,12 @@ SELECT (COUNT(DISTINCT ?s ) AS ?no) {  ?s ?p ?o   }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT count(distinct ?p) { ?s ?p ?o }
+SELECT (COUNT(DISTINCT ?p) AS ?distinctProperties)
+FROM &lt;graphname&gt;
+{ ?s ?p ?o }
     </pre>
 
-    <p>To specify the <strong>number of unique objects</strong> in the dataset:</p>
+    <h5>6.6.1.5 To specify the <strong>number of unique objects</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1354,12 +1364,12 @@ SELECT count(distinct ?p) { ?s ?p ?o }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(!isLiteral(?o)) }
+SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects) 
+FROM &lt;graphname&gt;
+{  ?s ?p ?o  FILTER(!isLiteral(?o)) }
     </pre>
 
-    <p>Information about dataset contents quantifies the number of unique classes and literals within the RDF representation.</p>
-
-    <p>To specify the <strong>number of unique classes</strong> in the dataset:</p>
+    <h5>6.6.1.6 To specify the <strong>number of unique classes</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1372,10 +1382,12 @@ SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(!isLiteral(?o)) }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT DISTINCT ?type { ?s a ?type }
+SELECT DISTINCT ?o AS ?distinctClasses
+FROM &lt;graphname&gt;
+{ ?s a ?o }
     </pre>
 
-    <p>To specify the <strong>number of unique literals</strong> in the dataset:</p>
+     <h5>6.6.1.7 To specify the <strong>number of unique literals</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1388,12 +1400,12 @@ SELECT DISTINCT ?type { ?s a ?type }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(isLiteral(?o)) }
+SELECT (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
+FROM &lt;graphname&gt;
+{  ?s ?p ?o  filter(isLiteral(?o)) }
     </pre>
 
-    <p>The number of RDF graphs denotes the number of sets of triples within the dataset.</p>
-
-    <p>To specify the <strong>number of graphs</strong> in the dataset:</p>
+    <h5>6.6.1.8 To specify the <strong>number of graphs</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1406,14 +1418,16 @@ SELECT (COUNT(DISTINCT ?o ) AS ?no) {  ?s ?p ?o  filter(isLiteral(?o)) }
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?g ) AS ?no) { GRAPH ?g { ?s ?p ?o}}
+SELECT (COUNT(DISTINCT ?g ) AS ?graphs) 
+{ GRAPH ?g { ?s ?p ?o }}
     </pre>
 
     <h4>6.6.2 Enhanced Statistics</h4>
 
-    <p>Enhanced statistics provide in-depth details that are not captured by basic statistics. These record the number of instances per class and multiple counts about properties. The enhanced statistics give an overview of the utilization of data within the dataset and to other datasets as linked data.</p>
+    <p>Enhanced statistics provide in-depth details that are not captured by basic statistics. These record the number of instances per class and multiple counts about properties. The enhanced statistics give an overview of the utilization of data within the dataset and to other datasets as linked data. We strongly recommend the inclusion of a human readable label (using rdfs:label) on an identified class or property .
+</p>
 
-    <p>To specify the <strong>classes and the number of their instances</strong> in the dataset:</p>
+   <h5>6.6.2.1 To specify the <strong>classes and the number of their instances</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1426,10 +1440,14 @@ SELECT (COUNT(DISTINCT ?g ) AS ?no) { GRAPH ?g { ?s ?p ?o}}
     <p>SPARQL query:</p>
 
     <pre>
-SELECT ?class (COUNT(?s) AS ?count) { ?s a ?class } GROUP BY ?class
+SELECT ?o (COUNT(DISTINCT ?s) AS ?distinctInstances) 
+FROM &lt;graphname&gt;
+{ ?s a ?o } 
+GROUP BY ?o
+ORDER BY DESC(?distinctInstances)
     </pre>
 
-    <p>To specify the <strong>properties and their frequency</strong> in the dataset:</p>
+    <h5>6.6.2.2 To specify the <strong>properties and their occurrence</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1442,15 +1460,19 @@ SELECT ?class (COUNT(?s) AS ?count) { ?s a ?class } GROUP BY ?class
     <p>SPARQL query:</p>
 
     <pre>
-SELECT  ?p (COUNT(?p) AS ?count ) { ?s ?p ?o } GROUP BY ?p
+SELECT ?p (COUNT(?p) AS ?triples) 
+FROM &lt;graphname&gt;
+{ ?s ?p ?o } 
+GROUP BY ?p
+ORDER BY DESC(?triples)
     </pre>
 	
-	
-	<p>To specify the <strong>properties and the number of unique typed subjects linked to the property</strong>in the dataset:</p>
+	<h5>6.6.2.3 To specify the <strong>property, the number of unique typed subjects, and number of triples linked to a property</strong> in the dataset:</h5>
     <pre>
 :rdfdataset
 	void:propertyPartition [
 		void:property &lt;property-uri&gt; ;
+		void:triples "###"^^xsd:integer ;
 		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
 			void:distinctSubjects "###"^^xsd:integer ;
@@ -1458,15 +1480,22 @@ SELECT  ?p (COUNT(?p) AS ?count ) { ?s ?p ?o } GROUP BY ?p
     </pre>
     <p>SPARQL query:</p>
     <pre>
-SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GROUP BY ?p ?stype
+SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples) 
+FROM &lt;graphname&gt;
+{ 
+ ?s ?p ?o . 
+ ?s a ?stype 
+} GROUP BY ?p ?stype
+ORDER BY ASC(?stype) ASC(?p)
     </pre>
 
 	
-	<p>To specify the <strong>properties and the number of unique typed objects linked to the property</strong> in the dataset:</p>
+	<h5>6.6.2.4 To specify the <strong>number of unique typed objects linked to a property</strong> in the dataset:</h5>
     <pre>
 :rdfdataset
 	void:propertyPartition [
 		void:property &lt;property-uri&gt; ;
+		void:triples "###"^^xsd:integer ;		
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
 			void:distinctObjects "###"^^xsd:integer
@@ -1474,15 +1503,21 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p  { ?s ?p ?o . ?s a ?stype } GRO
     </pre>
     <p>SPARQL query:</p>
     <pre>
-SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GROUP BY ?p ?otype
+SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount) 
+FROM &lt;graphname&gt;
+{ 
+ ?s ?p ?o . 
+ ?o a ?otype .
+} GROUP BY ?p ?otype
     </pre>
 
-    <p>To specify the <strong>properties and the number of unique literals</strong> in the dataset:</p>
+    <h5>6.6.2.5 To specify the <strong>triples and number of unique literals that are related to a property</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
 	void:propertyPartition [
 		void:property &lt;property-uri&gt; ;
+		void:triples "###"^^xsd:integer ;
 		void-ext:objectClassPartition [
 			void:class rdfs:Literal;
 			void:distinctObjects "###"^^xsd:integer
@@ -1490,11 +1525,16 @@ SELECT  ?p ?otype (COUNT(DISTINCT ?o ) AS ?ocount ) { ?s ?p ?o . ?o a ?otype} GR
     </pre>
     <p>SPARQL query:</p>
     <pre>
-SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
+SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
+FROM &lt;graphname&gt;
+{ 
+ ?s ?p ?o . 
+ FILTER (isLiteral(?o))
+} GROUP BY ?p 
     </pre>
 
 	
-    <p>To specify the number and list of <strong>unique subject types that are linked through a property to unique object types</strong> in the dataset:</p>
+    <h5>6.6.2.6 To specify the number of <strong>unique subject types that are linked to unique object types</strong> in the dataset:</h5>
 
     <pre>
 :rdfdataset
@@ -1510,9 +1550,20 @@ SELECT  ?p (COUNT(DISTINCT ?o ) AS ?count ) { ?s ?p ?o } GROUP BY ?p
 		];
 	] .
     </pre>
+    <p>SPARQL query:</p>
+    <pre>
+SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS ?ocount)  
+FROM &lt;graphname&gt;
+{ 
+ ?s ?p ?o . 
+ ?s a ?stype .
+ ?o a ?otype .
+} GROUP BY ?p ?stype ?otype
+    </pre>
 
+	
 
-    <p>To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</p>
+   <h5>6.6.2.7 To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</h5>
 
     <pre>
 :rdfdataset
