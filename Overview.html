@@ -226,6 +226,7 @@ pre {
 	<tr><td><code>rdfs:</code></td>			<td><code>http://www.w3.org/2000/01/rdf-schema#</code></td>	<td><a href="http://www.w3.org/TR/rdf-schema/">RDF Schema</a></td></tr>
 	<tr><td><code>schemaorg:</code></td>		<td><code>http://schema.org/</code></td>		<td><a href="http://schema.org/">schema.org vocabulary</a></td></tr>
 	<tr><td><code>sd:</code></td>			<td><code>http://www.w3.org/ns/sparql-service-description#</code></td>	<td><a href="http://www.w3.org/TR/sparql11-service-description/">SPARQL 1.1 Service Description</a></td></tr>
+	<tr><td><code>sio:</code></td>		<td><code>http://semanticscience.org/resource/</code></td>		<td><a href="http://sio.semanticscience.org/">Semanticscience Integrated Ontology (SIO)</a></td></tr>
 	<tr><td><code>xsd:</code></td>			<td><code>http://www.w3.org/2001/XMLSchema#</code></td>	<td><a href="http://www.w3.org/TR/xmlschema11-2/">XML Schema</a></td></tr>
 	<tr><td><code>void:</code></td>			<td><code>http://www.w3.org/TR/void/</code></td>	<td><a href="http://www.w3.org/TR/void/">Describing Linked Datasets with the VoID Vocabulary</a></td></tr>
 	<tr><td><code>void-ext:</code></td>			<td><code>http://ldf.fi/void-ext</code></td>	<td><a href="http://ldf.fi/void-ext">Extensions to the Vocabulary of Interlinked Datasets (VoID)</a></td></tr>
@@ -599,11 +600,11 @@ pre {
     </tr>
     <tr>
         <td></td>
-        <td>void:inDataset</td>
-        <td>IRI of a void:Dataset</td>
+        <td>sio:is-data-item-in</td>
+        <td>IRI of a Dataset</td>
         <td>MUST NOT</td>
         <td>MUST NOT</td>
-        <td>SHOULD</td>
+        <td>MAY</td>
     </tr>
     <tr>
         <td></td>
@@ -1185,11 +1186,11 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.4.3 Entity Provenance</h4>
 
-    <p>Provenance for each data item SHOULD be provided using the void:inDataset property. It SHOULD be used with distribution level descriptions of RDF distributions that are typed as void:Dataset, and MUST NOT be used for summary level descriptions or version level descriptions.</p>
+    <p>Provenance for each data item MAY be provided using the sio:is-data-item-in property. It MAY be used with distribution level descriptions of RDF distributions that are typed as void:Dataset, and MUST NOT be used for summary level descriptions or version level descriptions. In contrast, void:inDataset MAY be used to link an entity with a document that contains it.</p>
 
     <pre>
 :chembl-compound
-    void:inDataset :chembl17rdf .
+    sio:is-data-item-in :chembl17rdf .
     </pre>
 
     <h4>6.4.4 Change Frequency</h4>
@@ -2080,7 +2081,7 @@ and that the release number of ChEMBL is clearly displayed.""" .
     pav:createdWith :chembl-sql2rdf-exporter-v1 .
     
 :chembl-compound
-    void:inDataset :chembl17rdf .
+    sio:is-data-item-in :chembl17rdf .
     
 :chembl
     dct:accrualPeriodicity freq:quarterly .
