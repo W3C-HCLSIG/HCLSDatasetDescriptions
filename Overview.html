@@ -1293,7 +1293,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.6.1 Core statistics</h4>
 
-    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset. We use <a href="http://www.w3.org/TR/void/">VoID</a> and <a href="http://ldf.fi/void-ext">extensions</a> as a vocabulary to specify the datasets statistics. Additional SPARQL queries can be found at <a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">VoID-impl</a> and <a href="https://gist.github.com/yayamamo/8052bd4620c1c58adff8">here</a>.</p>
+    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset. We use <a href="http://www.w3.org/TR/void/">VoID</a> and <a href="http://ldf.fi/void-ext">extensions</a> as a vocabulary to specify the datasets statistics. Exemplar SPARQL queries are included, and must be modified by replacing &lt;graphname&gt; with the appropriate graph URI containing the dataset (otherwise remove to apply to all graphs). Additional SPARQL queries can be found at <a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">VoID-impl</a> and <a href="https://gist.github.com/yayamamo/8052bd4620c1c58adff8">here</a>.</p>
 
     <h5>6.6.1.1 To specify the <strong>number of triples</strong> in the dataset:</h5>
 
@@ -1426,7 +1426,7 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 
     <h4>6.6.2 Enhanced Statistics</h4>
 
-    <p>Enhanced statistics provide in-depth details that are not captured by basic statistics. These record the number of instances per class and multiple counts about properties. The enhanced statistics give an overview of the utilization of data within the dataset and to other datasets as linked data. We strongly recommend the inclusion of a human readable label (using rdfs:label) on an identified class or property .
+    <p>Enhanced statistics provide in-depth details that are not captured by basic statistics. These record the number of instances per class and multiple counts about properties. The enhanced statistics give an overview of the utilization of data within the dataset and to other datasets as linked data. We strongly recommend the inclusion of a human readable label (using rdfs:label) on an identified class or property.
 </p>
 
    <h5>6.6.2.1 To specify the <strong>classes and the number of their instances</strong> in the dataset:</h5>
