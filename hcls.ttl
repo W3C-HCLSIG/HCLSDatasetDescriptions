@@ -44,7 +44,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:hasCurrentVersion :chembl17 ;
     dct:accrualPeriodicity freq:quarterly;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb> ;
-    void:sparqlEndpoint <http://rdf.ebi.ac.uk/chembl/sparql>; ##TODO: Check URI of endpoint
+    void:sparqlEndpoint <https://www.ebi.ac.uk/rdf/services/chembl/sparql>;
 .
 
 #TODO check :chembl17_rdf_molecule_dataset and :chembl17_rdf_target_dataset are defined
