@@ -1297,7 +1297,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.6.1 Core statistics</h4>
 
-    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset. We use <a href="http://www.w3.org/TR/void/">VoID</a> and <a href="http://ldf.fi/void-ext">extensions</a> as a vocabulary to specify the datasets statistics. Exemplar SPARQL queries are included, and must be modified by replacing &lt;graphname&gt; with the appropriate graph URI containing the dataset (otherwise remove to apply to all graphs). Additional SPARQL queries can be found at <a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">VoID-impl</a> and <a href="https://gist.github.com/yayamamo/8052bd4620c1c58adff8">here</a>.</p>
+    <p>Core statistics provide basic information about datasets, such as the total number of triples in the dataset, number of unique entities (subject URIs), etc., as well as information about the number of unique classes, literals, and graphs in a dataset. We use <a href="http://www.w3.org/TR/void/">VoID</a> and <a href="http://ldf.fi/void-ext">extensions</a> as a vocabulary to specify the datasets statistics. Exemplar SPARQL queries are included. Additional SPARQL queries can be found at <a href="https://code.google.com/p/void-impl/wiki/SPARQLQueriesForStatistics">VoID-impl</a> and <a href="https://gist.github.com/yayamamo/8052bd4620c1c58adff8">here</a>.</p>
 
     <h5>6.6.1.1 To specify the <strong>number of triples</strong> in the dataset:</h5>
 
@@ -1310,7 +1310,6 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <pre>
 SELECT (COUNT(*) AS ?triples) 
-FROM &lt;graphname&gt;
 { ?s ?p ?o  }
     </pre>
 
@@ -1325,8 +1324,7 @@ FROM &lt;graphname&gt;
 
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?entities)
-FROM &lt;graphname&gt;
-{ ?s a []  }
+{ ?s a [] }
     </pre>
 
 	
@@ -1340,8 +1338,7 @@ FROM &lt;graphname&gt;
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?s ) AS ?distinctSubjects) 
-FROM &lt;graphname&gt;
+SELECT (COUNT(DISTINCT ?s) AS ?distinctSubjects) 
 {  ?s ?p ?o   }
     </pre>
 
@@ -1356,7 +1353,6 @@ FROM &lt;graphname&gt;
 
     <pre>
 SELECT (COUNT(DISTINCT ?p) AS ?distinctProperties)
-FROM &lt;graphname&gt;
 { ?s ?p ?o }
     </pre>
 
@@ -1371,7 +1367,6 @@ FROM &lt;graphname&gt;
 
     <pre>
 SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects) 
-FROM &lt;graphname&gt;
 {  ?s ?p ?o  FILTER(!isLiteral(?o)) }
     </pre>
 
@@ -1389,7 +1384,6 @@ FROM &lt;graphname&gt;
 
     <pre>
 SELECT DISTINCT ?o AS ?distinctClasses
-FROM &lt;graphname&gt;
 { ?s a ?o }
     </pre>
 
@@ -1407,7 +1401,6 @@ FROM &lt;graphname&gt;
 
     <pre>
 SELECT (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
-FROM &lt;graphname&gt;
 {  ?s ?p ?o  filter(isLiteral(?o)) }
     </pre>
 
@@ -1447,7 +1440,6 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 
     <pre>
 SELECT ?o (COUNT(DISTINCT ?s) AS ?distinctInstances) 
-FROM &lt;graphname&gt;
 { ?s a ?o } 
 GROUP BY ?o
 ORDER BY DESC(?distinctInstances)
@@ -1467,7 +1459,6 @@ ORDER BY DESC(?distinctInstances)
 
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) 
-FROM &lt;graphname&gt;
 { ?s ?p ?o } 
 GROUP BY ?p
 ORDER BY DESC(?triples)
@@ -1487,7 +1478,6 @@ ORDER BY DESC(?triples)
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples) 
-FROM &lt;graphname&gt;
 { 
  ?s ?p ?o . 
  ?s a ?stype 
@@ -1510,7 +1500,6 @@ ORDER BY ASC(?stype) ASC(?p)
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount) 
-FROM &lt;graphname&gt;
 { 
  ?s ?p ?o . 
  ?o a ?otype .
@@ -1532,7 +1521,6 @@ FROM &lt;graphname&gt;
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
-FROM &lt;graphname&gt;
 { 
  ?s ?p ?o . 
  FILTER (isLiteral(?o))
@@ -1559,7 +1547,6 @@ FROM &lt;graphname&gt;
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS ?ocount)  
-FROM &lt;graphname&gt;
 { 
  ?s ?p ?o . 
  ?s a ?stype .
