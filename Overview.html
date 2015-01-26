@@ -1383,7 +1383,7 @@ SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects)
     <p>SPARQL query:</p>
 
     <pre>
-SELECT DISTINCT ?o AS ?distinctClasses
+SELECT (COUNT(DISTINCT ?o) AS ?distinctClasses)
 { ?s a ?o }
     </pre>
 
