@@ -1442,7 +1442,6 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 SELECT ?o (COUNT(DISTINCT ?s) AS ?distinctInstances) 
 { ?s a ?o } 
 GROUP BY ?o
-ORDER BY DESC(?distinctInstances)
     </pre>
 
     <h5>6.6.2.2 To specify the <strong>properties and their occurrence</strong> in the dataset:</h5>
@@ -1461,7 +1460,6 @@ ORDER BY DESC(?distinctInstances)
 SELECT ?p (COUNT(?p) AS ?triples) 
 { ?s ?p ?o } 
 GROUP BY ?p
-ORDER BY DESC(?triples)
     </pre>
 	
 	<h5>6.6.2.3 To specify the <strong>property, the number of unique typed subjects, and number of triples linked to a property</strong> in the dataset:</h5>
@@ -1482,7 +1480,6 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples)
  ?s ?p ?o . 
  ?s a ?stype 
 } GROUP BY ?p ?stype
-ORDER BY ASC(?stype) ASC(?p)
     </pre>
 
 	
