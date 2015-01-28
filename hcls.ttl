@@ -88,7 +88,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:previousVersion :chembl16 ;
     dct:source :pubchem-bioassay-09-01-2014 ;
     pav:retrievedFrom <http://example.com/madeUp/forExample> ;
-    pav:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
     dcat:distribution :chembl17db, :chembl17rdf ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> ;
@@ -135,7 +135,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:previousVersion :chembl16db ;
     dct:source :pubchem-bioassay-09-01-2014 ;
     pav:retrievedFrom <http://example.com/madeUp/forExample> ;
-    pav:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
     pav:createdWith <http://example.com/madeUp/editor> ;
     dct:format "application/sql" ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
@@ -186,7 +186,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:previousVersion :chembl16rdf ;
     dct:source :pubchem-bioassay-09-01-2014 ;
     pav:retrievedFrom <http://example.com/madeUp/forExample> ;
-    pav:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
     pav:createdWith :chembl-sql2rdf-exporter-v1 ;
     dct:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/> ;
