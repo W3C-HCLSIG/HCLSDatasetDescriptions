@@ -42,7 +42,6 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
     idot:preferredPrefix "chembl" ;
     idot:alternatePrefix "chembldb" ;
-    idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
     pav:hasCurrentVersion :chembl17 ;
     dct:accrualPeriodicity freq:quarterly;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb> ;
