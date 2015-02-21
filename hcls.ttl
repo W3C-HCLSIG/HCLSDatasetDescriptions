@@ -189,6 +189,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
     cito:citesAsAuthority <http://nar.oxfordjournals.org/content/40/D1/D1100> ;
     void:subset :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+#Identifiers
     idot:preferredPrefix "chembl" ;
     idot:alternatePrefix "chembldb" ;
     idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
@@ -196,16 +197,20 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
     idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
     void:exampleResource <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
+#Provenance and Change
     pav:version "17"^^xsd:string, "17.0" ;
     pav:previousVersion :chembl16rdf ;
     dct:source :pubchem-bioassay-09-01-2014 ;
     pav:retrievedFrom <http://example.com/madeUp/forExample> ;
     prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
     pav:createdWith :chembl-sql2rdf-exporter-v1 ;
+#Availability/Distributions
     dct:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/> ;
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_release_notes.txt> ;
+    dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_molecule.ttl.gz>
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz> ;
+#Statistics
     void:triples 1492029 ;
     void:entities 982739 ;
     void:distinctSubjects 822920 ;
