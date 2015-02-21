@@ -82,15 +82,17 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:conformsTo <http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/> ;
     cito:citesAsAuthority <http://nar.oxfordjournals.org/content/40/D1/D1100> ;
     dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+#Identifiers
     idot:preferredPrefix "chembl" ;
     idot:alternatePrefix "chembldb" ;
-    idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+#Provenance and Change
     pav:version "17"^^xsd:string, "17.0" ;
     dct:isVersionOf :chembl ;
     pav:previousVersion :chembl16 ;
     dct:source :pubchem-bioassay-09-01-2014 ;
     pav:retrievedFrom <http://example.com/madeUp/forExample> ;
     prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+#Availability/Distributions
     dcat:distribution :chembl17db, :chembl17rdf ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt> ;
