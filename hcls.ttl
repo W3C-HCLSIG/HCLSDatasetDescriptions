@@ -40,15 +40,16 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
     cito:citesAsAuthority <http://nar.oxfordjournals.org/content/40/D1/D1100> ;
     dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+#Identifiers
     idot:preferredPrefix "chembl" ;
     idot:alternatePrefix "chembldb" ;
+#Provenance and Change
     pav:hasCurrentVersion :chembl17 ;
     dct:accrualPeriodicity freq:quarterly;
+#Availability/Distributions
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb> ;
     void:sparqlEndpoint <https://www.ebi.ac.uk/rdf/services/chembl/sparql>;
 .
-
-#TODO check :chembl17_rdf_molecule_dataset and :chembl17_rdf_target_dataset are defined
 
 ###Version Level (Complete)
 :chembl17
