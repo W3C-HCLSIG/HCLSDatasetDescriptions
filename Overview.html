@@ -600,7 +600,7 @@ pre {
     </tr>
     <tr>
         <td></td>
-        <td>sio:is-data-item-in</td>
+        <td>sio:has-data-item</td>
         <td>IRI of a Dataset</td>
         <td>MUST NOT</td>
         <td>MUST NOT</td>
@@ -1186,11 +1186,11 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.4.3 Entity Provenance</h4>
 
-    <p>Provenance for each data item MAY be provided using the sio:is-data-item-in property. It MAY be used with distribution level descriptions of RDF distributions that are typed as void:Dataset, and MUST NOT be used for summary level descriptions or version level descriptions. In contrast, void:inDataset MAY be used to link an entity with a document that contains it.</p>
+    <p>Provenance for each data item MAY be provided using the sio:has-data-item property. It MAY be used with distribution level descriptions of RDF distributions that are typed as void:Dataset, and MUST NOT be used for summary level descriptions or version level descriptions. In contrast, void:inDataset MAY be used to link an entity with a document that contains it.</p>
 
     <pre>
-:chembl-compound
-    sio:is-data-item-in :chembl17rdf .
+:chembl17rdf
+    sio:has-data-item :chembl-compound .
     </pre>
 
     <h4>6.4.4 Change Frequency</h4>
