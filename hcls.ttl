@@ -208,7 +208,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/> ;
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_release_notes.txt> ;
-    dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_molecule.ttl.gz>
+    dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_molecule.ttl.gz> ;
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz> ;
 #Statistics
     void:triples 1492029 ;
