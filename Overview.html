@@ -171,9 +171,10 @@ pre {
               <li class="tocline2"><a href="#s8_8">9.8 Data Providers</a></li>
               <li class="tocline2"><a href="#s8_9">9.9 Data Catalogs</a></li>
               <li class="tocline2"><a href="#s8_10">9.10 Experimental Datasets Use Case</a></li>
-          <li class="tocline1"><a href="#references">10 References</a> </li>
-          <li class="tocline1"><a href="#appendix">Appendix</a> </li>
-              <li class="tocline2"><a href="#appendix_1">11.1 Complete Example of a Dataset Description</a></li>
+          <li class="tocline1"><a href="#acknowledgements">10 Acknowledgements</a></li>
+          <li class="tocline1"><a href="#references">11 References</a></li>
+          <li class="tocline1"><a href="#appendix">12 Appendix</a></li>
+              <li class="tocline2"><a href="#appendix_1">12.1 Complete Example of a Dataset Description</a></li>
       </ul>
     </div>
 
@@ -408,7 +409,7 @@ pre {
         <td>dct:license</td>
         <td>IRI</td>
         <td>MAY</td>
-        <td>SHOULD</td>
+        <td>MUST</td>
         <td>MUST</td>
     </tr>
     <tr>
@@ -459,6 +460,7 @@ pre {
         <td>MAY</td>
         <td>SHOULD</td>
     </tr>
+<<<<<<< HEAD
 	    <tr>
         <td>References</td>
         <td>dct:references</td>
@@ -467,6 +469,8 @@ pre {
         <td>MAY</td>
         <td>MAY</td>
     </tr>
+=======
+>>>>>>> eec370c4ec939d24d366540409d3bca105dcdadb
     <tr>
         <td>Citations</td>
         <td>cito:citesAsAuthority</td>
@@ -958,7 +962,7 @@ pre {
     <h4>6.2.9 Licensing and Rights</h4>
 
 
-    <p>The license under which the data is published MAY be stated at the summary level, SHOULD be stated at the version level, and MUST be stated and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
+    <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
 
     <pre>
 &lt;http://example.com&gt; dct:license [ rdfs:comment "License unknown".]
@@ -986,7 +990,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.2.11 Literature Reference</h4>
 
-    <p>RDF datasets MAY include references to other supporting text using dct:references property. Provide a literature reference as a CiTO entry [<a href="#CiTO">CiTO</a>] using cito:citesAsAuthority property. For example, for the :chembl dataset the literature reference is [<a href="#Gaultonetal2011">Gaulton et al 2011</a>].</p>
+    <p>Provide a literature reference as a CiTO entry [<a href="#CiTO">CiTO</a>] using cito:citesAsAuthority property. For example, for the :chembl dataset the literature reference is [<a href="#Gaultonetal2011">Gaulton et al 2011</a>].</p>
     <p>CiTO provides a wide range of other properties for capturing other aspects of the relationship between the dataset description and the publication.</p>
 
     <pre>
@@ -1767,10 +1771,10 @@ be used in the Workflow description as input or output</p>
 
     <p>Within the ISA community, there are examples of public repositories such as EBI Metabolights [<a href="#Metabolights">Metabolights</a>] and data publication platforms such as Nature Publishing Group Scientific Data [<a href="#ScientificData">Scientific Data</a>] and BioMedCentral-BGI GigaScience GigaDB [<a href="#GigaScience">GigaScience</a>].</p>
     
-    <h2 id="acknowledgements">Acknowledgements</h2>
+    <h2 id="acknowledgements">10 Acknowledgements</h2>
     <p>Support for HCLS activities was provided by the World Wide Web Consortium (W3C). Some initial ideas were discussed in the HCLS BioRDF task force as well as at the BioHackathon 2011 in Kyoto. M. Scott Marshall was funded by the European Commission through the EURECA (FP7-ICT-2012-6-270253) project.</p>
 
-    <h2 id="references">10 References</h2>
+    <h2 id="references">11 References</h2>
 
     <dl class="bib">
     <dt><a name="Bio2RDF" id="Bio2RDF">[Bio2RDF]</a></dt>
@@ -1876,9 +1880,9 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://yasgui.org">http://yasgui.org</a></cite></dd>
     </dl>
 
-    <h2 id="appendix">11 Appendix</h2>
+    <h2 id="appendix">12 Appendix</h2>
     
-    <h3 id="appendix_1">11.1 Complete Example of a Dataset Description</h3>
+    <h3 id="appendix_1">12.1 Complete Example of a Dataset Description</h3>
 
     <p>The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.</p>
 
@@ -2034,8 +2038,8 @@ and that the release number of ChEMBL is clearly displayed.""" .
 :chembl17rdf
     pav:createdWith :chembl-sql2rdf-exporter-v1 .
     
-:chembl17rdf
-    sio:has-data-item &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; .
+:chembl-compound
+    sio:is-data-item-in :chembl17rdf .
     
 :chembl
     dct:accrualPeriodicity freq:quarterly .
