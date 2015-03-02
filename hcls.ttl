@@ -144,7 +144,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
     ###void:exampleResource does not make sense for a non-RDF resource
 #Provenance and Change
-    ###sio:is-data-item-in points from the data back to the dataset
+    ###sio:has-data-item-in not used for non-RDF resources
     pav:version "17"^^xsd:string, "17.0" ;
     pav:previousVersion :chembl16db ;
     dct:source :pubchem-bioassay-09-01-2014 ;
@@ -202,6 +202,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
     void:exampleResource <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
 #Provenance and Change
+    sio:has-data-item <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
     pav:version "17"^^xsd:string, "17.0" ;
     pav:previousVersion :chembl16rdf ;
     dct:source :pubchem-bioassay-09-01-2014 ;
