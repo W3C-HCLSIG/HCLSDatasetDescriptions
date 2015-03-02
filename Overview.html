@@ -409,7 +409,7 @@ pre {
         <td>dct:license</td>
         <td>IRI</td>
         <td>MAY</td>
-        <td>MUST</td>
+        <td>SHOULD</td>
         <td>MUST</td>
     </tr>
     <tr>
@@ -959,7 +959,7 @@ pre {
     <h4>6.2.9 Licensing and Rights</h4>
 
 
-    <p>The license under which the data is published MAY be stated at the summary level, but MUST be stated at the version and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
+    <p>The license under which the data is published MAY be stated at the summary level, SHOULD be stated at the version level, and MUST be stated and the distribution level. A dataset MAY have one or more licenses, although the provider should ensure that multiple licenses are consistent with each other. The object of the license predicate is the URI of the license. In cases where this is not know, but the dataset version and distribution are available, the following use of a blank node should be used to state that the license is unknown. Any details of a possible point of contact for the license can be given in the comment. We note that this modelling requires human intervention, but since the license is unknown this is appropriate.</p>
 
     <pre>
 &lt;http://example.com&gt; dct:license [ rdfs:comment "License unknown".]
