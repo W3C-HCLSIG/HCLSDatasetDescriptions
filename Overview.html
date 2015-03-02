@@ -1088,7 +1088,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
     </pre>
 
-    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; To specify that the access pattern is for the primary data provider, set idot:primarySource to true. The access pattern specifies the This can be specified for the most current version, a specific version, or a specific distribution.</p>
+    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; To specify that the access pattern is for the primary data provider, set idot:primarySource to true. This can be specified for the most current version, a specific version, or a specific distribution.</p>
 
     <pre>
 :chembl
@@ -1805,8 +1805,9 @@ be used in the Workflow description as input or output</p>
     <p>The community of users of the ISA metadata tracking framework is the ISA commons [ISAcommons]. It includes both life science (environmental and biomedical domains) researchers and industrial participants who adopted the ISA format and the ISA tools such as ISAconfigurator and ISAcreator for curation and data collection [ISA infrastructure], Risa for interface with R packages [Risa], BII for storage [ISA infrastructure].</p>
 
     <p>Within the ISA community, there are examples of public repositories such as EBI Metabolights [<a href="#Metabolights">Metabolights</a>] and data publication platforms such as Nature Publishing Group Scientific Data [<a href="#ScientificData">Scientific Data</a>] and BioMedCentral-BGI GigaScience GigaDB [<a href="#GigaScience">GigaScience</a>].</p>
-
-
+    
+    <h2 id="acknowledgements">Acknowledgements</h2>
+    <p>Support for HCLS activities was provided by the World Wide Web Consortium (W3C). Some initial ideas were discussed in the HCLS BioRDF task force as well as at the BioHackathon 2011 in Kyoto. M. Scott Marshall was funded by the European Commission through the EURECA (FP7-ICT-2012-6-270253) project.</p>
 
     <h2 id="references">10 References</h2>
 
