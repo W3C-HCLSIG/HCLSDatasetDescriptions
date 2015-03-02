@@ -27,7 +27,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
     dct:title "ChEMBL"@en ;
     dct:alternative "ChEMBLdb"@en ;
     dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
-    dct:publisher <http://www.ebi.ac.uk> ;
+    dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
     dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
@@ -51,6 +51,10 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     void:sparqlEndpoint <https://www.ebi.ac.uk/rdf/services/chembl/sparql>;
 .
 
+:ebi
+    foaf:page <https://www.ebi.ac.uk/chembl/> ;
+.
+
 ###Version Level (Complete)
 :chembl17
     rdf:type dctypes:Dataset;
@@ -61,13 +65,13 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdOn "2013-08"^^xsd:gYearMonth;
     pav:authoredOn "2013-07"^^xsd:gYearMonth;
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
-    dct:creator <https://www.ebi.ac.uk/chembl/> ;
+    dct:creator :ebi ;
     dct:contributor :annaGaulton ;
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
-    dct:publisher <http://www.ebi.ac.uk> ;
+    dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
     dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
@@ -110,13 +114,13 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdOn "2013-08"^^xsd:gYearMonth;
     pav:authoredOn "2013-07"^^xsd:gYearMonth;
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
-    dct:creator <https://www.ebi.ac.uk/chembl/> ;
+    dct:creator :ebi ;
     dct:contributor :annaGaulton ;
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
-    dct:publisher <http://www.ebi.ac.uk> ;
+    dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
     dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
@@ -167,13 +171,13 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdOn "2013-08"^^xsd:gYearMonth;
     pav:authoredOn "2013-07"^^xsd:gYearMonth;
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
-    dct:creator <https://www.ebi.ac.uk/chembl/> ;
+    dct:creator :ebi ;
     dct:contributor :annaGaulton ;
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
-    dct:publisher <http://www.ebi.ac.uk> ;
+    dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
     dct:license <http://creativecommons.org/licenses/by-sa/3.0/> ;
