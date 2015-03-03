@@ -210,6 +210,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
     void:exampleResource <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
 #Provenance and Change
+    #Only one data item given for the purpose of the example, all resources should be listed
     sio:has-data-item <http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25> ;
     pav:version "17"^^xsd:string, "17.0" ;
     pav:previousVersion :chembl16rdf ;
@@ -223,71 +224,47 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_release_notes.txt> ;
     dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17/chembl_17_molecule.ttl.gz> ;
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz> ;
-#Statistics
-    void:triples 1492029 ;
-    void:entities 982739 ;
-    void:distinctSubjects 822920 ;
-    void:properties 208 ;
-    void:distinctObjects 1209321 ;
-    sd:namedGraph :service ;
-    void:propertyPartition [
-        void:property <http://semanticscience.org/resource/SIO_000300> ;
-        void:triples 79
-    ] ;
+#Statistics: Note that numbers are taken from Bio2RDF release 3
+    void:triples 409942525 ;
+    void:entities 50061452 ;
+    void:distinctSubjects 50062405 ;
+    void:properties 141 ;
+    void:distinctObjects 50128234 ;
+    #Number of unique classes
     void:classPartition [
         void:class rdfs:Class ;
-        void:entities 291
-    ], [
+        void:distinctSubjects 110
+    ] ;
+    #Number of unique literals
+    void:classPartition [
         void:class rdfs:Literal ;
-        void:entities 782032
-    ], [
+        void:distinctSubjects 58067345
+    ] ;
+    #Number of graphs
+    void:classPartition [
         void:class sd:Graph ;
-        void:entities 3
-    ], [
-        void:class <http://linkedchemistry.info/chembl/assay/a93337> ;
-        void:entities 14
+        void:distinctSubjects 8
     ] ;
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate <http://semanticscience.org/resource/SIO_000300> ;
-        void:subjectsTarget [
-            void:class <http://linkedchemistry.info/chembl/chemblid/CHEMBL702808/chemblid> ;
-            void:entities 88102
-        ] ;
-        void:objectsTarget [
-            void:class <http://rdf.farmbio.uu.se/chembl/onto/#Assay> ;
-            void:entities 2819
-        ]
-    ], [
-        a void:LinkSet ;
-        void:linkPredicate <http://semanticscience.org/resource/SIO_000300> ;
-        void:objectsTarget <http://linkedchemistry.info/chembl/resource/r13299> ;
-        void:subjectsTarget <http://linkedchemistry.info/chembl/assay/a93337> ;
-        void:triples 281902
-    ], [
-        a void:LinkSet ;
-        void:linkPredicate <http://semanticscience.org/resource/SIO_000300> ;
-        void:objectsTarget [
-            void:class rdfs:Class ;
-            void:entities 68
-        ]
-    ], [
-        a void:LinkSet ;
-        void:linkPredicate <http://semanticscience.org/resource/SIO_000300> ;
-        void:objectsTarget [
-            void:class rdfs:Literal ;
-            void:entities 288
+#Enhanced Statistics:
+##Only give one example for each of the following
+##Numbers are taken from bio2rdf release 3
+    #Classes and the number of their instances
+    void:classPartition [
+        void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
+        void:distinctSubjects 12419715
+    ] ;
+    #Properties and their occurrence
+    void:propertyPartition [
+        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasActivity> ;
+        void:triples 37259145
+    ] ;
+    #Property, the number of unique typed subjects, and number of triples linked to the property
+    void:propertyPartition [
+        void:property
+        void:triples
+        void:classPartition [
+            void:class <> ;
+            void:entities
         ]
     ] ;
-.
-
-:service
-    a sd:Service ;
-    sd:defaultDatasetDescription [
-        a sd:Dataset ;
-        sd:defaultGraph [
-            dct:source :chembl17rdf ;
-            a sd:Graph
-        ]
-    ]
 .
