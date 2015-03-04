@@ -902,21 +902,21 @@ pre {
 
     <h4>6.2.5 Authorship, Creation, Curation</h4>
 
-    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers. However, </p>
+    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers.  </p>
 
     <pre>
 :chembl17
     dct:creator [ foaf:page &lt;https://www.ebi.ac.uk/chembl/&gt; ] .
 
-:chembl_target_targetcmpt_linkset 
+:chembl17
     pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
     </pre>
-    
+
     <p>If it is not possible to use an existing IRI then a string can be included using the following construct:</p>
     <pre>
 :chembl17
     dct:creator [
-        foaf:name "John Smith"
+        foaf:name "Anna Gaulton"
     ] .
     </pre>
 
@@ -929,16 +929,18 @@ pre {
     </ul>
 
     <pre>
-:chembl_target_targetcmpt_linkset 
-    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+:chembl17
+    pav:authoredBy [
+        foaf:name "Anna Gaulton"
+    ] .
     </pre>
-    
+
     <h4>6.2.6 Publisher</h4>
 
     <p>A link to the entity – viz the person, organisation, or service – responsible for publishing the dataset.</p>
 
     <pre>
-:chembl 
+:chembl
     dct:publisher &lt;http://www.ebi.ac.uk&gt; .
     </pre>
 

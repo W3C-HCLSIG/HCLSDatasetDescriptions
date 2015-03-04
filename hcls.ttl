@@ -69,7 +69,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
     dct:creator :ebi ;
     dct:contributor :annaGaulton ;
-    pav:createdBy [foaf:name "Mark Davies"] ;
+    pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29"^^xsd:date ;
@@ -120,7 +120,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
     dct:creator :ebi ;
     dct:contributor :annaGaulton ;
-    pav:createdBy [foaf:name "Mark Davies"] ;
+    pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29"^^xsd:date ;
@@ -179,7 +179,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:curatedOn "2013-07"^^xsd:gYearMonth;
     dct:creator :ebi ;
     dct:contributor :annaGaulton ;
-    pav:createdBy [foaf:name "Mark Davies"] ;
+    pav:createdBy <http://orcid.org/0000-0002-8011-0300> ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
     dct:issued "2013-08-29"^^xsd:date ;
