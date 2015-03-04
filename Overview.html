@@ -845,11 +845,14 @@ pre {
     <p>It is a good general practice that data represented using Semantic Web technologies be typed as an instance of some class of entities. All summary and version level descriptions are typed as dctypes:Dataset. The distribution level description can also be typed as dctypes:Dataset but needs to be additionally typed as a dcat:Distribution. RDF formatted datasets are typed as an instance of a void:Dataset.</p>
 
     <pre>
-:chembl 
+:chembl
     rdf:type dctypes:Dataset .
-    
+
+:chembl17
+    rdf:type dctypes:Dataset.
+
 :chembl17rdf
-    rdf:type void:Dataset .
+    rdf:type dctypes:Dataset, dcat:Distribution, void:Dataset .
     </pre>
 
     <h4>6.2.2 Title</h4>
