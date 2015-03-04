@@ -36,7 +36,7 @@ PREFIX void-ext: <http://ldf.fi/void-ext#>
 1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
 If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
-    dcat:theme ncit:C48807 ;
+    dcat:theme ncit:C48807 ; #chemical
     dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
     dct:references <http://dx.doi.org/10.1093/bioinformatics/btt765> ;
     rdfs:seeAlso <http://en.wikipedia.org/wiki/ChEMBL> ;
