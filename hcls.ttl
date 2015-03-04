@@ -72,7 +72,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
-    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
+    dct:issued "2013-08-29"^^xsd:date ;
     dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
@@ -123,7 +123,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
-    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
+    dct:issued "2013-08-29"^^xsd:date ;
     dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
@@ -182,7 +182,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:createdBy [foaf:name "Mark Davies"] ;
     pav:authoredBy :annaGaulton ;
     pav:curatedBy :annaGaulton ;
-    dct:issued "2013-08-29T00:00:00"^^xsd:dateTime ;
+    dct:issued "2013-08-29"^^xsd:date ;
     dct:publisher :ebi ;
     foaf:page <http://www.ebi.ac.uk/chembl/> ;
     schemaorg:logo <http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif> ;
