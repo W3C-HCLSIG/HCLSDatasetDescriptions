@@ -941,8 +941,10 @@ pre {
 
     <pre>
 :chembl
-    dct:publisher &lt;http://www.ebi.ac.uk&gt; .
+    dct:publisher [ foaf:page &lt;http://www.ebi.ac.uk&gt; ] .
     </pre>
+
+    <p>Note that there is not a URI for the EBI. To avoid confusion between the organisation and their webpage we make use of a blank node.</p>
 
     <h4>6.2.7 Webpage and Logo</h4>
 
@@ -950,7 +952,7 @@ pre {
     <p>A link to an image file containing the logo for the dataset should be provided using the schemaorg:logo property [<a href="#SCHEMAORG">SCHEMA.ORG</a>]. The property foaf:logo must not be used since it is an inverse-function property.</p>
 
     <pre>
-:chembl 
+:chembl
     foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
     schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
     </pre>
