@@ -1205,14 +1205,14 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 :chembl17
     dcat:distribution :chembl17rdf, :chembl17db .
 
-:chembl17rdf 
-    a dctypes:Dataset, void:Dataset ;
+:chembl17rdf
+    a dctypes:Dataset, dcat:Distribution, void:Dataset ;
     dct:format "text/turtle" ;
     dct:format &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
     dct:format "application/gzip" .
 
 :chembl17db
-    a dctypes:Dataset ;
+    a dctypes:Dataset, dcat:Distribution ;
     dct:format "application/sql" .
     </pre>
 
