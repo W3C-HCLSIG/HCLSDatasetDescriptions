@@ -1482,7 +1482,7 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 </p>
 
    <h5>6.6.2.1 To specify the <strong>classes and the number of their instances</strong> in the dataset:</h5>
-
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:classPartition [
@@ -1509,7 +1509,7 @@ GROUP BY ?o
     </pre>
 
     <h5>6.6.2.2 To specify the <strong>properties and their occurrence</strong> in the dataset:</h5>
-
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1536,6 +1536,7 @@ GROUP BY ?p
     </pre>
 	
 	<h5>6.6.2.3 To specify the <strong>property, the number of unique typed subjects, and number of triples linked to a property</strong> in the dataset:</h5>
+	<p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1570,6 +1571,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples)
 
 	
 	<h5>6.6.2.4 To specify the <strong>number of unique typed objects linked to a property</strong> in the dataset:</h5>
+	<p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1604,6 +1606,8 @@ SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount)
     </pre>
 
     <h5>6.6.2.5 To specify the <strong>triples and number of unique literals that are related to a property</strong> in the dataset:</h5>
+    
+    <p>Pattern:</p>
 
     <pre>
 :rdfdataset
@@ -1640,6 +1644,8 @@ SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 
 	
     <h5>6.6.2.6 To specify the number of <strong>unique subject types that are linked to unique object types</strong> in the dataset:</h5>
+    
+    <p>Pattern:</p>
 
     <pre>
 :rdfdataset
@@ -1685,6 +1691,8 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS 
 	
 
    <h5>6.6.2.7 To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</h5>
+   
+   <p>Pattern:</p>
 
     <pre>
 :rdfdataset
