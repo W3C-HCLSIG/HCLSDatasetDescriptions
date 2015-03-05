@@ -230,7 +230,7 @@ pre {
 	<tr><td><code>sio:</code></td>		<td><code>http://semanticscience.org/resource/</code></td>		<td><a href="http://sio.semanticscience.org/">Semanticscience Integrated Ontology (SIO)</a></td></tr>
 	<tr><td><code>xsd:</code></td>			<td><code>http://www.w3.org/2001/XMLSchema#</code></td>	<td><a href="http://www.w3.org/TR/xmlschema11-2/">XML Schema</a></td></tr>
 	<tr><td><code>void:</code></td>			<td><code>http://www.w3.org/TR/void/</code></td>	<td><a href="http://www.w3.org/TR/void/">Describing Linked Datasets with the VoID Vocabulary</a></td></tr>
-	<tr><td><code>void-ext:</code></td>			<td><code>http://ldf.fi/void-ext</code></td>	<td><a href="http://ldf.fi/void-ext">Extensions to the Vocabulary of Interlinked Datasets (VoID)</a></td></tr>
+	<tr><td><code>void-ext:</code></td>			<td><code>http://ldf.fi/void-ext#</code></td>	<td><a href="http://ldf.fi/void-ext">Extensions to the Vocabulary of Interlinked Datasets (VoID)</a></td></tr>
 
 	</table>
     </div>
@@ -803,12 +803,11 @@ pre {
     dct:isVersionOf :chembl;
     pav:version "17.0";
     dcat:distribution :chembl17rdf, 
-    	:chembl17relational, :chembl17csv .
+    	:chembl17db .
 
 # Distribution Level Descriptions
 :chembl17rdf a dcat:Distribution, void:Dataset .
-:chembl17relational a dcat:Distribution .
-:chembl17csv a dcat:Distribution .
+:chembl17db a dcat:Distribution .
     </pre>
     
     <p>We note that we do not expect data sources to generate descriptions for all previously published versions of a dataset due to the effort this would require, e.g. ChEBI has published over 100 versions.</p>
@@ -842,11 +841,14 @@ pre {
     <p>It is a good general practice that data represented using Semantic Web technologies be typed as an instance of some class of entities. All summary and version level descriptions are typed as dctypes:Dataset. The distribution level description can also be typed as dctypes:Dataset but needs to be additionally typed as a dcat:Distribution. RDF formatted datasets are typed as an instance of a void:Dataset.</p>
 
     <pre>
-:chembl 
+:chembl
     rdf:type dctypes:Dataset .
-    
+
+:chembl17
+    rdf:type dctypes:Dataset.
+
 :chembl17rdf
-    rdf:type void:Dataset .
+    rdf:type dctypes:Dataset, dcat:Distribution, void:Dataset .
     </pre>
 
     <h4>6.2.2 Title</h4>
@@ -879,33 +881,38 @@ pre {
     <p>Since some datasets only provide information about when they are made public, it is recommended that at least one of the creation or issued dates MUST be provided. Both MAY be provided. For versioned or distribution dataset descriptions, state the date the dataset was generated using dct:created and/or the date the dataset was made public using dct:issued. For instance, to specify that the chembl17 dataset (see <a href="#s6_2">Section 6.2</a>, <a href="#s6_3">6.3</a>, <a href="#s6_4">6.4</a> and <a href="#s6_5">6.5</a> for more details about :chembl17 declaration) was issued on 29 August 2013.</p>
 
     <pre>
-:chembl17 
+:chembl17
     dct:issued "2013-08-29"^^xsd:date .
     </pre>
-    
-    <p>As the time that the dataset was published is unknown, these are set to the beginning of the time period. If only the month and year had been known, the value would have been given as "2013-08-01T00:00:00". Where the time is known, the timezone should be provided.</p>
-    
+
     <p>To state when a dataset (i.e. at the abstract level) was originally created, a version level description representing the first version should be provided which states the orginal creation date of the dataset.</p>
 
     <p>Note that other more specific properties, e.g. the date the dataset was authored or curated, MAY be given in addition using terms from the PAV ontology [<a href="#PAV">PAV</a>].</p>
 
+    <pre>
+:chembl17
+    pav:createdOn "2013-08"^^xsd:gYearMonth;
+    pav:authoredOn "2013-07"^^xsd:gYearMonth;
+    pav:curatedOn "2013-07"^^xsd:gYearMonth;
+    </pre>
+
     <h4>6.2.5 Authorship, Creation, Curation</h4>
 
-    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers. However, </p>
+    <p>Details of the individual or organisation responsible for creating a dataset MUST be provided using the dct:creator property. The value should be an IRI for the individual or organisation that can be resolved for more details. We recommend the use of ORCID ID [<a href="#ORCID">ORCID</a>] for researchers.  </p>
 
     <pre>
 :chembl17
     dct:creator [ foaf:page &lt;https://www.ebi.ac.uk/chembl/&gt; ] .
 
-:chembl_target_targetcmpt_linkset 
+:chembl17
     pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
     </pre>
-    
+
     <p>If it is not possible to use an existing IRI then a string can be included using the following construct:</p>
     <pre>
 :chembl17
     dct:creator [
-        foaf:name "John Smith"
+        foaf:name "Anna Gaulton"
     ] .
     </pre>
 
@@ -918,18 +925,22 @@ pre {
     </ul>
 
     <pre>
-:chembl_target_targetcmpt_linkset 
-    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+:chembl17
+    pav:authoredBy [
+        foaf:name "Anna Gaulton"
+    ] .
     </pre>
-    
+
     <h4>6.2.6 Publisher</h4>
 
     <p>A link to the entity – viz the person, organisation, or service – responsible for publishing the dataset.</p>
 
     <pre>
-:chembl 
-    dct:publisher &lt;http://www.ebi.ac.uk&gt; .
+:chembl
+    dct:publisher [ foaf:page &lt;http://www.ebi.ac.uk&gt; ] .
     </pre>
+
+    <p>Note that there is not a URI for the EBI. To avoid confusion between the organisation and their webpage we make use of a blank node.</p>
 
     <h4>6.2.7 Webpage and Logo</h4>
 
@@ -937,7 +948,7 @@ pre {
     <p>A link to an image file containing the logo for the dataset should be provided using the schemaorg:logo property [<a href="#SCHEMAORG">SCHEMA.ORG</a>]. The property foaf:logo must not be used since it is an inverse-function property.</p>
 
     <pre>
-:chembl 
+:chembl
     foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
     schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
     </pre>
@@ -966,8 +977,9 @@ pre {
     </pre>
 
     <p>The details of the license may be summarised in a rights statement.</p>
-    
-    <pre>:chembl
+
+    <pre>
+:chembl17
     dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; .
     dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL.  For publications using ChEMBL data, the primary current citation is:
 
@@ -981,15 +993,15 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     <p>Declare the languages the data is published in using dct:language and values taken from the Lexvo.org Ontology [<a href="#Lexvo">Lexvo</a>].</p>
 
     <pre>
-:chembl
-    dct:language &lt;http://lexvo.org/id/iso639-3/en&gt; .
+:chembl17
+    dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; .
     </pre>
 
     <h4>6.2.11 References</h4>
 
     <p>Supporting material including web pages and documents MAY be added using the dct:references property. We recommend the use of CiTO [<a href="#CiTO">CiTO</a>]'s cito:citesAsAuthority property to specifically link to publications about the dataset. CiTO also provides a wide range of other properties for capturing other aspects of the relationship between the dataset description and the publication. For example, for the :chembl dataset the literature reference is [<a href="#Gaultonetal2011">Gaulton et al 2011</a>].</p>
 	<p>Other related materials MAY be added using rdfs:seeAlso. For instance, we can include a reference to the ChEMBL Wikipedia page.</p>
-    
+
 
     <pre>
 :chembl
@@ -1008,7 +1020,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.2.13 Conformance</h4>
 
-    <p>Indicate that the dataset conforms to a particular format or standard using the dct:conformsTo property, which MUST NOT be represented at the summary level, MAY be represented at the version, and SHOULD be represented at the distribution level. For example, the follow states that the ChEMBL description conforms to this specification.</p>
+    <p>Indicate that the dataset conforms to a particular format or standard using the dct:conformsTo property, which MUST NOT be represented at the summary level, MAY be represented at the version, and SHOULD be represented at the distribution level. For example, the follow states that the ChEMBL version 17 description conforms to this specification.</p>
 
     <pre>
 :chembl17
@@ -1055,7 +1067,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; To specify that the access pattern is for the primary data provider, set idot:primarySource to true. This can be specified for the most current version, a specific version, or a specific distribution.</p>
 
     <pre>
-:chembl
+:chembl17rdf
     idot:accessPattern
         &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
         &lt;http://identifiers.org/chembl.compound/&gt; ,
@@ -1084,14 +1096,14 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h4>6.3.3 Example Identifier and Resource</h4>
 
-    <p>An example identifier SHOULD be provided using the idot:exampleIdentifier for any level descriptions.</p>
+    <p>An example identifier SHOULD be provided using the idot:exampleIdentifier for distribution level descriptions.</p>
 
     <pre>
-:chembl17rdf
+:chembl17db
     idot:exampleIdentifier "CHEMBL25"^^xsd:string .
     </pre>
 
-    <p>An example resource SHOULD be provided using the void:exampleResource property for any level description.</p>
+    <p>An example resource SHOULD be provided using the void:exampleResource property for distribution level description of RDF datasets.</p>
 
     <pre>
 :chembl17rdf
@@ -1189,14 +1201,14 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 :chembl17
     dcat:distribution :chembl17rdf, :chembl17db .
 
-:chembl17rdf 
-    a dctypes:Dataset, void:Dataset ;
+:chembl17rdf
+    a dctypes:Dataset, dcat:Distribution, void:Dataset ;
     dct:format "text/turtle" ;
     dct:format &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
     dct:format "application/gzip" .
 
 :chembl17db
-    a dctypes:Dataset ;
+    a dctypes:Dataset, dcat:Distribution ;
     dct:format "application/sql" .
     </pre>
 
@@ -1214,12 +1226,15 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; .
 
 # Distribution level declaration
-:chembl17sql
+:chembl17db
+    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; ;
     dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
     dcat:byteSize "861443887"^^xsd:decimal .
 
 :chembl17rdf
-    void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz&gt; .
+    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/&gt; ;
+    dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz&gt; ;
+    void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz&gt; .
     </pre>
 
     <h4>6.5.3 Query Endpoint</h4>
@@ -1246,6 +1261,11 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <p>We recommend that the void:sparqlEndpoint SHOULD be used at the summary level. However, we recommend that this property SHOULD NOT be used at the version and/or distribution level, unless there is a commitment to specifically provide that content in the specified endpoint.</p>
 
+    <pre>
+:chembl
+    void:sparqlEndpoint &lt;https://www.ebi.ac.uk/rdf/services/chembl/sparql&gt; .
+    </pre>
+
     <h4>6.5.4 Dataset Documentation</h4>
 
     <p>Details of documentation associated with a dataset – either for the dataset itself or a web service through which it is made available – can be given using the dcat:landingPage predicate.</p>
@@ -1257,7 +1277,9 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h3 id="s6_6">6.6 Statistics</h3>
 
-    <p>Dataset statistics offer one means by which to understand the contents of the dataset and their relation to other datasets. Below we provide recommendations for the capture of dataset statistics for RDF formatted files using the VoID vocabulary. These statistics can be computed on an RDF dataset using the provided SPARQL queries [<a href="#VOID-SPARQL">VOID-SPARQL</a>]. The results of the SPARQL queries can be added to the description of the RDF-formatted dataset.</p>
+    <p>Dataset statistics offer one means by which to understand the contents of the dataset and their relation to other datasets. Below we provide recommendations for the capture of dataset statistics for RDF formatted files using the VoID vocabulary. These statistics can be computed on an RDF dataset using the provided SPARQL queries [<a href="#VOID-SPARQL">VOID-SPARQL</a>]. The results of the SPARQL queries can be added to the description of the RDF-formatted dataset. The pattern and one specific example instance are given.</p>
+
+
 
     <h4>6.6.1 Core statistics</h4>
 
@@ -1265,23 +1287,37 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
 
     <h5>6.6.1.1 To specify the <strong>number of triples</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:triples "###"^^xsd:integer .
     </pre>
 
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:triples "409942525"^^xsd:integer .
+    </pre>
+
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(*) AS ?triples) 
+SELECT (COUNT(*) AS ?triples)
 { ?s ?p ?o  }
     </pre>
 
     <h5>6.6.1.2 To specify the <strong>number of unique, typed entities</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:entities "###"^^xsd:integer .
+    </pre>
+
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:entities "50061452"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1291,26 +1327,40 @@ SELECT (COUNT(DISTINCT ?s) AS ?entities)
 { ?s a [] }
     </pre>
 
-	
+
     <h5>6.6.1.3 To specify the <strong>number of unique subjects</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:distinctSubjects "###"^^xsd:integer .
     </pre>
 
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:distinctSubjects "50062405"^^xsd:integer .
+    </pre>
+
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?s) AS ?distinctSubjects) 
+SELECT (COUNT(DISTINCT ?s) AS ?distinctSubjects)
 {  ?s ?p ?o   }
     </pre>
 
     <h5>6.6.1.4 To specify the <strong>number of unique properties</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:properties "###"^^xsd:integer .
+    </pre>
+
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:properties "141"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1322,26 +1372,43 @@ SELECT (COUNT(DISTINCT ?p) AS ?distinctProperties)
 
     <h5>6.6.1.5 To specify the <strong>number of unique objects</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:distinctObjects "###"^^xsd:integer .
     </pre>
 
+    <p>Example:</p>
+    <pre>
+chembl17rdf
+  void:distinctObjects "50128234"^^xsd:integer .
+    </pre>
+
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects) 
+SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects)
 {  ?s ?p ?o  FILTER(!isLiteral(?o)) }
     </pre>
 
     <h5>6.6.1.6 To specify the <strong>number of unique classes</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:classPartition [
 		void:class rdfs:Class ;
 		void:distinctSubjects "###"^^xsd:integer
 	] .
+    </pre>
+
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:classPartition [
+    void:class rdfs:Class ;
+    void:distinctSubjects "110"^^xsd:integer
+  ] .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1353,6 +1420,7 @@ SELECT (COUNT(DISTINCT ?o) AS ?distinctClasses)
 
      <h5>6.6.1.7 To specify the <strong>number of unique literals</strong> in the dataset:</h5>
 
+     <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:classPartition [
@@ -1361,27 +1429,46 @@ SELECT (COUNT(DISTINCT ?o) AS ?distinctClasses)
 	] .
     </pre>
 
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:classPartition [
+    void:class rdfs:Literal ;
+    void:distinctSubjects "58067345"^^xsd:integer
+  ] .
+    </pre>
+
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
+SELECT (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 {  ?s ?p ?o  filter(isLiteral(?o)) }
     </pre>
 
     <h5>6.6.1.8 To specify the <strong>number of graphs</strong> in the dataset:</h5>
 
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:classPartition [
 		void:class sd:Graph ;
 		void:distinctSubjects "###"^^xsd:integer
-	].
+	] .
+    </pre>
+
+    <p>Example:</p>
+    <pre>
+:chembl17rdf
+  void:classPartition [
+    void:class sd:Graph ;
+    void:distinctSubjects "8"^^xsd:integer
+  ] .
     </pre>
 
     <p>SPARQL query:</p>
 
     <pre>
-SELECT (COUNT(DISTINCT ?g ) AS ?graphs) 
+SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 { GRAPH ?g { ?s ?p ?o }}
     </pre>
 
@@ -1391,7 +1478,7 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 </p>
 
    <h5>6.6.2.1 To specify the <strong>classes and the number of their instances</strong> in the dataset:</h5>
-
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:classPartition [
@@ -1400,6 +1487,15 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 	] .
     </pre>
 
+	    <p>Example:</p>
+    <pre>
+:chembl17rdf
+      void:classPartition [
+        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:distinctSubjects "12419715"^^xsd:integer
+      ] ;	  
+    </pre>
+	
     <p>SPARQL query:</p>
 
     <pre>
@@ -1409,7 +1505,7 @@ GROUP BY ?o
     </pre>
 
     <h5>6.6.2.2 To specify the <strong>properties and their occurrence</strong> in the dataset:</h5>
-
+    <p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1418,6 +1514,15 @@ GROUP BY ?o
 	] .
     </pre>
 
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer
+      ] ; 
+    </pre>
+	
     <p>SPARQL query:</p>
 
     <pre>
@@ -1427,6 +1532,7 @@ GROUP BY ?p
     </pre>
 	
 	<h5>6.6.2.3 To specify the <strong>property, the number of unique typed subjects, and number of triples linked to a property</strong> in the dataset:</h5>
+	<p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1435,8 +1541,21 @@ GROUP BY ?p
 		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
 			void:distinctSubjects "###"^^xsd:integer ;
-	]].
+	]] .
     </pre>
+	
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctSubjects "12419715"^^xsd:integer ;
+    ]] .  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples) 
@@ -1448,6 +1567,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples)
 
 	
 	<h5>6.6.2.4 To specify the <strong>number of unique typed objects linked to a property</strong> in the dataset:</h5>
+	<p>Pattern:</p>
     <pre>
 :rdfdataset
 	void:propertyPartition [
@@ -1456,8 +1576,22 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples)
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
 			void:distinctObjects "###"^^xsd:integer
-	]].
+	]] .
     </pre>
+	
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer ;		
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctObjects "12419715"^^xsd:integer
+    ]] .
+  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount) 
@@ -1468,6 +1602,8 @@ SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount)
     </pre>
 
     <h5>6.6.2.5 To specify the <strong>triples and number of unique literals that are related to a property</strong> in the dataset:</h5>
+    
+    <p>Pattern:</p>
 
     <pre>
 :rdfdataset
@@ -1479,6 +1615,20 @@ SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount)
 			void:distinctObjects "###"^^xsd:integer
 	]] .
     </pre>
+
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:triples "1360455"^^xsd:integer ;
+        void-ext:objectClassPartition [
+          void:class rdfs:Literal;
+          void:distinctObjects "1359785"^^xsd:integer
+    ]] .
+  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
@@ -1490,6 +1640,8 @@ SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 
 	
     <h5>6.6.2.6 To specify the number of <strong>unique subject types that are linked to unique object types</strong> in the dataset:</h5>
+    
+    <p>Pattern:</p>
 
     <pre>
 :rdfdataset
@@ -1505,6 +1657,23 @@ SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 		];
 	] .
     </pre>
+
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:distinctSubjects "12419715"^^xsd:integer ;
+        ];
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:distinctObjects "1042288"^^xsd:integer ;
+    ]] . 
+    </pre>
+
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS ?ocount)  
@@ -1518,6 +1687,8 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS 
 	
 
    <h5>6.6.2.7 To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</h5>
+   
+   <p>Pattern:</p>
 
     <pre>
 :rdfdataset
@@ -1529,6 +1700,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS 
         void:triples "###"^^xsd:integer
     ] .
     </pre>
+
 
   <h2 id="usageNotes">7 Using Dataset Descriptions</h2>
     <h3 id="s7n_1">7.1 Workflows</h3>
@@ -1880,304 +2052,320 @@ be used in the Workflow description as input or output</p>
     </dl>
 
     <h2 id="appendix">12 Appendix</h2>
-    
+
     <h3 id="appendix_1">12.1 Complete Example of a Dataset Description</h3>
 
     <p>The following example summarizes the presented dataset description recommendations. Numerical placeholders have been replaced by example values.</p>
 
 <pre>
-@prefix : &lt;http://w3.org/hclsdatasetdescriptionsexample&gt; .
-@prefix cito: &lt;http://purl.org/spar/cito/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix dctypes: &lt;http://purl.org/dc/dcmitype/&gt; .
-@prefix dct: &lt;http://purl.org/dc/terms/&gt; .
-@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix freq: &lt;http://purl.org/cld/freq/&gt; .
-@prefix idot: &lt;http://identifiers.org/idot/&gt; .
-@prefix lexvo: &lt;http://lexvo.org/ontology#&gt; .
-@prefix ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt; .
-@prefix pav: &lt;http://purl.org/pav/&gt; .
-@prefix prov: &lt;http://www.w3.org/ns/prov#&gt; .
-@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix schemaorg: &lt;http://schema.org/&gt; .
-@prefix sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt; .
-@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix void: &lt;http://www.w3.org/TR/void/&gt; .
+  BASE &lt;http://rdf.ebi.ac.uk/chembl/&gt;
+  PREFIX : &lt;http://rdf.ebi.ac.uk/chembl/&gt;
+  PREFIX ncit: &lt;http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#&gt;
 
-# Summary Level Description
-:chembl a dctypes:Dataset .
+  PREFIX cito: &lt;http://purl.org/spar/cito/&gt;
+  PREFIX dcat: &lt;http://www.w3.org/ns/dcat#&gt;
+  PREFIX dctypes: &lt;http://purl.org/dc/dcmitype/&gt;
+  PREFIX dct: &lt;http://purl.org/dc/terms/&gt;
+  PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+  PREFIX freq: &lt;http://purl.org/cld/freq/&gt;
+  PREFIX idot: &lt;http://identifiers.org/idot/&gt;
+  PREFIX lexvo: &lt;http://lexvo.org/ontology#&gt;
+  PREFIX pav: &lt;http://purl.org/pav/&gt;
+  PREFIX prov: &lt;http://www.w3.org/ns/prov#&gt;
+  PREFIX rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+  PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+  PREFIX schemaorg: &lt;http://schema.org/&gt;
+  PREFIX sd: &lt;http://www.w3.org/ns/sparql-service-description#&gt;
+  PREFIX sio: &lt;http://semanticscience.org/resource/&gt;
+  PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+  PREFIX void: &lt;http://rdfs.org/ns/void/&gt;
+  PREFIX void-ext: &lt;http://ldf.fi/void-ext#&gt;
 
-# Version Level Description
-:chembl17 a dctypes:Dataset ;
-    dct:isVersionOf :chembl;
-    pav:version "17.0";
-    dcat:distribution :chembl17rdf, 
-      :chembl17relational, :chembl17csv .
+  ###Summary Level (Complete)
+  :chembl
+      rdf:type dctypes:Dataset;
+      dct:title "ChEMBL"@en ;
+      dct:alternative "ChEMBLdb"@en ;
+      dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
+      dct:publisher :ebi ;
+      foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+      schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
 
-# Distribution Level Descriptions
-:chembl17rdf a dcat:Distribution, void:Dataset .
-:chembl17relational a dcat:Distribution .
-:chembl17csv a dcat:Distribution .
-    
-:chembl 
-    rdf:type dctypes:Dataset .
-    
-:chembl
-       dct:title "ChEMBL"@en ;
-       dct:alternative "ChEMBLdb"@en ;
-       dct:identifier "chembl"@en .
-    
-:chembl 
-    dct:description "ChEMBL is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en .
-    
-:chembl17 
-    dct:issued "2013-08-29"^^xsd:date .
-    
-:chembl17
-    dct:creator &lt;https://www.ebi.ac.uk/chembl/&gt; .
+  1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-:chembl_target_targetcmpt_linkset 
-    pav:authoredBy &lt;http://orcid.org/0000-0002-8011-0300&gt; .
-    
-:chembl 
-    dct:publisher &lt;http://www.ebi.ac.uk&gt; .
-    
-:chembl 
-    foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
-    schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; .
-    
-:chembl 
-    dcat:theme ncit:C48807 ; # chemical
-    dcat:keyword "chemical"^^xsd:string, "assay"^^xsd:string .
-    
-:chembl
-    dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-    dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. 
-Under the -BY clause, we request attribution for subsequent use of ChEMBL.  
-For publications using ChEMBL data, the primary current citation is: 
+  If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+      dcat:theme ncit:C48807 ; #chemical
+      dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
+      dct:references &lt;http://dx.doi.org/10.1093/bioinformatics/btt765&gt; ;
+      rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/ChEMBL&gt; ;
+      cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; ;
+      dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+  #Identifiers
+      idot:preferredPrefix "chembl" ;
+      idot:alternatePrefix "chembldb" ;
+  #Provenance and Change
+      pav:hasCurrentVersion :chembl17 ;
+      dct:accrualPeriodicity freq:quarterly;
+  #Availability/Distributions
+      dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb&gt; ;
+      void:sparqlEndpoint &lt;https://www.ebi.ac.uk/rdf/services/chembl/sparql&gt;;
+  .
 
-1.  A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, &amp; J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+  :ebi
+      foaf:page &lt;https://www.ebi.ac.uk/chembl/&gt; ;
+  .
 
-If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, 
-and that the release number of ChEMBL is clearly displayed.""" .
-    
-:chembl
-    dct:language &lt;http://lexvo.org/id/iso639-3/en&gt; .
-    
-:chembl
-    cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; .
-    
-:chembl 
-    void:vocabulary &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt;, &lt;http://purl.org/dc/terms/&gt; .
-    
-:chembl17
-    dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; .
-    
-:chembl 
-    dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset .
-    
-:chembl
-    idot:preferredPrefix "chembl" ;
-    idot:alternatePrefix "chembldb" .
-    
-:chembl17
-    idot:identifierPattern "CHEMBL\\d+"^^xsd:string .
-    
-:chembl17rdf
-    void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
-    
-:chembl
-    idot:accessPattern
-        &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
-        &lt;http://identifiers.org/chembl.compound/&gt; ,
-        &lt;http://bio2rdf.org/chembl&gt; ,
-        &lt;http://linkedchemistry.info/chembl/chemblid&gt; .
+  ###Version Level (Complete)
+  :chembl17
+      rdf:type dctypes:Dataset;
+      dct:title "ChEMBL Version 17"@en ;
+      dct:alternative "ChEMBLdb17"@en ;
+      dct:description "ChEMBL17 is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
+      dct:created "2013-08"^^xsd:gYearMonth;
+      pav:createdOn "2013-08"^^xsd:gYearMonth;
+      pav:authoredOn "2013-07"^^xsd:gYearMonth;
+      pav:curatedOn "2013-07"^^xsd:gYearMonth;
+      dct:creator :ebi ;
+      dct:contributor :annaGaulton ;
+      pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+      pav:authoredBy :annaGaulton ;
+      pav:curatedBy :annaGaulton ;
+      dct:issued "2013-08-29"^^xsd:date ;
+      dct:publisher :ebi ;
+      foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+      schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
 
-&lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
-    idot:primarySource true ;
-    dct:format "text/html" ;
-    dct:publisher "http://www.ebi.ac.uk" ;
-    a idot:AccessPattern .
+  1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-&lt;http://identifiers.org/chembl.compound/&gt;
-    dct:format "text/html" ;
-    a idot:AccessPattern .
+  If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+      dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; ;
+      dcat:theme ncit:C48807 ;
+      dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
+      dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; ;
+      dct:references &lt;http://dx.doi.org/10.1093/bioinformatics/btt765&gt; ;
+      rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/ChEMBL&gt; ;
+      cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; ;
+      dct:hasPart :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+  #Identifiers
+      idot:preferredPrefix "chembl" ;
+      idot:alternatePrefix "chembldb" ;
+  #Provenance and Change
+      pav:version "17"^^xsd:string, "17.0" ;
+      dct:isVersionOf :chembl ;
+      pav:previousVersion :chembl16 ;
+      dct:source :pubchem-bioassay-09-01-2014 ;
+      pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+      prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 ;
+  #Availability/Distributions
+      dcat:distribution :chembl17db, :chembl17rdf ;
+      dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; ;
+      dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt&gt; ;
+  .
 
-&lt;http://bio2rdf.org/chembl&gt;
-    dct:format "application/rdf+xml" ;
-    dct:publisher "http://bio2rdf.org" ;
-    a idot:AccessPattern .
+  :annaGaulton foaf:name "Anna Gaulton" .
 
-&lt;http://linkedchemistry.info/chembl/chemblid&gt;
-    dct:format "application/rdf+xml" ;
-    a idot:AccessPattern .
-    
-:chembl
-    idot:exampleIdentifier "CHEMBL25"^^xsd:string .
-    
-:chembl17rdf
-    void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; .
-    
-:chembl17 
-    dct:isVersionOf :chembl .
-    
-:chembl17
-    pav:version "17"^^xsd:string .
-    
-:chembl17
-    pav:previousVersion :chembl16 .
-    
-:chembl
-    pav:hasCurrentVersion :chembl17 .
-    
-:chembl
-    dct:source :pubchem-bioassay-09-01-2014 .
-    
-:chembl17rdf
-    pav:createdWith :chembl-sql2rdf-exporter-v1 .
-    
-:chembl-compound
-    sio:is-data-item-in :chembl17rdf .
-    
-:chembl
-    dct:accrualPeriodicity freq:quarterly .
-    
-:chembl17-1
-    pav:previousVersion :chembl17 .
-    
-:chembl17
-    dcat:distribution :chembl17rdf, :chembl17db .
+  ###Distribution (non-RDF) description (Complete)
+  :chembl17db
+      a dctypes:Dataset, dcat:Distribution ;
+      dct:title "ChEMBL Version 17 Database Distribution"@en ;
+      dct:alternative "ChEMBLdb17db"@en ;
+      dct:description "ChEMBL17 database distribution is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
+      dct:created "2013-08"^^xsd:gYearMonth;
+      pav:createdOn "2013-08"^^xsd:gYearMonth;
+      pav:authoredOn "2013-07"^^xsd:gYearMonth;
+      pav:curatedOn "2013-07"^^xsd:gYearMonth;
+      dct:creator :ebi ;
+      dct:contributor :annaGaulton ;
+      pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+      pav:authoredBy :annaGaulton ;
+      pav:curatedBy :annaGaulton ;
+      dct:issued "2013-08-29"^^xsd:date ;
+      dct:publisher :ebi ;
+      foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+      schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
 
-:chembl17rdf 
-    a dctypes:Dataset, void:Dataset ;
-    dct:format "text/turtle" ;
-    dct:format &lt;http://www.w3.org/ns/formats/Turtle&gt; ;
-    dct:format "application/gzip" .
+  1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-:chembl17db
-    a dctypes:Dataset ;
-    dct:format "application/sql" .
-    
-:chembl
-    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb&gt; .
+  If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+      dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; ;
+      dcat:theme ncit:C48807 ;
+      dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
+      ##Vocabulary does not make sense for a non-RDF dataset
+      dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; ;
+      dct:references &lt;http://dx.doi.org/10.1093/bioinformatics/btt765&gt; ;
+      rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/ChEMBL&gt; ;
+      cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; ;
+  #Identifiers
+      idot:preferredPrefix "chembl" ;
+      idot:alternatePrefix "chembldb" ;
+      idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
+      ###void:uriRegexPattern does not make sense for a non-RDF resource
+      idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+      idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
+      ###void:exampleResource does not make sense for a non-RDF resource
+  #Provenance and Change
+      ###sio:has-data-item-in not used for non-RDF resources
+      pav:version "17"^^xsd:string, "17.0" ;
+      pav:previousVersion :chembl16db ;
+      dct:source :pubchem-bioassay-09-01-2014 ;
+      pav:retrievedFrom &lt;http://example.com/madeUp/forExample&gt; ;
+      prov:wasDerivedFrom &lt;http://example.com/madeUp/forExample&gt; ;
+      pav:createdWith &lt;http://example.com/madeUp/editor&gt; ;
+  #Availability/Distributions
+      dct:format "application/sql" ;
+      dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; ;
+      dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt&gt; ;
+      dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
+      dcat:byteSize "861443887"^^xsd:decimal ;
+      ###void:dataDump does not make sense for a non-RDF resource
+  #Statistics
+      ### Current definitions do not make sense for a non-RDF resource
+  .
 
-:chembl17
-    dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/&gt; .
+  ###RDF Distribution description (Complete)
+  :chembl17rdf
+      a dctypes:Dataset, dcat:Distribution, void:Dataset ;
+      dct:title "ChEMBL Version 17 RDF Distribution"@en ;
+      dct:alternative "ChEMBLdb17rdf"@en ;
+      dct:description "ChEMBL17 RDF distribution is a database of bioactive compounds, their quantitative properties and bioactivities (binding constants, pharmacology and ADMET, etc). The data is abstracted and curated from the primary scientific literature."@en ;
+      dct:created "2013-08"^^xsd:gYearMonth;
+      pav:createdOn "2013-08"^^xsd:gYearMonth;
+      pav:authoredOn "2013-07"^^xsd:gYearMonth;
+      pav:curatedOn "2013-07"^^xsd:gYearMonth;
+      dct:creator :ebi ;
+      dct:contributor :annaGaulton ;
+      pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+      pav:authoredBy :annaGaulton ;
+      pav:curatedBy :annaGaulton ;
+      dct:issued "2013-08-29"^^xsd:date ;
+      dct:publisher :ebi ;
+      foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+      schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
+      dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+      dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
 
-:chembl17sql
-    dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_mysql.tar.gz&gt; ;
-    dcat:byteSize "861443887"^^xsd:decimal .
+  1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-:chembl17rdf
-    void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17/chembl_17_molecule.ttl.gz&gt; .
+  If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+      dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; ;
+      dcat:theme ncit:C48807 ;
+      dcat:keyword "assay"^^xsd:string, "chemical"^^xsd:string ;
+      void:vocabulary &lt;http://purl.org/dc/terms/&gt;, &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt; ;
+      dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; ;
+      dct:references &lt;http://dx.doi.org/10.1093/bioinformatics/btt765&gt; ;
+      rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/ChEMBL&gt; ;
+      cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; ;
+      void:subset :chembl17_rdf_molecule_dataset, :chembl17_rdf_target_dataset ;
+  #Identifiers
+      idot:preferredPrefix "chembl" ;
+      idot:alternatePrefix "chembldb" ;
+      idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
+      void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
+      idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+      idot:exampleIdentifier "CHEMBL25"^^xsd:string ;
+      void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; ;
+  #Provenance and Change
+      #Only one data item given for the purpose of the example, all resources should be listed
+      sio:has-data-item &lt;http://rdf.ebi.ac.uk/resource/chembl/compound/CHEMBL25&gt; ;
+      pav:version "17"^^xsd:string, "17.0" ;
+      pav:previousVersion :chembl16rdf ;
+      dct:source :pubchem-bioassay-09-01-2014 ;
+      pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+      prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 ;
+      pav:createdWith :chembl-sql2rdf-exporter-v1 ;
+  #Availability/Distributions
+      dct:format &lt;http://www.w3.org/ns/formats/Turtle&gt;, "application/gzip", "text/turtle" ;
+      dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/&gt; ;
+      dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt&gt; ;
+      dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz&gt; ;
+      void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz&gt; ;
+  #Statistics: Note that numbers are taken from Bio2RDF release 3
+      void:triples "409942525"^^xsd:integer ;
+      void:entities "50061452"^^xsd:integer ;
+      void:distinctSubjects "50062405"^^xsd:integer ;
+      void:properties "141"^^xsd:integer ;
+      void:distinctObjects "50128234"^^xsd:integer ;
+      #Number of unique classes
+      void:classPartition [
+          void:class rdfs:Class ;
+          void:distinctSubjects "110"^^xsd:integer
+      ] ;
+      #Number of unique literals
+      void:classPartition [
+          void:class rdfs:Literal ;
+          void:distinctSubjects "58067345"^^xsd:integer
+      ] ;
+      #Number of graphs
+      void:classPartition [
+          void:class sd:Graph ;
+          void:distinctSubjects "8"^^xsd:integer
+      ] ;
+  #Enhanced Statistics
+      #Class and number of instances
+      void:classPartition [
+        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:distinctSubjects "12419715"^^xsd:integer
+      ] ;
+	  
+      # Property and number of triples
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer
+      ] ;
+	  
+      # Property, triples, and number of unique subjects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctSubjects "12419715"^^xsd:integer ;
+      ]] ;
+	  
+      # Property, triples, and number of unique objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer ;		
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctObjects "12419715"^^xsd:integer
+      ]] ;
+	   
+      # Property, triples, and number of unique literals
+      void:propertyPartition [
+        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:triples "1360455"^^xsd:integer ;
+        void-ext:objectClassPartition [
+          void:class rdfs:Literal;
+          void:distinctObjects "1359785"^^xsd:integer
+      ]] ;
+	
+      # Property, triples, and number of unique subjects and objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:distinctSubjects "12419715"^^xsd:integer ;
+        ];
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:distinctObjects "1042288"^^xsd:integer ;
+      ]] .
     
-:service
-    a sd:Service ;
-    sd:defaultDatasetDescription [
-        a sd:Dataset ;
-        sd:defaultGraph [
-            a sd:Graph ;
-            dct:source :chembl17rdf ;
-        ] ;
-    ] .
-    
-:chembl17
-    dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/chembl_17_release_notes.txt&gt; .
-    
-:rdfdataset
-    void:triples "1492029"^^xsd:integer .
-    
-:rdfdataset
-    void:entities "982739"^^xsd:integer .
-    
-:rdfdataset
-    void:distinctSubjects "822920"^^xsd:integer .
-    
-:rdfdataset
-    void:properties "208"^^xsd:integer .
-    
-:rdfdataset
-    void:distinctObjects "1209321"^^xsd:integer .
-    
-:rdfdataset
-    void:classPartition [
-        void:class rdfs:Class ;
-        void:entities "291"^^xsd:integer
-    ] .
-    
-:rdfdataset
-    void:classPartition [
-        void:class rdfs:Literal ;
-        void:entities "782032"^^xsd:integer
-    ] .
-    
-:rdfdataset
-    void:classPartition [
-        void:class sd:Graph ;
-        void:entities "3"^^xsd:integer
-    ].
-    
-:rdfdataset
-    void:classPartition [
-        void:class &lt;http://linkedchemistry.info/chembl/assay/a93337&gt; ;
-        void:entities "14"^^xsd:integer
-    ] .
-    
-:rdfdataset
-    void:propertyPartition [
-        void:property &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
-        void:triples "79"^^xsd:integer
-    ] .
-    
-:rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
-        void:objectsTarget [
-            void:class rdfs:Class ;
-            void:entities "68"^^xsd:integer
-        ]
-    ] .
-    
-:rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
-        void:objectsTarget [
-            void:class rdfs:Literal;
-            void:entities "288"^^xsd:integer
-        ]
-    ] .
-    
-:rdfdataset
-    void:subset [
-        a void:LinkSet ; 
-        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
-        void:subjectsTarget [
-            void:class &lt;http://linkedchemistry.info/chembl/chemblid/CHEMBL702808/chemblid&gt; ;
-            void:entities "88102"^^xsd:integer ;
-            void:objectsTarget [
-                void:class &lt;http://rdf.farmbio.uu.se/chembl/onto/#Assay&gt; ;
-                void:entities "2819"^^xsd:integer
-            ] 
-        ]
-    ] .
-    
-:rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;http://semanticscience.org/resource/SIO_000300&gt; ;
-        void:subjectsTarget &lt;http://linkedchemistry.info/chembl/assay/a93337&gt; ; 
-        void:objectsTarget &lt;http://linkedchemistry.info/chembl/resource/r13299&gt; ;
-        void:triples "281902"^^xsd:integer
-    ] .
+	  
 </pre>
 
     <div class="changes">
       <h2 id="chlog">Change Log</h2>
     </div>
-      
+
     <div class="nav"><a href="http://validator.w3.org/check/referer">
       <img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0!" height="31" width="88" /></a>
     </div><hr></hr>
