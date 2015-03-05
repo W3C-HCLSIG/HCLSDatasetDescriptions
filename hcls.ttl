@@ -98,8 +98,8 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dct:isVersionOf :chembl ;
     pav:previousVersion :chembl16 ;
     dct:source :pubchem-bioassay-09-01-2014 ;
-    pav:retrievedFrom <http://example.com/madeUp/forExample> ;
-    prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+    prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 ;
 #Availability/Distributions
     dcat:distribution :chembl17db, :chembl17rdf ;
     dcat:accessURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBLdb/releases/chembl_17/> ;
@@ -215,8 +215,8 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     pav:version "17"^^xsd:string, "17.0" ;
     pav:previousVersion :chembl16rdf ;
     dct:source :pubchem-bioassay-09-01-2014 ;
-    pav:retrievedFrom <http://example.com/madeUp/forExample> ;
-    prov:wasDerivedFrom <http://example.com/madeUp/forExample> ;
+    pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+    prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 ;
     pav:createdWith :chembl-sql2rdf-exporter-v1 ;
 #Availability/Distributions
     dct:format <http://www.w3.org/ns/formats/Turtle>, "application/gzip", "text/turtle" ;
