@@ -225,47 +225,77 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt> ;
     dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz> ;
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz> ;
-#Statistics: Note that numbers are taken from Bio2RDF release 3
-    void:triples 409942525 ;
-    void:entities 50061452 ;
-    void:distinctSubjects 50062405 ;
-    void:properties 141 ;
-    void:distinctObjects 50128234 ;
-    #Number of unique classes
-    void:classPartition [
-        void:class rdfs:Class ;
-        void:distinctSubjects 110
-    ] ;
-    #Number of unique literals
-    void:classPartition [
-        void:class rdfs:Literal ;
-        void:distinctSubjects 58067345
-    ] ;
-    #Number of graphs
-    void:classPartition [
-        void:class sd:Graph ;
-        void:distinctSubjects 8
-    ] ;
-#Enhanced Statistics:
-##Only give one example for each of the following
-##Numbers are taken from bio2rdf release 3
-    #Classes and the number of their instances
-    void:classPartition [
-        void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
-        void:distinctSubjects 12419715
-    ] ;
-    #Properties and their occurrence
-    void:propertyPartition [
-        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasActivity> ;
-        void:triples 37259145
-    ] ;
-    #Property, the number of unique typed subjects, and number of triples linked to the property
-    void:propertyPartition [
-        void:property
-        void:triples
+  #Statistics: Note that numbers are taken from Bio2RDF release 3
+      void:triples "409942525"^^xsd:integer ;
+      void:entities "50061452"^^xsd:integer ;
+      void:distinctSubjects "50062405"^^xsd:integer ;
+      void:properties "141"^^xsd:integer ;
+      void:distinctObjects "50128234"^^xsd:integer ;
+      #Number of unique classes
+      void:classPartition [
+          void:class rdfs:Class ;
+          void:distinctSubjects "110"^^xsd:integer
+      ] ;
+      #Number of unique literals
+      void:classPartition [
+          void:class rdfs:Literal ;
+          void:distinctSubjects "58067345"^^xsd:integer
+      ] ;
+      #Number of graphs
+      void:classPartition [
+          void:class sd:Graph ;
+          void:distinctSubjects "8"^^xsd:integer
+      ] ;
+  #Enhanced Statistics
+      #Class and number of instances
+      void:classPartition [
+        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:distinctSubjects "12419715"^^xsd:integer
+      ] ;
+	  
+      # Property and number of triples
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer
+      ] ;
+	  
+      # Property, triples, and number of unique subjects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:triples "12419715"^^xsd:integer ;
         void:classPartition [
-            void:class <> ;
-            void:entities
-        ]
-    ] ;
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctSubjects "12419715"^^xsd:integer ;
+      ]] ;
+	  
+      # Property, triples, and number of unique objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer ;		
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctObjects "12419715"^^xsd:integer
+      ]] ;
+	   
+      # Property, triples, and number of unique literals
+      void:propertyPartition [
+        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:triples "1360455"^^xsd:integer ;
+        void-ext:objectClassPartition [
+          void:class rdfs:Literal;
+          void:distinctObjects "1359785"^^xsd:integer
+      ]] ;
+	
+      # Property, triples, and number of unique subjects and objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:distinctSubjects "12419715"^^xsd:integer ;
+        ];
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:distinctObjects "1042288"^^xsd:integer ;
+      ]] ;
 .
