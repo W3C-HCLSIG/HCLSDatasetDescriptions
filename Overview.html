@@ -1300,7 +1300,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     <p>Example:</p>
     <pre>
 :chembl17rdf
-  void:triples 409942525 .
+  void:triples "409942525"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1321,7 +1321,7 @@ SELECT (COUNT(*) AS ?triples)
     <p>Example:</p>
     <pre>
 :chembl17rdf
-  void:entities 50061452 .
+  void:entities "50061452"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1343,7 +1343,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?entities)
     <p>Example:</p>
     <pre>
 :chembl17rdf
-  void:distinctSubjects 50062405 .
+  void:distinctSubjects "50062405"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1364,7 +1364,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?distinctSubjects)
     <p>Example:</p>
     <pre>
 :chembl17rdf
-  void:properties 141 .
+  void:properties "141"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1385,7 +1385,7 @@ SELECT (COUNT(DISTINCT ?p) AS ?distinctProperties)
     <p>Example:</p>
     <pre>
 chembl17rdf
-  void:distinctObjects 50128234 .
+  void:distinctObjects "50128234"^^xsd:integer .
     </pre>
 
     <p>SPARQL query:</p>
@@ -1411,7 +1411,7 @@ SELECT (COUNT(DISTINCT ?o ) AS ?distinctObjects)
 :chembl17rdf
   void:classPartition [
     void:class rdfs:Class ;
-    void:distinctSubjects 110
+    void:distinctSubjects "110"^^xsd:integer
   ] .
     </pre>
 
@@ -1438,7 +1438,7 @@ SELECT (COUNT(DISTINCT ?o) AS ?distinctClasses)
 :chembl17rdf
   void:classPartition [
     void:class rdfs:Literal ;
-    void:distinctSubjects 58067345
+    void:distinctSubjects "58067345"^^xsd:integer
   ] .
     </pre>
 
@@ -1465,7 +1465,7 @@ SELECT (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 :chembl17rdf
   void:classPartition [
     void:class sd:Graph ;
-    void:distinctSubjects 8
+    void:distinctSubjects "8"^^xsd:integer
   ] .
     </pre>
 
@@ -1491,6 +1491,15 @@ SELECT (COUNT(DISTINCT ?g ) AS ?graphs)
 	] .
     </pre>
 
+	    <p>Example:</p>
+    <pre>
+:chembl17rdf
+      void:classPartition [
+        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:distinctSubjects "12419715"^^xsd:integer
+      ] ;	  
+    </pre>
+	
     <p>SPARQL query:</p>
 
     <pre>
@@ -1509,6 +1518,15 @@ GROUP BY ?o
 	] .
     </pre>
 
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer
+      ] ; 
+    </pre>
+	
     <p>SPARQL query:</p>
 
     <pre>
@@ -1526,8 +1544,21 @@ GROUP BY ?p
 		void:classPartition [
 			void:class &lt;subject-class-uri&gt; ;
 			void:distinctSubjects "###"^^xsd:integer ;
-	]].
+	]] .
     </pre>
+	
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctSubjects "12419715"^^xsd:integer ;
+    ]] .  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples) 
@@ -1547,8 +1578,22 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p (COUNT(?p) AS ?triples)
 		void-ext:objectClassPartition [
 			void:class &lt;object-class-uri&gt; ;
 			void:distinctObjects "###"^^xsd:integer
-	]].
+	]] .
     </pre>
+	
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer ;		
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctObjects "12419715"^^xsd:integer
+    ]] .
+  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount) 
@@ -1570,6 +1615,20 @@ SELECT ?p (COUNT(?p) AS ?triples) ?otype (COUNT(DISTINCT ?o) AS ?ocount)
 			void:distinctObjects "###"^^xsd:integer
 	]] .
     </pre>
+
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:triples "1360455"^^xsd:integer ;
+        void-ext:objectClassPartition [
+          void:class rdfs:Literal;
+          void:distinctObjects "1359785"^^xsd:integer
+    ]] .
+  
+    </pre>
+	
     <p>SPARQL query:</p>
     <pre>
 SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals) 
@@ -1596,6 +1655,23 @@ SELECT ?p (COUNT(?p) AS ?triples) (COUNT(DISTINCT ?o) AS ?distinctLiterals)
 		];
 	] .
     </pre>
+
+	<p>Example:</p>
+    <pre>
+:chembl17rdf
+    void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:distinctSubjects "12419715"^^xsd:integer ;
+        ];
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:distinctObjects "1042288"^^xsd:integer ;
+    ]] . 
+    </pre>
+
     <p>SPARQL query:</p>
     <pre>
 SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS ?ocount)  
@@ -1620,6 +1696,7 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS 
         void:triples "###"^^xsd:integer
     ] .
     </pre>
+
 
   <h2 id="usageNotes">7 Using Dataset Descriptions</h2>
     <h3 id="s7n_1">7.1 Workflows</h3>
@@ -2205,27 +2282,80 @@ be used in the Workflow description as input or output</p>
       dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz&gt; ;
       void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz&gt; ;
   #Statistics: Note that numbers are taken from Bio2RDF release 3
-      void:triples 409942525 ;
-      void:entities 50061452 ;
-      void:distinctSubjects 50062405 ;
-      void:properties 141 ;
-      void:distinctObjects 50128234 ;
+      void:triples "409942525"^^xsd:integer ;
+      void:entities "50061452"^^xsd:integer ;
+      void:distinctSubjects "50062405"^^xsd:integer ;
+      void:properties "141"^^xsd:integer ;
+      void:distinctObjects "50128234"^^xsd:integer ;
       #Number of unique classes
       void:classPartition [
           void:class rdfs:Class ;
-          void:distinctSubjects 110
+          void:distinctSubjects "110"^^xsd:integer
       ] ;
       #Number of unique literals
       void:classPartition [
           void:class rdfs:Literal ;
-          void:distinctSubjects 58067345
+          void:distinctSubjects "58067345"^^xsd:integer
       ] ;
       #Number of graphs
       void:classPartition [
           void:class sd:Graph ;
-          void:distinctSubjects 8
+          void:distinctSubjects "8"^^xsd:integer
       ] ;
   #Enhanced Statistics
+      #Class and number of instances
+      void:classPartition [
+        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:distinctSubjects "12419715"^^xsd:integer
+      ] ;
+	  
+      # Property and number of triples
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer
+      ] ;
+	  
+      # Property, triples, and number of unique subjects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctSubjects "12419715"^^xsd:integer ;
+      ]] ;
+	  
+      # Property, triples, and number of unique objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:triples "37259145"^^xsd:integer ;		
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:distinctObjects "12419715"^^xsd:integer
+      ]] ;
+	   
+      # Property, triples, and number of unique literals
+      void:propertyPartition [
+        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:triples "1360455"^^xsd:integer ;
+        void-ext:objectClassPartition [
+          void:class rdfs:Literal;
+          void:distinctObjects "1359785"^^xsd:integer
+      ]] ;
+	
+      # Property, triples, and number of unique subjects and objects of a certain type
+      void:propertyPartition [
+        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:triples "12419715"^^xsd:integer ;
+        void:classPartition [
+            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:distinctSubjects "12419715"^^xsd:integer ;
+        ];
+        void-ext:objectClassPartition [
+          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:distinctObjects "1042288"^^xsd:integer ;
+      ]] .
+    
+	  
 </pre>
 
     <div class="changes">
