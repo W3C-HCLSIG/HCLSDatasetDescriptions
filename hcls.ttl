@@ -249,53 +249,53 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
   #Enhanced Statistics
       #Class and number of instances
       void:classPartition [
-        void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+        void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
         void:distinctSubjects "12419715"^^xsd:integer
       ] ;
-	  
+
       # Property and number of triples
       void:propertyPartition [
-        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
+        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasActivity> ;
         void:triples "37259145"^^xsd:integer
       ] ;
-	  
+
       # Property, triples, and number of unique subjects of a certain type
       void:propertyPartition [
-        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasMolecule&gt; ;
+        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasMolecule> ;
         void:triples "12419715"^^xsd:integer ;
         void:classPartition [
-          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
           void:distinctSubjects "12419715"^^xsd:integer ;
       ]] ;
-	  
+
       # Property, triples, and number of unique objects of a certain type
       void:propertyPartition [
-        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasActivity&gt; ;
-        void:triples "37259145"^^xsd:integer ;		
+        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasActivity> ;
+        void:triples "37259145"^^xsd:integer ;
         void-ext:objectClassPartition [
-          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+          void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
           void:distinctObjects "12419715"^^xsd:integer
       ]] ;
-	   
+
       # Property, triples, and number of unique literals
       void:propertyPartition [
-        void:property &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; ;
+        void:property <http://www.w3.org/2004/02/skos/core#prefLabel> ;
         void:triples "1360455"^^xsd:integer ;
         void-ext:objectClassPartition [
           void:class rdfs:Literal;
           void:distinctObjects "1359785"^^xsd:integer
       ]] ;
-	
+
       # Property, triples, and number of unique subjects and objects of a certain type
       void:propertyPartition [
-        void:property &lt;http://rdf.ebi.ac.uk/terms/chembl#hasAssay&gt; ;
+        void:property <http://rdf.ebi.ac.uk/terms/chembl#hasAssay> ;
         void:triples "12419715"^^xsd:integer ;
         void:classPartition [
-            void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Activity&gt; ;
+            void:class <http://rdf.ebi.ac.uk/terms/chembl#Activity> ;
             void:distinctSubjects "12419715"^^xsd:integer ;
         ];
         void-ext:objectClassPartition [
-          void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
+          void:class <http://rdf.ebi.ac.uk/terms/chembl#Assay> ;
           void:distinctObjects "1042288"^^xsd:integer ;
       ]] ;
 .
