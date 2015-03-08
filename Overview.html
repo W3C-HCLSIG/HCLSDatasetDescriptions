@@ -341,7 +341,7 @@ pre {
     </tr>
     <tr>
         <td>Creators</td>
-        <td>dct:creator or pav:createdBy</td>
+        <td>dct:creator</td>
         <td>IRI</td>
         <td>MUST NOT</td>
         <td>MUST</td>
@@ -349,7 +349,7 @@ pre {
     </tr>
     <tr>
         <td>Contributors</td>
-        <td>dct:contributor or pav:authoredBy or pav:curatedBy</td>
+        <td>dct:contributor or or pav:createdBy or pav:authoredBy or pav:curatedBy</td>
         <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
@@ -357,7 +357,7 @@ pre {
     </tr>
     <tr>
         <td>Date created</td>
-        <td>dct:created or pav:createdOn</td>
+        <td>dct:created</td>
         <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> encoded using the relevant <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time compliant string</a> and typed using the appropriate <a href="http://www.w3.org/TR/xmlschema-2/">XML Schema datatype</a></td>
         <td>MUST NOT</td>
         <td>SHOULD</td>
@@ -366,7 +366,7 @@ pre {
 
     <tr>
         <td>Other dates</td>
-        <td>pav:authoredOn or pav:curatedOn</td>
+        <td>pav:createdOn or pav:authoredOn or pav:curatedOn</td>
         <td>xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear</td>
         <td>MUST NOT</td>
         <td>MAY</td>
