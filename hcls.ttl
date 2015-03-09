@@ -1,6 +1,7 @@
 BASE <http://rdf.ebi.ac.uk/chembl/>
 PREFIX : <http://rdf.ebi.ac.uk/chembl/>
 PREFIX ncit: <http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 PREFIX cito: <http://purl.org/spar/cito/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
