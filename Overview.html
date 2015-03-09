@@ -1079,10 +1079,11 @@ number of ChEMBL is clearly displayed."""
     void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" .
     </pre>
 
-    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; To specify that the access pattern is for the primary data provider, set idot:primarySource to true. This can be specified for the most current version, a specific version, or a specific distribution.</p>
+    <p>The idot:accessPattern MAY be used to specify how to access specific formats of the resources. The access pattern is a base URI upon which the resource identifier is appended in order to generate a valid resource URL. For example, given the identifier CHEMBL25 and an access pattern &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;, then the valid URL would be &lt;http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL25&gt; This is fully specified as a regex pattern using idot:accessIdentifierPattern. To specify that the access pattern is for the primary data provider, set idot:primarySource to true. This can be specified for the most current version, a specific version, or a specific distribution.</p>
 
     <pre>
 :chembl17rdf
+    
     idot:accessPattern
         &lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt; ,
         &lt;http://identifiers.org/chembl.compound/&gt; ,
@@ -1093,19 +1094,23 @@ number of ChEMBL is clearly displayed."""
     idot:primarySource true ;
     dct:format "text/html" ;
     dct:publisher &lt;http://www.ebi.ac.uk&gt; ;
+	idot:accessIdentifierPattern "^http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL\\d+" ;
     a idot:AccessPattern .
 
 &lt;http://identifiers.org/chembl.compound/&gt;
     dct:format "text/html" ;
+	idot:accessIdentifierPattern "^http://identifiers.org/chembl.compound/CHEMBL\\d+" ;
     a idot:AccessPattern .
 
 &lt;http://bio2rdf.org/chembl:&gt;
     dct:format "application/rdf+xml" ;
     dct:publisher &lt;http://bio2rdf.org&gt; ;
+	idot:accessIdentifierPattern "^http://bio2rdf.org/chembl:CHEMBL\\d+" ;
     a idot:AccessPattern .
 
 &lt;http://linkedchemistry.info/chembl/chemblid&gt;
     dct:format "application/rdf+xml" ;
+	idot:accessIdentifierPattern "^http://linkedchemistry.info/chembl/CHEMBL\\d+" ;
     a idot:AccessPattern .
     </pre>
 
