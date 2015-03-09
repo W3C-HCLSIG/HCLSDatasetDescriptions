@@ -1692,19 +1692,35 @@ SELECT (COUNT(DISTINCT ?s) AS ?scount) ?stype ?p ?otype  (COUNT(DISTINCT ?o) AS 
 
 	
 
-   <h5>6.6.2.7 To specify the <strong>number and list of properties that link items from one dataset to another</strong>:</h5>
-   
-   <p>Pattern:</p>
+   <h3 id="linksets">6.7 Linksets</h5>
+
+    <p>Linksets are a way of identifying the content that links instances in one dataset with instances in another dataset [<a href="VOID">VOID</a>]. For example, the target components, i.e. proteins, in ChEMBL are linked to their corresponding entry in UniProt. A separate linkset is created for each link predicate relating a particular pair of dataset. For example, if some proteins are known to be exact matches then the <pre>skos:exactMatch</pre> property may be used while for others where the closeness of the match is not so strong the <pre>skos:closeMatch</pre> property may be used. These would be separated into two distinct linksets.</p>
+    
+    <h4 id="linkset-metadata">6.7.1 Linkset Core Metadata</h4>
+    <p>A linkset should be declared to be a subset of the dataset which publishes it. The linkset itself MUST be declared to be of type <pre>void:Linkset</pre> and provide the same metadata as an RDF Distribution. (Note that we do not repeat the standard properties here, although they are given in the full example in the <a href="appendix_1">appendix</a>.)</p>
+    <pre>
+      :chembl-rdf
+          void:subset :chembl-uniprot-exactMatch-linkset .
+
+      :chembl-uniprot-exactMatch-linkset
+          a void:Linkset .
+    </pre>
+
+    <h4 id="linkset-additional-metadata">6.7.2 Additional Linkset Metadata</h4>
+    <p>Due to the nature of linksets connecting a pair of datasets, there are some metadata properties specific for a linkset. These are stating the source and target of each link, i.e. the datasets that are linked, and the predicate used in the links.</p>
+    <pre>
+      :chembl-uniprot-exactMatch-linkset
+          void:subjectsTarget :chembl-rdf ;
+          void:objectsTarget :&lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
+          void:linkPredicate skos:exactMatch .
+    </pre>
+    
+    <h4>6.7.3 Linkset Statistics</h4>
+    <p>The statistics relevant for a linkset are the number of triples it contains. This can be reported using the <pre>void:triples</pre> property.</p>
 
     <pre>
-:rdfdataset
-    void:subset [
-        a void:LinkSet ;
-        void:linkPredicate &lt;property-uri&gt; ;
-        void:subjectsTarget &lt;subject-dataset-uri&gt; ; 
-        void:objectsTarget &lt;object-dataset-uri&gt; ;
-        void:triples "###"^^xsd:integer
-    ] .
+      :chembl-uniprot-exactMatch-linkset
+      void:triples "6367"^^xsd:integer
     </pre>
 
 
