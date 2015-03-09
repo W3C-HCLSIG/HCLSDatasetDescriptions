@@ -2469,7 +2469,8 @@ be used in the Workflow description as input or output</p>
         a dctypes:Dataset, dcat:Distribution, void:Dataset ;
         dct:title "ChEMBL Target Component to UniProt Protein Exact Match Linkset"@en ;
         dct:alternative "ChEMBLTargetCmpt2UniProtEMLS"@en ;
-        dct:description "A linkset connecting ChEMBL target components with their corresponding UniProt protein entry where the match is deemed to be exact."@en ;
+        dct:description """A linkset connecting ChEMBL target components with their corresponding UniProt protein entry where
+  the match is deemed to be exact."""@en ;
         dct:created "2013-08"^^xsd:gYearMonth;
         pav:createdOn "2013-08"^^xsd:gYearMonth;
         pav:authoredOn "2013-07"^^xsd:gYearMonth;
@@ -2484,11 +2485,15 @@ be used in the Workflow description as input or output</p>
         foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
         schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
         dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
-        dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
+        dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request
+  attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
 
-1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+  1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento,
+  B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For
+  Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
 
-If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+  If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of
+  ChEMBL is clearly displayed."""@en ;
         dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; ;
         dcat:theme ncit:C17021 ;
         dcat:keyword "assay"^^xsd:string, "protein"^^xsd:string ;
@@ -2502,7 +2507,10 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
         idot:alternatePrefix "chembldb" ;
         idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
         void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
-        idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+        idot:accessPattern "http://bio2rdf.org/chembl",
+            "http://identifiers.org/chembl.compound/",
+            "http://linkedchemistry.info/chembl/chemblid",
+            "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
         idot:exampleIdentifier "CHEMBL_TC_4803"^^xsd:string ;
         void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/CHEMBL_TC_4803&gt; ;
     #Provenance and Change
