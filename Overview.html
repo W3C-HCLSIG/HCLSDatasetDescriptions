@@ -1303,16 +1303,16 @@ number of ChEMBL is clearly displayed."""
     <p>A linkset should be declared to be a subset of the dataset which publishes it. The linkset itself MUST be declared to be of type void:Linkset and provide the same metadata as an RDF Distribution. (Note that we do not repeat the standard properties here, although they are given in the full example in the <a href="appendix_1">appendix</a>.)</p>
     <pre>
       :chembl-rdf
-          void:subset :chembl-uniprot-exactMatch-linkset .
+          void:subset :chembl17-uniprot-exactMatch-linkset .
 
-      :chembl-uniprot-exactMatch-linkset
+      :chembl17-uniprot-exactMatch-linkset
           a void:Linkset .
     </pre>
 
    <!-- <h4 id="linkset-additional-metadata">6.7.2 Additional Linkset Metadata</h4> -->
     <p>Due to the nature of linksets connecting a pair of datasets, there are some metadata properties specific for a linkset. These are stating the source and target of each link, i.e. the datasets that are linked, and the predicate used in the links.</p>
     <pre>
-      :chembl-uniprot-exactMatch-linkset
+      :chembl17-uniprot-exactMatch-linkset
           void:subjectsTarget :chembl-rdf ;
           void:objectsTarget &lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
           void:linkPredicate skos:exactMatch .
@@ -1322,14 +1322,14 @@ number of ChEMBL is clearly displayed."""
     <p>The statistics relevant for a linkset are the number of triples it contains. This can be reported using the void:triples property.</p>
 
     <pre>
-      :chembl-uniprot-exactMatch-linkset
+      :chembl17-uniprot-exactMatch-linkset
           void:triples "6367"^^xsd:integer .
     </pre>
 
     <p class="note"><strong>Note: </strong>In the VoID note [<a href="VOID">VOID</a>], the <code><span>void:subset</span></code>
           property is used for both 'subset of' and 'has subset'. The declared
-          semantics for the property is has subset. We recommend that the
-          property is always interpreted with the has subset semantics.</p>
+          semantics for the property is 'has subset'. We recommend that the
+          property is always interpreted with the 'has subset' semantics.</p>
 
     <h3 id="s6_6">6.6 Statistics</h3>
 
@@ -2382,7 +2382,7 @@ be used in the Workflow description as input or output</p>
       dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt&gt; ;
       dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz&gt; ;
       void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz&gt; ;
-      void:subset :chembl-uniprot-exactMatch-linkset ;
+      void:subset :chembl17-uniprot-exactMatch-linkset ;
   #Statistics: Note that numbers are taken from Bio2RDF release 3
       void:triples "409942525"^^xsd:integer ;
       void:entities "50061452"^^xsd:integer ;
@@ -2457,12 +2457,68 @@ be used in the Workflow description as input or output</p>
           void:distinctObjects "1042288"^^xsd:integer ;
       ]] .
     
-    :chembl-uniprot-exactMatch-linkset
+      :chembl17-uniprot-exactMatch-linkset
+      ###Linkset specific metadata
         a void:Linkset ;
         void:subjectsTarget :chembl-rdf ;
         void:objectsTarget &lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
         void:linkPredicate skos:exactMatch ;
-        void:triples "6367"^^xsd:integer
+        void:triples "6367"^^xsd:integer ;
+      ##Metadata for a RDF distribution
+        a dctypes:Dataset, dcat:Distribution, void:Dataset ;
+        dct:title "ChEMBL Target Component to UniProt Protein Exact Match Linkset"@en ;
+        dct:alternative "ChEMBLTargetCmpt2UniProtEMLS"@en ;
+        dct:description "A linkset connecting ChEMBL target components with their corresponding UniProt protein entry where the match is deemed to be exact."@en ;
+        dct:created "2013-08"^^xsd:gYearMonth;
+        pav:createdOn "2013-08"^^xsd:gYearMonth;
+        pav:authoredOn "2013-07"^^xsd:gYearMonth;
+        pav:curatedOn "2013-07"^^xsd:gYearMonth;
+        dct:creator :ebi ;
+        dct:contributor :annaGaulton ;
+        pav:createdBy &lt;http://orcid.org/0000-0002-8011-0300&gt; ;
+        pav:authoredBy :annaGaulton ;
+        pav:curatedBy :annaGaulton ;
+        dct:issued "2013-08-29"^^xsd:date ;
+        dct:publisher :ebi ;
+        foaf:page &lt;http://www.ebi.ac.uk/chembl/&gt; ;
+        schemaorg:logo &lt;http://www.ebi.ac.uk/rdf/sites/ebi.ac.uk.rdf/files/resize/images/rdf/chembl_service_logo-146x48.gif&gt; ;
+        dct:license &lt;http://creativecommons.org/licenses/by-sa/3.0/&gt; ;
+        dct:rights """The data in ChEMBL is covered by the Creative Commons By Attribution. Under the -BY clause, we request attribution for subsequent use of ChEMBL. For publications using ChEMBL data, the primary current citation is:
+
+1. A. Gaulton, L. Bellis, J. Chambers, M. Davies, A. Hersey, Y. Light, S. McGlinchey, R. Akhtar, A.P. Bento, B. Al-Lazikani, D. Michalovich, & J.P. Overington (2012) 'ChEMBL: A Large-scale Bioactivity Database For Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1107 DOI:10.1093/nar/gkr777 PMID:21948594
+
+If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release number of ChEMBL is clearly displayed."""@en ;
+        dct:language &lt;http://lexvo.org/id/iso639-3/eng&gt; ;
+        dcat:theme ncit:C17021 ;
+        dcat:keyword "assay"^^xsd:string, "protein"^^xsd:string ;
+        void:vocabulary &lt;http://purl.org/dc/terms/&gt;, &lt;http://rdf.ebi.ac.uk/terms/chembl#&gt;, &lt;http://www.w3.org/ns/dcat#&gt; ;
+        dct:conformsTo &lt;http://www.w3.org/2001/sw/hcls/notes/hcls-dataset/&gt; ;
+        dct:references &lt;http://dx.doi.org/10.1093/bioinformatics/btt765&gt; ;
+        rdfs:seeAlso &lt;http://en.wikipedia.org/wiki/ChEMBL&gt; ;
+        cito:citesAsAuthority &lt;http://nar.oxfordjournals.org/content/40/D1/D1100&gt; ;
+    #Identifiers
+        idot:preferredPrefix "chembl" ;
+        idot:alternatePrefix "chembldb" ;
+        idot:identifierPattern "CHEMBL\\d+"^^xsd:string ;
+        void:uriRegexPattern "http://rdf.ebi.ac.uk/resource/chembl/target/CHEMBL\\d+" ;
+        idot:accessPattern "http://bio2rdf.org/chembl", "http://identifiers.org/chembl.compound/", "http://linkedchemistry.info/chembl/chemblid", "http://www.ebi.ac.uk/chembl/compound/inspect/" ;
+        idot:exampleIdentifier "CHEMBL_TC_4803"^^xsd:string ;
+        void:exampleResource &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/CHEMBL_TC_4803&gt; ;
+    #Provenance and Change
+        #Only one data item given for the purpose of the example, all resources should be listed
+        sio:has-data-item &lt;http://rdf.ebi.ac.uk/resource/chembl/targetcomponent/CHEMBL_TC_4803&gt; ;
+        pav:version "17"^^xsd:string, "17.0" ;
+        pav:previousVersion :chembl16-uniprot-exactMatch-linkset ;
+        dct:source :pubchem-bioassay-09-01-2014 ;
+        pav:retrievedFrom :pubchem-bioassay-09-01-2014 ;
+        prov:wasDerivedFrom :pubchem-bioassay-09-01-2014 ;
+        pav:createdWith :chembl-sql2rdf-exporter-v1 ;
+    #Availability/Distributions
+        dct:format &lt;http://www.w3.org/ns/formats/Turtle&gt;, "application/gzip", "text/turtle" ;
+        dcat:accessURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/&gt; ;
+        dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt&gt; ;
+        dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17.0_targetcmpt_uniprot_ls.ttl.gz&gt; ;
+        void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17.0_targetcmpt_uniprot_ls.ttl.gz&gt; ;
 .
 </pre>
 
