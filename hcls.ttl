@@ -225,6 +225,7 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
     dcat:landingPage <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt> ;
     dcat:downloadURL <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz> ;
     void:dataDump <ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz> ;
+    void:subset :chembl-uniprot-exactMatch-linkset ;
   #Statistics: Note that numbers are taken from Bio2RDF release 3
       void:triples "409942525"^^xsd:integer ;
       void:entities "50061452"^^xsd:integer ;
@@ -298,4 +299,12 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
           void:class <http://rdf.ebi.ac.uk/terms/chembl#Assay> ;
           void:distinctObjects "1042288"^^xsd:integer ;
       ]] ;
+.
+
+:chembl-uniprot-exactMatch-linkset
+    a void:Linkset ;
+    void:subjectsTarget :chembl-rdf ;
+    void:objectsTarget <http://purl.uniprot.org/void#UniProtDataset_2015_03> ;
+    void:linkPredicate skos:exactMatch ;
+    void:triples "6367"^^xsd:integer
 .

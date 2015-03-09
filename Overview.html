@@ -1300,7 +1300,7 @@ number of ChEMBL is clearly displayed."""
     <pre>
       :chembl-uniprot-exactMatch-linkset
           void:subjectsTarget :chembl-rdf ;
-          void:objectsTarget :&lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
+          void:objectsTarget &lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
           void:linkPredicate skos:exactMatch .
     </pre>
     
@@ -1309,10 +1309,10 @@ number of ChEMBL is clearly displayed."""
 
     <pre>
       :chembl-uniprot-exactMatch-linkset
-          void:triples "6367"^^xsd:integer
+          void:triples "6367"^^xsd:integer .
     </pre>
 
-    <p class="note"> In the VoID note [<a href="VOID">VOID</a>], the <code><span>void:subset</span></code>
+    <p class="note"><strong>Note: </strong>In the VoID note [<a href="VOID">VOID</a>], the <code><span>void:subset</span></code>
           property is used for both 'subset of' and 'has subset'. The declared
           semantics for the property is has subset. We recommend that the
           property is always interpreted with the has subset semantics.</p>
@@ -2346,6 +2346,7 @@ be used in the Workflow description as input or output</p>
       dcat:landingPage &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_release_notes.txt&gt; ;
       dcat:downloadURL &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17/chembl_17_molecule.ttl.gz&gt; ;
       void:dataDump &lt;ftp://ftp.ebi.ac.uk/pub/databases/chembl/ChEMBL-RDF/17.0/chembl_17_molecule.ttl.gz&gt; ;
+      void:subset :chembl-uniprot-exactMatch-linkset ;
   #Statistics: Note that numbers are taken from Bio2RDF release 3
       void:triples "409942525"^^xsd:integer ;
       void:entities "50061452"^^xsd:integer ;
@@ -2420,7 +2421,13 @@ be used in the Workflow description as input or output</p>
           void:distinctObjects "1042288"^^xsd:integer ;
       ]] .
     
-	  
+    :chembl-uniprot-exactMatch-linkset
+        a void:Linkset ;
+        void:subjectsTarget :chembl-rdf ;
+        void:objectsTarget &lt;http://purl.uniprot.org/void#UniProtDataset_2015_03&gt; ;
+        void:linkPredicate skos:exactMatch ;
+        void:triples "6367"^^xsd:integer
+.
 </pre>
 
     <div class="changes">
