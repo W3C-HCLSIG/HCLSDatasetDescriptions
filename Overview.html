@@ -1938,13 +1938,13 @@ be used in the Workflow description as input or output</p>
 
     <h3 id="s8_10">9.10 Experimental Datasets Use Case</h3>
 
-    <p>The description of the experimental workflows in a standard way is important to understand the datasets produced and to make them re-usable for further investigations or meta-analysis. The ISA infrastructure [ISAtools] provides a format and a set of tools to manipulate it, enabling collecting, curating, managing and re-using datasets in a standards-compliant way.</p>
+    <p>The description of the experimental workflows in a standard way is important to understand the datasets produced and to make them re-usable for further investigations or meta-analysis. The ISA infrastructure [<a href="#ISAtools">ISAtools</a>] provides a tabular format and a set of tools to manipulate it, enabling collecting, curating, managing and re-using datasets in a standards-compliant way.</p>
 
-    <p>Originally designed for describing high-throughput genomics and post-genomics experiments, used in conjunction with other technologies, the ISA format has also been applied for the description of experiments comparing computational methods [soapdenovo2], their inputs and outputs and methods, in the form of references to Galaxy workflows.</p>
+    <p>The ISA syntax provides terminology for describing sample characteristics, technologies and measurements, experimental design, instrument parameters, material and data provenance, inputs and outputs of processes and so on. The syntax relies on the annotation with ontological resources for providing domain-specific semantics. There are also tools for converting the ISA representations into RDF: ISA2RDF [<a href="#ISA2RDF">ISA2RDF</a>] produced by the ToxBank consortium [<a href="#ToxBank">ToxBank</a>] and linkedISA <a href="#linkedISA">[Gonzalez-Beltran et al 2014]</a> produced by the ISA-tools team [<a href="#ISAtools">ISAtools</a>]. In particular, the linkedISA tool extends the representation of experimental workflows with the descriptors compliant with the guidelines presented in this document.</p>
 
-    <p>The ISA syntax provides terminology for describing sample characteristics, technologies and measurements, experimental design, instrument parameters, material and data provenance, inputs and outputs of processes and so on. The syntax relies on the annotation with ontological resources for providing domain-specific semantics. There are also tools for converting the ISA representations into RDF: ISA2RDF [ISA2RDF] produced by the ToxBank consortium [ToxBank] and ISA2OWL produced by the ISAtools team [ISAtools]. In particular, the ISA2OWL extends the representation of experimental workflows with the descriptors compliant with the guidelines presented in this document.</p>
+    <p>Originally designed for describing high-throughput genomics and post-genomics experiments, used in conjunction with other technologies, the ISA format has also been applied for the description of experiments comparing computational methods [<a href="#soapdenovo2">soapdenovo2</a>, <a href="#GBetal2014">Gonzalez-Beltran et al 2014</a>], their inputs and outputs and methods, in the form of references to Galaxy workflows.</p>
 
-    <p>The community of users of the ISA metadata tracking framework is the ISA commons [ISAcommons]. It includes both life science (environmental and biomedical domains) researchers and industrial participants who adopted the ISA format and the ISA tools such as ISAconfigurator and ISAcreator for curation and data collection [ISA infrastructure], Risa for interface with R packages [Risa], BII for storage [ISA infrastructure].</p>
+    <p>The community of users of the ISA metadata tracking framework is the ISA commons [<a href="#ISACommons">ISACommons</a>]. It includes both life science (environmental and biomedical domains) researchers and industrial participants who adopted the ISA format and/or the ISA tools such as ISAconfigurator and ISAcreator for curation and data collection, BII for storage [<a href="#ISASoftwareSuite">Rocca-Serra et al 2010</a>], OntoMaton for annotation [<a href="#OntoMaton">Maguire et al 2013</a>] and Risa for interface with R packages [<a href="#Risa">Gonzalez-Beltran et al 2014</a>].</p>
 
     <p>Within the ISA community, there are examples of public repositories such as EBI Metabolights [<a href="#Metabolights">Metabolights</a>] and data publication platforms such as Nature Publishing Group Scientific Data [<a href="#ScientificData">Scientific Data</a>] and BioMedCentral-BGI GigaScience GigaDB [<a href="#GigaScience">GigaScience</a>].</p>
     
@@ -1990,6 +1990,12 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://nar.oxfordjournals.org/content/early/2010/11/17/nar.gkq1173.abstract">"Towards BioDBCore: a community-defined information specification for biological databases". Nucleic Acids Research, Database Issue</a></cite></dd>
     <dt><a name="Gaultonetal2011" id="Gaultonetal2011">[Gaulton et al 2011]</a></dt>
     <dd><cite><a href="http://nar.oxfordjournals.org/content/40/D1/D1100">ChEMBL: a large-scale bioactivity database for drug discovery"" Nucleic Acids Research. Volume 40. Issue D1. Pages D1100-D1107. 2011.</a></cite></dd>
+    <dt><a name="GBetal2014" id="GBetal2014">[Gonzalez-Beltran et al 2014]</a></dt>
+    <dd><cite><a href="http://biorxiv.org/content/early/2014/12/08/011973">From peer-reviewed to peer-reproduced: a role for data standards, models and computational workflows in scholarly publishing</a></cite></dd>
+    <dt><a name="linkedISA" id="linkedISA">[Gonzalez-Beltran et al 2014]</a></dt>
+    <dd><cite><a href="http://dx.doi.org/10.1186/1471-2105-15-S14-S4">linkedISA: semantic representation of ISA-Tab experimental metadata</a></cite></dd>
+    <dt><a name="Risa" id="Risa">[Gonzalez-Beltran et al 2014]</a></dt>
+    <dd><cite><a href="http://dx.doi.org/10.1186/1471-2105-15-S1-S11">The Risa R/Bioconductor package: integrative data analysis from experimental metadata and back again</a></cite></dd>
     <dt><a name="Grayetal2014" id="Grayetal2014">[Gray et al 2014]</a></dt>
     <dd><cite><a href="http://dx.doi.org/10.3233/SW-2012-0088">Applying linked data approaches to pharmacology: Architectural decisions and implementation. Semantic Web Journal. 5(2):101-113. 2014.</a></cite></dd>
     <dt><a name="GigaScience" id="GigaScience">[GigaScience]</a></dt>
@@ -2002,12 +2008,20 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://identifiers.org">Identifiers.org Registry</a></cite></dd>
     <dt><a name="Integbio" id="Integbio">[Integbio]</a></dt>
     <dd><cite><a href="http://integbio.jp/dbcatalog/?lang=en">http://integbio.jp/dbcatalog/?lang=en</a></cite></dd>
+    <dt><a name="ISA2RDF" id="ISA2RDF">[ISA2RDF]</a></dt>
+    <dd><cite><a href="https://github.com/ToxBank/isa2rdf">https://github.com/ToxBank/isa2rdf</a></cite></dd>
+    <dt><a name="ISACommons" id="ISACommons">[ISACommons]</a></dt>
+    <dd><cite><a href="http://www.isacommons.org">http://www.isacommons.org</a></cite></dd>
+    <dt><a name="ISAtools" id="ISAtools">[ISAtools]</a></dt>
+    <dd><cite><a href="http://www.isa-tools.org">http://www.isa-tools.org</a></cite></dd>
     <dt><a name="ISB" id="ISB">[ISB]</a></dt>
     <dd><cite><a href="http://www.biocurator.org">http://www.biocurator.org</a></cite></dd>
     <dt><a name="Lexvo" id="LexvoPaper">[Lexvo]</a></dt>
     <dd><cite><a href="http://www.semantic-web-journal.net/content/lexvoorg-language-related-information-linguistic-linked-data-cloud-0">Gerard de Melo. Lexvo.org: Language-Related Information for the Linguistic Linked Data Cloud. Submitted to Semantic Web Journal.</a></cite></dd>
     <dt><a name="LOV" id="LOV">[LOV]</a></dt>
     <dd><cite><a href="http://lov.okfn.org/">Linked Open Vocabularies</a></cite></dd>
+    <dt><a name="OntoMaton" id="OntoMaton">[Maguire et al 2013]</a></dt>
+    <dd><cite><a href="http://dx.doi.org/10.1093/bioinformatics/bts718">OntoMaton: a Bioportal powered ontology widget for Google Spreadsheets</a></cite></dd>
     <dt><a name="Metabolights" id="Metabolights">[Metabolights]</a></dt>
     <dd><cite><a href="http://www.ebi.ac.uk/metabolights/">http://www.ebi.ac.uk/metabolights/</a></cite></dd>
     <dt><a name="NIF" id="NIF">[NIF]</a></dt>
@@ -2033,16 +2047,22 @@ be used in the Workflow description as input or output</p>
     <dd><cite><a href="http://www.w3.org/TR/rdf-schema/">http://www.w3.org/TR/rdf-schema/</a></cite></dd>
     <dt><a name="RFC2119" id="RFC2119">[RFC2119]</a></dt>
     <dd><cite><a href="https://www.ietf.org/rfc/rfc2119.txt">https://www.ietf.org/rfc/rfc2119.txt</a></cite></dd>
+    <dt><a name="ISASoftwareSuite" id="ISASoftwareSuite">[Rocca-Serra et al 2010]</a></dt>
+    <dd><cite><a href="http://dx.doi.org/10.1093/bioinformatics/btq415">The ISA software suite</a></cite></dd>
     <dt><a name="SCHEMA" id="SCHEMA">[SCHEMA]</a></dt>
     <dd><cite><a href="http://schema.org/Dataset">http://schema.org/Dataset</a></cite></dd>
     <dt><a name="ScientificData" id="ScientificData">[ScientificData]</a></dt>
     <dd><cite><a href="http://nature.com/scientificdata">Nature Publishing Group’s Scientific Data</a></cite></dd>
     <dt><a name="SPARQL" id="SPARQL">[SPARQL]</a></dt>
     <dd><cite><a href="http://www.w3.org/TR/sparql11-overview/">SPARQL 1.1</a></cite></dd>
+    <dt><a name="soapdenovo2" id="soapdenovo2">[SOAPdenovo2]</a></dt>
+    <dd><cite><a href="http://isa-tools.github.io/soapdenovo2/">SOAPdenovo2 Case Study</a></cite></dd>
     <dt><a name="TavernaProvenance" id="TavernaProvenance">[TavernaProvenance]</a></dt>
     <dd><cite><a href="http://www.taverna.org.uk/documentation/taverna-2-x/provenance">http://www.taverna.org.uk/documentation/taverna-2-x/provenance</a></cite></dd>
     <dt><a name="TavernaProv" id="TavernaProv">[TavernaProv]</a></dt>
     <dd><cite><a href="http://ns.taverna.org.uk/2012/tavernaprov/">http://ns.taverna.org.uk/2012/tavernaprov/</a></cite></dd>
+    <dt><a name="ToxBank" id="ToxBank">[ToxBank]</a></dt>
+    <dd><cite><a href="http://toxbank.net/">http://toxbank.net/</a></cite></dd>
     <dt><a name="VIVO" id="VIVO">[VIVO]</a></dt>
     <dd><cite><a href="https://wiki.duraspace.org/display/VIVO/VIVO-ISF+Ontology">https://wiki.duraspace.org/display/VIVO/VIVO-ISF+Ontology</a></cite></dd>
     <dt><a name="VOID" id="VOID">[VOID]</a></dt>
