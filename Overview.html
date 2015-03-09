@@ -1300,7 +1300,7 @@ number of ChEMBL is clearly displayed."""
     <p>Linksets are a way of identifying the content that links instances in one dataset with instances in another dataset [<a href="VOID">VOID</a>]. For example, the target components, i.e. proteins, in ChEMBL are linked to their corresponding entry in UniProt. A separate linkset is created for each link predicate relating a particular pair of dataset. For example, if some proteins are known to be exact matches then the skos:exactMatch property may be used while for others where the closeness of the match is not so strong the skos:closeMatch property may be used. These would be separated into two distinct linksets.</p>
     
     <!-- <h4 id="linkset-metadata">6.7.1 Linkset Core Metadata</h4>-->
-    <p>A linkset should be declared to be a subset of the dataset which publishes it. The linkset itself MUST be declared to be of type void:Linkset and provide the same metadata as an RDF Distribution. (Note that we do not repeat the standard properties here, although they are given in the full example in the <a href="appendix_1">appendix</a>.)</p>
+    <p>A linkset should be declared to be a subset of the dataset which publishes it. The linkset itself MUST be declared to be of type void:Linkset and provide the same metadata as an RDF Distribution. (Note that we do not repeat the standard properties here, although they are given in the full example in the <a href="#appendix_1">appendix</a>.)</p>
     <pre>
       :chembl-rdf
           void:subset :chembl17-uniprot-exactMatch-linkset .
