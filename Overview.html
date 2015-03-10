@@ -2457,6 +2457,30 @@ be used in the Workflow description as input or output</p>
           void:class &lt;http://rdf.ebi.ac.uk/terms/chembl#Assay&gt; ;
           void:distinctObjects "1042288"^^xsd:integer ;
       ]] .
+      
+&lt;http://www.ebi.ac.uk/chembl/compound/inspect/&gt;
+    idot:primarySource true ;
+    dct:format "text/html" ;
+    dct:publisher &lt;http://www.ebi.ac.uk&gt; ;
+    idot:accessIdentifierPattern "^http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+&lt;http://identifiers.org/chembl.compound/&gt;
+    dct:format "text/html" ;
+    idot:accessIdentifierPattern "^http://identifiers.org/chembl.compound/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+&lt;http://bio2rdf.org/chembl:&gt;
+    dct:format "application/rdf+xml" ;
+    dct:publisher &lt;http://bio2rdf.org&gt; ;
+    idot:accessIdentifierPattern "^http://bio2rdf.org/chembl:CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+&lt;http://linkedchemistry.info/chembl/chemblid&gt;
+    dct:format "application/rdf+xml" ;
+    idot:accessIdentifierPattern "^http://linkedchemistry.info/chembl/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
     
       :chembl17-uniprot-exactMatch-linkset
       ###Linkset specific metadata

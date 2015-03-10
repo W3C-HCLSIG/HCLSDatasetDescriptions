@@ -302,6 +302,29 @@ If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are prese
       ]] ;
 .
 
+<http://www.ebi.ac.uk/chembl/compound/inspect/>
+    idot:primarySource true ;
+    dct:format "text/html" ;
+    dct:publisher <http://www.ebi.ac.uk> ;
+    idot:accessIdentifierPattern "^http://www.ebi.ac.uk/chembl/compound/inspect/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+<http://identifiers.org/chembl.compound/>
+    dct:format "text/html" ;
+    idot:accessIdentifierPattern "^http://identifiers.org/chembl.compound/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+<http://bio2rdf.org/chembl:>
+    dct:format "application/rdf+xml" ;
+    dct:publisher <http://bio2rdf.org> ;
+    idot:accessIdentifierPattern "^http://bio2rdf.org/chembl:CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
+<http://linkedchemistry.info/chembl/chemblid>
+    dct:format "application/rdf+xml" ;
+    idot:accessIdentifierPattern "^http://linkedchemistry.info/chembl/CHEMBL\\d+" ;
+    a idot:AccessPattern .
+
 :chembl17-uniprot-exactMatch-linkset
 ###Linkset specific metadata
     a void:Linkset ;
