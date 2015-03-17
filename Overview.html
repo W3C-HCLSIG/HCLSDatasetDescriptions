@@ -340,22 +340,6 @@ pre {
         <td>MUST</td>
     </tr>
     <tr>
-        <td>Creators</td>
-        <td>dct:creator</td>
-        <td>IRI</td>
-        <td>MUST NOT</td>
-        <td>MUST</td>
-        <td>MUST</td>
-    </tr>
-    <tr>
-        <td>Contributors</td>
-        <td>dct:contributor or or pav:createdBy or pav:authoredBy or pav:curatedBy</td>
-        <td>IRI</td>
-        <td>MUST NOT</td>
-        <td>MAY</td>
-        <td>MAY</td>
-    </tr>
-    <tr>
         <td>Date created</td>
         <td>dct:created</td>
         <td><a href="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a> encoded using the relevant <a href="http://www.w3.org/TR/NOTE-datetime">ISO 8601 Date and Time compliant string</a> and typed using the appropriate <a href="http://www.w3.org/TR/xmlschema-2/">XML Schema datatype</a></td>
@@ -368,6 +352,22 @@ pre {
         <td>Other dates</td>
         <td>pav:createdOn or pav:authoredOn or pav:curatedOn</td>
         <td>xsd:dateTime, xsd:date, xsd:gYearMonth, or xsd:gYear</td>
+        <td>MUST NOT</td>
+        <td>MAY</td>
+        <td>MAY</td>
+    </tr>
+    <tr>
+        <td>Creators</td>
+        <td>dct:creator</td>
+        <td>IRI</td>
+        <td>MUST NOT</td>
+        <td>MUST</td>
+        <td>MUST</td>
+    </tr>
+    <tr>
+        <td>Contributors</td>
+        <td>dct:contributor or or pav:createdBy or pav:authoredBy or pav:curatedBy</td>
+        <td>IRI</td>
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -405,6 +405,14 @@ pre {
     	<td>SHOULD</td>
     </tr>
     <tr>
+        <td>Keywords</td>
+        <td>dcat:keyword</td>
+        <td>xsd:string</td>
+        <td>MAY</td>
+        <td>MAY</td>
+        <td>MAY</td>
+    </tr>
+    <tr>
         <td>License</td>
         <td>dct:license</td>
         <td>IRI</td>
@@ -429,17 +437,17 @@ pre {
         <td>SHOULD</td>
     </tr>
     <tr>
-        <td>Concept descriptors</td>
-        <td>dcat:theme</td>
-        <td>IRI of type skos:Concept</td>
+        <td>References</td>
+        <td>dct:references</td>
+        <td>IRI</td>
         <td>MAY</td>
         <td>MAY</td>
         <td>MAY</td>
     </tr>
     <tr>
-        <td>Keywords</td>
-        <td>dcat:keyword</td>
-        <td>xsd:string</td>
+        <td>Concept descriptors</td>
+        <td>dcat:theme</td>
+        <td>IRI of type skos:Concept</td>
         <td>MAY</td>
         <td>MAY</td>
         <td>MAY</td>
@@ -459,14 +467,6 @@ pre {
         <td>MUST NOT</td>
         <td>MAY</td>
         <td>SHOULD</td>
-    </tr>
-    <tr>
-        <td>References</td>
-        <td>dct:references</td>
-        <td>IRI</td>
-        <td>MAY</td>
-        <td>MAY</td>
-        <td>MAY</td>
     </tr>
     <tr>
         <td>Citations</td>
@@ -557,14 +557,6 @@ pre {
 		<td colspan="6"></td>
     </tr>
     <tr>
-        <td>Item listing</td>
-        <td>sio:has-data-item</td>
-        <td>IRI</td>
-        <td>MUST NOT</td>
-        <td>MUST NOT</td>
-        <td>MAY</td>
-    </tr>
-    <tr>
         <td>Version identifier</td>
         <td>pav:version</td>
         <td>xsd:string</td>
@@ -605,6 +597,14 @@ pre {
         <td>SHOULD</td>
     </tr>
     <tr>
+        <td>Item listing</td>
+        <td>sio:has-data-item</td>
+        <td>IRI</td>
+        <td>MUST NOT</td>
+        <td>MUST NOT</td>
+        <td>MAY</td>
+    </tr>
+    <tr>
         <td>Creation tool</td>
         <td>pav:createdWith</td>
         <td>IRI</td>
@@ -633,14 +633,6 @@ pre {
         <td>MUST NOT</td>
     </tr>
     <tr>
-        <td>Documentation</td>
-        <td>dcat:landingPage</td>
-        <td>IRI</td>
-        <td>MUST NOT</td>
-        <td>MAY</td>
-        <td>MAY</td>
-    </tr>
-    <tr>
         <td>File format</td>
         <td>dct:format</td>
         <td>IRI or xsd:String </td>
@@ -665,6 +657,14 @@ pre {
         <td>SHOULD</td>
     </tr>
     <tr>
+        <td>Byte size</td>
+        <td>dcat:byteSize</td>
+        <td>xsd:decimal</td>
+        <td>MUST NOT</td>
+        <td>MUST NOT</td>
+        <td>SHOULD</td>
+    </tr>
+    <tr>
         <td>RDF File URL</td>
         <td>void:dataDump</td>
         <td>IRI</td>
@@ -679,7 +679,15 @@ pre {
         <td>SHOULD</td>
         <td>SHOULD NOT</td>
         <td>SHOULD NOT</td>
-    </tr> 
+    </tr>
+    <tr>
+        <td>Documentation</td>
+        <td>dcat:landingPage</td>
+        <td>IRI</td>
+        <td>MUST NOT</td>
+        <td>MAY</td>
+        <td>MAY</td>
+    </tr>
 	<tr>
         <td>Linkset</td>
         <td>void:subset</td>
@@ -734,6 +742,14 @@ pre {
     </tr>
 	    <tr>
         <td># of classes</td>
+        <td>void:classPartition</td>
+        <td>IRI</td>
+        <td>MUST NOT</td>
+        <td>MUST NOT</td>
+        <td>SHOULD</td>
+    </tr>
+    <tr>
+        <td># of literals</td>
         <td>void:classPartition</td>
         <td>IRI</td>
         <td>MUST NOT</td>
@@ -1000,7 +1016,7 @@ Chemical Biology and Drug Discovery' Nucl. Acids Res. Database Issue. 40 D1100-1
 PMID:21948594
 
 If ChEMBL is incorporated into other works, we ask that the ChEMBL IDs are preserved, and that the release 
-number of ChEMBL is clearly displayed."""
+number of ChEMBL is clearly displayed."""@en .
     </pre>
 
     <h4>6.2.10 Language</h4>
@@ -1261,7 +1277,7 @@ number of ChEMBL is clearly displayed."""
 
     <p>Publishers may also provide their data through a SPARQL endpoint. We recommend that such an endpoint should have a service description [<a href="#SD">SD</a>] and this should link to the distribution level description that is currently loaded (see Figure 1).</p>
 
-    <p>SPARQL endpoints may optinally follow <a href="http://www.w3.org/TR/void/#deploying">VOID deployment guidelines</a>.</p>
+    <p>SPARQL endpoints may optionally follow <a href="http://www.w3.org/TR/void/#deploying">VOID deployment guidelines</a>.</p>
 
     <p>Below is an example based on the one given in <a href="http://www.w3.org/TR/2011/NOTE-void-20110303/#sparql-sd">Section 6.5</a> of the VOID guidelines [<a href="#VOID">VOID</a>] to indicate how this may be achieved for the default graph of a triplestore.</p>
 
